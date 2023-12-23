@@ -8,64 +8,95 @@ using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text;
+using UnityEngine.UI;
 
 public class SeverLauncher : MonoBehaviourPunCallbacks
 {
-    [Header("---UI InputFields---")]
-    public TMP_InputField joinRoom;
+    [Header("---InputFields UI---")]
+    public TMP_InputField joinRoom; // 로비 코드 입력 필드
 
-    private string LobbyName;
+    [Header("---Server UI---")]
+    public Image serverConnector; // 서버 커넥터 이미지
+    public TextMeshProUGUI serverConnectortext; // 서버 커넥터 텍스트
+    public GameObject serverUI; // 서버 UI 오브젝트
+    public GameObject loadingPanel; // 로딩 판넬
+
+    public string lobbyCode; // 로비 코드
+    private string lobbyName; // 로비 이름
+    private bool Isconnected = false; // 서버에 연결 되었는가?
 
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings(); // 포톤 서버 접속
+            PhotonNetwork.ConnectUsingSettings(); // 포톤 서버 연결
+    }
+
+    private void Update()
+    {
+        // 서버 연결 시에만 UI 활성화
+        if (Isconnected)
+        {
+            serverConnector.color = Color.green;
+            serverConnectortext.text = "Server connected";
+            serverUI.SetActive(true);
+        }
     }
 
     // 포톤 서버 연결 시 콜백
     public override void OnConnectedToMaster()
     {
         Debug.Log("Server connection");
+        Isconnected = true;
     }
 
     // 포톤 서버 로비 입장 시 콜백
     public override void OnJoinedRoom()
     {
-        Debug.Log("Lobby entrance: " + LobbyName);
-        Debug.Log("Lobby Code: " + ExtractNumbersUsingRegex(LobbyName));
+        lobbyCode = ExtractNumbersUsingRegex(lobbyName);
+        Debug.Log("Lobby entrance: " + lobbyName);
+        Debug.Log("Lobby Code: " + lobbyCode);
         PhotonNetwork.LoadLevel("InGame");
     }
 
     // 로비 생성 시 콜백
     public override void OnCreatedRoom()
     {
-        Debug.Log("Create lobby: " + LobbyName);
+        Debug.Log("Create lobby: " + lobbyName);
     }
 
     // 로비 생성 매서드 (버튼 UI)
     public void CreateAndJoinRoom_BTN()
     {
+        loadingPanel.SetActive(true);
         string roomName = "Room " + UnityEngine.Random.Range(1, 1000); // 로비 이름 설정
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }); // 로비 생성
-
-        LobbyName = roomName;
+        lobbyName = roomName;
     }
 
     // 랜덤 로비 입장 매서드 (버튼 UI)
     public void JoinRandomRoom_BTN()
     {
+        loadingPanel.SetActive(true);
         PhotonNetwork.JoinRandomRoom();
     }
 
     // 지정 로비 입장 매서드 (버트 UI)
     public void JoinDesignatedRoom_BTN()
     {
-        if (!string.IsNullOrEmpty(joinRoom.text)) // 입력 텍스트가 NULL이 아니라면
+        loadingPanel.SetActive(true);
+        if (!string.IsNullOrEmpty(joinRoom.text)) // 입력 텍스트가 NULL이 아닌가?
         {
-            string roomName = "Room " + joinRoom.text; // 로비 이름 설정
-            PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default, null); // 로비 입장
-            // 입력받은 로비로 입장 없다면 생성 후 입장   
-
-            LobbyName = roomName;
+            if (int.TryParse(joinRoom.text, out int roomNumber)) // 숫자로 이루어진 문자열인가?
+            {
+                string roomName = "Room " + roomNumber; // 로비 이름 설정
+                lobbyName = roomName;
+                PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default, null); // 로비 입장
+                // 입력받은 로비로 입장 없다면 생성 후 입장   
+            }
+            else
+            {
+                Debug.Log("Please enter only numbers");
+                // 숫자로 변환할 수 없는 경우에 대한 처리 로직을 추가할 수 있습니다.
+            }
         }
         else
             Debug.Log("Please enter the lobby code");
@@ -75,6 +106,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("There is no lobby \r\nPlease create a lobby");
+        loadingPanel.SetActive(false);
     }
 
     // 문자열에서 숫자를 추출하는 매서드 (로비 코드)
