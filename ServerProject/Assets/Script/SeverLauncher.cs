@@ -39,6 +39,8 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
             serverConnectortext.text = "Server connected";
             serverUI.SetActive(true);
         }
+
+        PlayerPrefs.SetString("LobbyCode", lobbyCode);
     }
 
     // 포톤 서버 연결 시 콜백
@@ -75,14 +77,13 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     // 랜덤 로비 입장 매서드 (버튼 UI)
     public void JoinRandomRoom_BTN()
     {
-        loadingPanel.SetActive(true);
         PhotonNetwork.JoinRandomRoom();
+        loadingPanel.SetActive(true);
     }
 
     // 지정 로비 입장 매서드 (버트 UI)
     public void JoinDesignatedRoom_BTN()
     {
-        loadingPanel.SetActive(true);
         if (!string.IsNullOrEmpty(joinRoom.text)) // 입력 텍스트가 NULL이 아닌가?
         {
             if (int.TryParse(joinRoom.text, out int roomNumber)) // 숫자로 이루어진 문자열인가?
@@ -100,6 +101,8 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
         }
         else
             Debug.Log("Please enter the lobby code");
+
+        loadingPanel.SetActive(true);
     }
 
     // 참가 할 로비가 존재하지 않을 때 콜백
