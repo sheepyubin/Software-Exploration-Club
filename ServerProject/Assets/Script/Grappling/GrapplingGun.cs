@@ -133,8 +133,16 @@ public class GrapplingGun : MonoBehaviour
         {
             if(autoConfigureDistance)
             {
-                m_springJoint2D.autoCon
+                m_springJoint2D.autoConfigureDistance = true;
+                m_springJoint2D.frequency = 0;
             }
+
+            m_springJoint2D.connectedAnchor = grapplePoint;
+            m_springJoint2D.enabled = true;
+        }
+        else
+        {
+            
         }
     }
 }

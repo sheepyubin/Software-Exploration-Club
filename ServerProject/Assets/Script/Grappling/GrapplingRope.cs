@@ -59,6 +59,5 @@ public class GrapplingRope : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        moveTime
     }
 }
