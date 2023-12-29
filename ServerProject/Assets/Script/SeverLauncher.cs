@@ -72,7 +72,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public void CreateAndJoinRoom_BTN()
     {
         loadingPanel.SetActive(true);
-        string roomName = "Room " + UnityEngine.Random.Range(1, 1000); // 로비 이름 설정
+        string roomName = "Room " + UnityEngine.Random.Range(1, 100); // 로비 이름 설정
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default); // 로비 생성
         lobbyName = roomName;
     }
@@ -80,9 +80,8 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     // 랜덤 로비 입장 매서드 (버튼 UI)
     public void JoinRandomRoom_BTN()
     {
-        byte expectedMaxPlayers = 4;
 
-        PhotonNetwork.JoinRandomRoom(null, expectedMaxPlayers, MatchmakingMode.FillRoom, null, null);
+        PhotonNetwork.JoinRandomRoom();
 
         loadingPanel.SetActive(true);
     }
@@ -116,6 +115,8 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     {
         Debug.Log("JoinRandomFailed: " + message + " (Code: " + returnCode + ")");
         loadingPanel.SetActive(false);
+
+        CreateAndJoinRoom_BTN();
     }
 
     // 지정 한 로비가 존재하지 않을 때 콜백
