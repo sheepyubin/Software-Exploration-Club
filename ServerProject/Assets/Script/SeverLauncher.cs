@@ -39,6 +39,8 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
             serverConnectortext.text = "Server connected";
             serverUI.SetActive(true);
         }
+
+        PlayerPrefs.SetString("LobbyCode", lobbyCode);
     }
 
     // 포톤 서버 연결 시 콜백
@@ -46,7 +48,10 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Server connection");
         Isconnected = true;
+
+        PhotonNetwork.JoinLobby();
     }
+
 
     // 포톤 서버 로비 입장 시 콜백
     public override void OnJoinedRoom()
@@ -68,28 +73,30 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     {
         loadingPanel.SetActive(true);
         string roomName = "Room " + UnityEngine.Random.Range(1, 1000); // 로비 이름 설정
-        PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }); // 로비 생성
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default); // 로비 생성
         lobbyName = roomName;
     }
 
     // 랜덤 로비 입장 매서드 (버튼 UI)
     public void JoinRandomRoom_BTN()
     {
+        byte expectedMaxPlayers = 4;
+
+        PhotonNetwork.JoinRandomRoom(null, expectedMaxPlayers, MatchmakingMode.FillRoom, null, null);
+
         loadingPanel.SetActive(true);
-        PhotonNetwork.JoinRandomRoom();
     }
 
     // 지정 로비 입장 매서드 (버트 UI)
     public void JoinDesignatedRoom_BTN()
     {
-        loadingPanel.SetActive(true);
         if (!string.IsNullOrEmpty(joinRoom.text)) // 입력 텍스트가 NULL이 아닌가?
         {
             if (int.TryParse(joinRoom.text, out int roomNumber)) // 숫자로 이루어진 문자열인가?
             {
                 string roomName = "Room " + roomNumber; // 로비 이름 설정
                 lobbyName = roomName;
-                PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default, null); // 로비 입장
+                PhotonNetwork.JoinRoom(roomName); // 로비 입장
                 // 입력받은 로비로 입장 없다면 생성 후 입장   
             }
             else
@@ -100,13 +107,32 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
         }
         else
             Debug.Log("Please enter the lobby code");
+
+        loadingPanel.SetActive(true);
     }
 
     // 참가 할 로비가 존재하지 않을 때 콜백
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("There is no lobby \r\nPlease create a lobby");
+        Debug.Log("JoinRandomFailed: " + message + " (Code: " + returnCode + ")");
         loadingPanel.SetActive(false);
+    }
+
+    // 지정 한 로비가 존재하지 않을 때 콜백
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("Failed to join room: " + message);
+        loadingPanel.SetActive(false);
+    }
+    // 서버 리스트 갱신
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+
+        // 현재 존재하는 로비의 모든 로비의 이름 출력
+        foreach (RoomInfo roomInfo in roomList)
+        {
+            Debug.Log("Room Name: " + roomInfo.Name);
+        }
     }
 
     // 문자열에서 숫자를 추출하는 매서드 (로비 코드)

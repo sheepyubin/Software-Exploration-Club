@@ -11,12 +11,13 @@ public class InGameManager : MonoBehaviourPunCallbacks
     [Header("---Lobbycode UI---")]
     public TextMeshProUGUI lobbyCodetext; // 로비 코드 텍스트
 
-    private LobbyCodeManager lobbyCode;
+    private string lobbyCode;
+
     void Start()
     {
-        lobbyCode = GameObject.Find("LobbyCodeManager").GetComponent<LobbyCodeManager>(); // 로비 코드 매니저 스크립트 접근
+        lobbyCode = PlayerPrefs.GetString("LobbyCode");
+        lobbyCodetext.text = lobbyCode;
 
-        lobbyCodetext.text = "Code: " + lobbyCode.lobbyCode;
         // 로컬 플레이어 생성
         if (PhotonNetwork.IsConnectedAndReady)
         {
