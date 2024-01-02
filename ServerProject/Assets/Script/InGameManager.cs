@@ -12,6 +12,10 @@ public class InGameManager : MonoBehaviourPunCallbacks
     [Header("---Lobbycode UI---")]
     public TextMeshProUGUI lobbyCodetext; // 로비 코드 텍스트
 
+    [Tooltip("The Player's UI GameObject Prefab")]
+    [SerializeField]
+    private GameObject playerUiPrefab;
+
     private string lobbyCode;
 
     void Start()
@@ -24,6 +28,15 @@ public class InGameManager : MonoBehaviourPunCallbacks
         {
             Vector2 spawnPosition = new Vector2(0f, 0f);
             PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition, Quaternion.identity);
+        }
+        if (playerUiPrefab != null)
+        {
+            GameObject _uiGo = Instantiate(playerUiPrefab);
+            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
         }
     }
 
