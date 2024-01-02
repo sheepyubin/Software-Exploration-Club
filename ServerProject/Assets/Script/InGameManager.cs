@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class InGameManager : MonoBehaviourPunCallbacks
 {
@@ -15,7 +16,7 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        lobbyCode = PlayerPrefs.GetString("LobbyCode");
+        lobbyCode = ExtractNumbersUsingRegex(PhotonNetwork.CurrentRoom.Name);
         lobbyCodetext.text = lobbyCode;
 
         // 로컬 플레이어 생성
@@ -33,6 +34,18 @@ public class InGameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("Lobby");
         }
+    }
+
+    // 문자열에서 숫자를 추출하는 매서드 (로비 코드)
+    static string ExtractNumbersUsingRegex(string input)
+    {
+        // 숫자 추출 정규식
+        string pattern = @"\d+";
+
+        MatchCollection matches = Regex.Matches(input, pattern);
+
+        // 문자열 반환
+        return string.Join("", matches);
     }
 }
 

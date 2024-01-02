@@ -22,12 +22,13 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public GameObject loadingPanel; // 로딩 판넬
 
     public string lobbyCode; // 로비 코드
-    private string lobbyName; // 로비 이름
+    private string lobbyName = "lobby"; // 로비 이름
     private bool Isconnected = false; // 서버에 연결 되었는가?
 
     void Start()
     {
-            PhotonNetwork.ConnectUsingSettings(); // 포톤 서버 연결
+        PhotonNetwork.ConnectUsingSettings(); // 포톤 서버 연결
+
     }
 
     private void Update()
@@ -35,6 +36,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
         // 서버 연결 시에만 UI 활성화
         if (Isconnected)
         {
+            lobbyCode = ExtractNumbersUsingRegex(lobbyName);
             serverConnector.color = Color.green;
             serverConnectortext.text = "Server connected";
             serverUI.SetActive(true);
@@ -56,7 +58,6 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     // 포톤 서버 로비 입장 시 콜백
     public override void OnJoinedRoom()
     {
-        lobbyCode = ExtractNumbersUsingRegex(lobbyName);
         Debug.Log("Lobby entrance: " + lobbyName);
         Debug.Log("Lobby Code: " + lobbyCode);
         PhotonNetwork.LoadLevel("InGame");
@@ -80,9 +81,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     // 랜덤 로비 입장 매서드 (버튼 UI)
     public void JoinRandomRoom_BTN()
     {
-
         PhotonNetwork.JoinRandomRoom();
-
         loadingPanel.SetActive(true);
     }
 
@@ -97,17 +96,16 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
                 lobbyName = roomName;
                 PhotonNetwork.JoinRoom(roomName); // 로비 입장
                 // 입력받은 로비로 입장 없다면 생성 후 입장   
+                loadingPanel.SetActive(true);
             }
             else
             {
                 Debug.Log("Please enter only numbers");
-                // 숫자로 변환할 수 없는 경우에 대한 처리 로직을 추가할 수 있습니다.
             }
         }
         else
             Debug.Log("Please enter the lobby code");
 
-        loadingPanel.SetActive(true);
     }
 
     // 참가 할 로비가 존재하지 않을 때 콜백
@@ -135,6 +133,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
             Debug.Log("Room Name: " + roomInfo.Name);
         }
     }
+
 
     // 문자열에서 숫자를 추출하는 매서드 (로비 코드)
     static string ExtractNumbersUsingRegex(string input)
