@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 8641695537122713204, guid: 15b87ecdff369de439ca6d3291b792d8, type: 3}
   lobbyCodetext: {fileID: 1342478193}
+  playerUiPrefab: {fileID: 5456644036887323985, guid: d59e12adceb41ba4d9e64482f4e64456, type: 3}
 --- !u!4 &1794812052
 Transform:
   m_ObjectHideFlags: 0
