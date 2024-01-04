@@ -3,9 +3,12 @@ using Photon.Pun;
 using Unity.VisualScripting;
 using TMPro;
 using System.Text.RegularExpressions;
+using Photon.Pun.Demo.PunBasics;
+using static UnityEngine.GraphicsBuffer;
 
 public class InGameManager : MonoBehaviourPunCallbacks
 {
+
     [Header("---PlayerPrefab Gameobject---")]
     public GameObject PlayerPrefab; // 플레이어 프리팹
 
@@ -16,7 +19,10 @@ public class InGameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerUiPrefab;
 
+
     private string lobbyCode;
+    Vector2 spawnPosition = new Vector2(0f, 0f);
+
 
     void Start()
     {
@@ -26,13 +32,12 @@ public class InGameManager : MonoBehaviourPunCallbacks
         // 로컬 플레이어 생성
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            Vector2 spawnPosition = new Vector2(0f, 0f);
             PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition, Quaternion.identity);
         }
         if (playerUiPrefab != null)
         {
-            GameObject _uiGo = Instantiate(playerUiPrefab);
-            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+            Instantiate(playerUiPrefab);
+            
         }
         else
         {
@@ -42,11 +47,16 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("Lobby");
         }
+    }
+    void CalledOnLevelWasLoaded()
+    {
+        GameObject _uiGo = Instantiate(this.playerUiPrefab);
+        _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
 
     // 문자열에서 숫자를 추출하는 매서드 (로비 코드)
@@ -59,6 +69,5 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
         // 문자열 반환
         return string.Join("", matches);
-    }
+    }   
 }
-
