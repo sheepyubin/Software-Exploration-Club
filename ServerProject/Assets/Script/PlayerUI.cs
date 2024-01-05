@@ -25,6 +25,7 @@ namespace Com.MyCompany.MyGame
         [Tooltip("Pixel offset from the player target")]
         [SerializeField]
         private Vector3 screenOffset = new Vector3(0f, 30f, 0f);
+
         #endregion
 
         #region Private Fields Messages
@@ -39,7 +40,7 @@ namespace Com.MyCompany.MyGame
             // Reflect the Player Health
             if (playerHealthSlider != null)
             {
-                playerHealthSlider.value = target.Health;
+                //playerHealthSlider.value = target.Health;
             }
             if (target == null)
             {
@@ -74,6 +75,7 @@ namespace Com.MyCompany.MyGame
                 playerNameText.text = target.photonView.Owner.NickName;
             }
         }
+        
 
         void LateUpdate()
         {
