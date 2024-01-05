@@ -5,7 +5,7 @@ using UnityEngine;
 public class crosshair : MonoBehaviour
 {
     public Texture2D crosshairTexture; // 크로스헤어 텍스처
-    public float crosshairSize = 32f; // 크로스헤어 크
+    public float crosshairSize = 32f; // 크로스헤어 크기
     void OnGUI()
     {
         // 마우스 위치를 얻어옴

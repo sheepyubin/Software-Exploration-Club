@@ -5,27 +5,26 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public GameManager gameManager;
+    // public GameManager gameManager;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    CapsuleCollider2D capsuleCollider;
+    //CapsuleCollider2D capsuleCollider;
+    CircleCollider2D circleCollider2D;
 
     [SerializeField]
     public float speed = 5.0f; // 이동 속도
-    public float jumpPower;
-    public float grappleSpeed = 10f;  // 훅으로 이동하는 속도
-    public float maxDistance = 10f;   // 훅의 최대 거리
-    public float rotationSpeed = 5f; // 플레이어 회전 속도
+    public float jumpPower = 5.0f;
     public Rigidbody2D rigid2D;
 
     // Start is called before the first frame update
     void Awake()
     {
         rigid2D = GetComponent<Rigidbody2D>();
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        //capsuleCollider = GetComponent<CapsuleCollider2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -81,8 +80,8 @@ public class PlayerMove : MonoBehaviour
         // Collider 의 가로크기를 이용해 캐릭터의 발쪽에 Box 모양으로 충돌 체크를 합니다.
         Debug.DrawRay(rigid2D.position, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.BoxCast(
-           capsuleCollider.bounds.center,
-           new Vector2(capsuleCollider.bounds.size.x, capsuleCollider.bounds.size.y),
+           circleCollider2D.bounds.center,
+           new Vector2(circleCollider2D.bounds.size.x, circleCollider2D.bounds.size.y),
            0f,
            Vector2.down,
            0.01f,
