@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun
 {
-    public float speed = 5f;
+   
 
+    public float speed = 5f;
+   
+   
     void Update()
     {
         if (photonView.IsMine)

@@ -5,6 +5,7 @@ using TMPro;
 using System.Text.RegularExpressions;
 using Photon.Pun.Demo.PunBasics;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.SceneManagement;
 
 public class InGameManager : MonoBehaviourPunCallbacks
 {
@@ -28,21 +29,22 @@ public class InGameManager : MonoBehaviourPunCallbacks
     {
         lobbyCode = ExtractNumbersUsingRegex(PhotonNetwork.CurrentRoom.Name);
         lobbyCodetext.text = lobbyCode;
-
+        
         // 로컬 플레이어 생성
         if (PhotonNetwork.IsConnectedAndReady)
         {
             PhotonNetwork.Instantiate(PlayerPrefab.name, spawnPosition, Quaternion.identity);
+            if (playerUiPrefab != null)
+            {
+                GameObject _uiGo = Instantiate(playerUiPrefab);
+                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+            }
+            else
+            {
+                Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+            }
         }
-        if (playerUiPrefab != null)
-        {
-            Instantiate(playerUiPrefab);
-            
-        }
-        else
-        {
-            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-        }
+        
     }
 
     private void Update()
@@ -52,11 +54,6 @@ public class InGameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("Lobby");
         }
-    }
-    void CalledOnLevelWasLoaded()
-    {
-        GameObject _uiGo = Instantiate(this.playerUiPrefab);
-        _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
 
     // 문자열에서 숫자를 추출하는 매서드 (로비 코드)

@@ -14,6 +14,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
 {
     [Header("---InputFields UI---")]
     public TMP_InputField joinRoom; // 로비 코드 입력 필드
+    public TMP_InputField userIdText;//닉네임 입력 필드
 
     [Header("---Server UI---")]
     public Image serverConnector; // 서버 커넥터 이미지
@@ -24,6 +25,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public string lobbyCode; // 로비 코드
     private string lobbyName = "lobby"; // 로비 이름
     private bool Isconnected = false; // 서버에 연결 되었는가?
+    private string userId = "Hi world";
 
     void Start()
     {
@@ -41,8 +43,9 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
             serverConnectortext.text = "Server connected";
             serverUI.SetActive(true);
         }
-
+        PlayerPrefs.SetString("USER_ID", userId);
         PlayerPrefs.SetString("LobbyCode", lobbyCode);
+        PhotonNetwork.NickName = userIdText.text;
     }
 
     // 포톤 서버 연결 시 콜백
