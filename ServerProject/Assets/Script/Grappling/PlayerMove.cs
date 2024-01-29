@@ -8,9 +8,7 @@ public class PlayerMove : MonoBehaviour
     // public GameManager gameManager;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    //CapsuleCollider2D capsuleCollider;
-    CircleCollider2D circleCollider2D;
-
+    CapsuleCollider2D capsuleCollider;
     [SerializeField]
     public float speed = 5.0f; // 이동 속도
     public float jumpPower = 5.0f;
@@ -23,8 +21,7 @@ public class PlayerMove : MonoBehaviour
         //gameManager = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //capsuleCollider = GetComponent<CapsuleCollider2D>();
-        circleCollider2D = GetComponent<CircleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -80,8 +77,8 @@ public class PlayerMove : MonoBehaviour
         // Collider 의 가로크기를 이용해 캐릭터의 발쪽에 Box 모양으로 충돌 체크를 합니다.
         Debug.DrawRay(rigid2D.position, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.BoxCast(
-           circleCollider2D.bounds.center,
-           new Vector2(circleCollider2D.bounds.size.x, circleCollider2D.bounds.size.y),
+           capsuleCollider.bounds.center,
+           new Vector2(capsuleCollider.bounds.size.x, capsuleCollider.bounds.size.y),
            0f,
            Vector2.down,
            0.01f,
