@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class Tutorial_GrapplingGun : MonoBehaviour
 {
@@ -54,8 +55,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         m_springJoint2D.enabled = false;
 
     }
-
-    private void Update()
+    void HandleMovementInput()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -96,6 +96,14 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
+    }
+    private void Update()
+    {
+        if (photonView.IsMine)
+        {
+            HandleMovementInput();
+        }
+        
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)

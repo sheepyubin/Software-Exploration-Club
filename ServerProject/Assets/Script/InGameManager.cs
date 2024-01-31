@@ -37,7 +37,7 @@ public class InGameManager : MonoBehaviourPunCallbacks
             if (playerUiPrefab != null)
             {
                 GameObject _uiGo = Instantiate(playerUiPrefab);
-                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+                //_uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
             }
             else
             {
