@@ -99,7 +99,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     }
     private void Update()
     {
-        if (photonView.IsMine)
+        //if (photonView.IsMine)
         {
             HandleMovementInput();
         }
