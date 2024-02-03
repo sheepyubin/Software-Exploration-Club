@@ -55,11 +55,16 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>(); // photonView 초기화
 
-        if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
+        if (photonView != null)
         {
-            grappleRope.enabled = false;
-            m_springJoint2D.enabled = false;
+                if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
+            {
+                grappleRope.enabled = false;
+                m_springJoint2D.enabled = false;
+            }
         }
+        else
+            Debug.LogWarning("photonView is NULL");
     }
     void HandleMovementInput()
     {
@@ -105,10 +110,15 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     }
     private void Update()
     {
-        if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
+        if (photonView != null)
         {
-            HandleMovementInput();
+            if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
+            {
+                HandleMovementInput();
+            }
         }
+        else
+            Debug.LogWarning("photonView is NULL");
         
     }
 
