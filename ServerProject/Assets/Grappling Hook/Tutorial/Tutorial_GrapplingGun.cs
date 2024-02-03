@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Tutorial_GrapplingGun : MonoBehaviour
 {
+    private PhotonView photonView; // PhotonView 변수 선언
+
     [Header("Scripts Ref:")]
     public Tutorial_GrapplingRope grappleRope;
 
@@ -51,9 +53,13 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     private void Start()
     {
-        grappleRope.enabled = false;
-        m_springJoint2D.enabled = false;
+        photonView = GetComponent<PhotonView>(); // photonView 초기화
 
+        if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
+        {
+            grappleRope.enabled = false;
+            m_springJoint2D.enabled = false;
+        }
     }
     void HandleMovementInput()
     {
@@ -99,7 +105,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     }
     private void Update()
     {
-        //if (photonView.IsMine)
+        if (photonView.IsMine) // photonView가 로컬 플레이어일 때 실행
         {
             HandleMovementInput();
         }
