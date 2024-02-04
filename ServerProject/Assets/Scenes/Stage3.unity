@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 8
   bulletPrefab: {fileID: 7721075459714272707, guid: bce1776e0de14454eaca226aadc9590f, type: 3}
-  fireRate: 3
+  fireRate: 2
   ammo: 5
 --- !u!1 &149694214
 GameObject:
@@ -884,8 +884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 8
-  bulletPrefab: {fileID: 7721075459714272707, guid: 7ddefe26924b9294fa9b3788db6f0249, type: 3}
+  bulletPrefab: {fileID: 7721075459714272707, guid: bce1776e0de14454eaca226aadc9590f, type: 3}
   fireRate: 1
+  poolSize: 3
 --- !u!1 &1270072536
 GameObject:
   m_ObjectHideFlags: 0
