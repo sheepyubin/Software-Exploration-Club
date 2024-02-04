@@ -6,7 +6,7 @@ public class EnemyMoveS3 : MonoBehaviour
     public float maxX = 5f; // X 축 최대 값
     public float moveSpeed = 2f; // 이동 속도
 
-    private float minChangeInterval = 1f; // 방향 전환 최소 간격
+    private float minChangeInterval = 0.5f; // 방향 전환 최소 간격
     private float maxChangeInterval = 1.5f; // 방향 전환 최대 간격
     private float changeDirectionInterval; // 방향 전환 간격
     private int moveDirection = 1; // 이동 방향 (1: R, -1: L)

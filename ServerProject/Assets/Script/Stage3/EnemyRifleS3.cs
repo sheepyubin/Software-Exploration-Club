@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class EnemyShootS3 : MonoBehaviour
+public class EnemyRifleS3 : MonoBehaviour
 {
     public float detectionRadius = 8f; // 플레이어 감지 범위
     public GameObject bulletPrefab; // 총알 프리팹
-    public float fireRate = 3f; // 발사 속도
+    public float fireRate = 1f; // 발사 속도
 
     private Transform player; // 플레이어 위치
     private float nextFireTime; // 다음 발사 시간
@@ -38,8 +38,7 @@ public class EnemyShootS3 : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); // 생성
-        bullet.SetActive(true); // 활성화
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity); // 생성
     }
 
     void OnDrawGizmosSelected()

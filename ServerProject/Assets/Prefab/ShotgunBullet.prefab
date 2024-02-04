@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5168484956479393934}
   - component: {fileID: 8986262970827598735}
   - component: {fileID: -9187701042697133156}
-  - component: {fileID: 4463766058105580479}
   - component: {fileID: -956992033452358081}
+  - component: {fileID: 958285563319132844}
   m_Layer: 11
-  m_Name: Bullet
+  m_Name: ShotgunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.6652646, a: 1}
+  m_Color: {r: 1, g: 0.9622972, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,20 +103,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4463766058105580479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7721075459714272707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b48cd8a28e391947b5551acef04e59e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  damageRadius: 0.25
 --- !u!50 &-956992033452358081
 Rigidbody2D:
   serializedVersion: 4
@@ -138,3 +124,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &958285563319132844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721075459714272707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665ae4cbf68f49546bcdb1b3cc52a942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10

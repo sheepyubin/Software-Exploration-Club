@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletMoveS3 : MonoBehaviour
+public class BulletMoveRifleS3 : MonoBehaviour
 {
     public float speed = 10f; // 탄속
     public float damageRadius = 1f; // 피격 반경
@@ -10,6 +10,7 @@ public class BulletMoveS3 : MonoBehaviour
 
     void Start()
     {
+        Invoke("Destroy", 3f);
         // 타겟 설정
         FindPlayerTarget();
 
@@ -28,7 +29,6 @@ public class BulletMoveS3 : MonoBehaviour
 
     void Update()
     {
-        Invoke("Destroy", 3f);
         // 이동
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
     }
@@ -46,7 +46,7 @@ public class BulletMoveS3 : MonoBehaviour
     // 플레이어 피격
     void Damage()
     {
-        Debug.Log("Damage");
+        Debug.Log("Damage(Rifle)");
         Destroy(gameObject);
     }
 
