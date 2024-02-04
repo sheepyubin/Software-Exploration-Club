@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tank_Gun : MonoBehaviour
+public class Tank_MG : MonoBehaviour
 {
     public Transform target; // 추적할 대상 (예: 다른 게임 오브젝트의 Transform)
 
@@ -18,7 +18,7 @@ public class Tank_Gun : MonoBehaviour
         float angleDifference = Mathf.DeltaAngle(transform.eulerAngles.z, targetRotationAngle);
 
         // 회전 속도
-        float rotationSpeed = 0.03f;
+        float rotationSpeed = 0.06f;
 
         // 실제 회전 각도 계산
         float rotationAmount = Mathf.Clamp(angleDifference, -rotationSpeed, rotationSpeed);
