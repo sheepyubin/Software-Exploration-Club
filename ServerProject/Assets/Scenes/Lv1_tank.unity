@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 943081996}
   - component: {fileID: 943081997}
   - component: {fileID: 943081998}
+  - component: {fileID: 943081999}
   m_Layer: 0
   m_Name: main gun
   m_TagString: Untagged
@@ -221,6 +222,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1929369131}
+--- !u!114 &943081999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943081995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfcb08108e76994ca8f57797f794392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7721075459714272707, guid: 9104bfdd4b9715b4dbd37a5640cc316f, type: 3}
+  poolSize: 3
 --- !u!1 &954819901
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +785,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117478714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.87, y: 0.53, z: 0}
+  m_LocalPosition: {x: -6.87, y: 0.53, z: -1.55}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
