@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 2098355356}
   - component: {fileID: 2098355357}
   - component: {fileID: 2098355358}
+  - component: {fileID: 2098355359}
   m_Layer: 0
   m_Name: 'machineGun '
   m_TagString: Untagged
@@ -706,6 +707,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1929369131}
+--- !u!114 &2098355359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098355355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437ace3787ea9c74f80d6a24c752a04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7721075459714272707, guid: b58cd9bb9ad28ea418918464bf849f9f, type: 3}
+  poolSize: 5
 --- !u!1 &2117478714
 GameObject:
   m_ObjectHideFlags: 0
