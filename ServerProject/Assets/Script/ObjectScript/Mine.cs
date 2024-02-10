@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AntitankMine : MonoBehaviour
+public class Mine : MonoBehaviour
 {
     void Start()
     {

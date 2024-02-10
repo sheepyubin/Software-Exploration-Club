@@ -43,7 +43,7 @@ public class BulletMoveS3 : MonoBehaviour
     // 플레이어 피격
     void Damage()
     {
-        Debug.Log("Damage(Shotgun)");
+        Debug.Log("Damage(Mine)");
         Destroy();
     }
 }
