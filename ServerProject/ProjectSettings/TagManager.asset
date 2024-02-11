@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grappleable
   - Bullet
+  - Ground
   layers:
   - Default
   - TransparentFX
