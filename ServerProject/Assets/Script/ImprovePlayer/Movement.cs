@@ -6,7 +6,7 @@ public class Movement : MonoBehaviourPunCallbacks
 {
     public float moveSpeed = 5f; // 이동 속도
     public float jumpForce = 10f; // 점프
-    public float dashForce; // 대쉬
+    public float dashForce = 15f; // 대쉬
     public RopeLauncher ropeLauncher; // RopeLauncher 스크립트
 
     private Rigidbody2D rb;
@@ -25,7 +25,7 @@ public class Movement : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if(isDashing)
+        if (isDashing)
         {
             return;
         }
@@ -47,7 +47,6 @@ public class Movement : MonoBehaviourPunCallbacks
         // 대쉬
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
-            Debug.Log("d");
             StartCoroutine(Dash());
         }
     }
