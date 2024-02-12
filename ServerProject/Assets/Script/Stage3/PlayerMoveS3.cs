@@ -4,7 +4,7 @@ using Photon.Pun;
 public class PlayerMoveS3 : MonoBehaviourPunCallbacks
 {
     public float moveSpeed = 5f; // 이동 속도
-    public float jumpForce = 10f; // 점프 힘
+    public float jumpForce = 10f; // 점프
 
     private Rigidbody2D rb;
     private bool isGrounded;
