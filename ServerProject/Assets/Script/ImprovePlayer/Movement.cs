@@ -7,6 +7,8 @@ public class Movement : MonoBehaviourPunCallbacks
     public float moveSpeed = 5f; // 이동 속도
     public float jumpForce = 10f; // 점프
     public float dashForce = 15f; // 대쉬
+    public float ropeAcceleration = 10f; // 로프를 타고 있을 때 가속도
+    public float moveTowardsSpeed = 5f; // 이동 속도
     public RopeLauncher ropeLauncher; // RopeLauncher 스크립트
 
     private Rigidbody2D rb;
@@ -16,7 +18,6 @@ public class Movement : MonoBehaviourPunCallbacks
     private bool isDashing; // 대쉬하는 중인가?
     private float dashTime = 0.2f; // 대쉬 지속 시간
     private float dashCool = 1; // 대쉬 쿨
-
 
     void Start()
     {
@@ -32,7 +33,18 @@ public class Movement : MonoBehaviourPunCallbacks
 
         // 플레이어 이동
         float moveInput = Input.GetAxis("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        Vector2 moveVelocity;
+
+        // 로프 이동 중 가속도
+        if (ropeLauncher.distanceJoint.enabled)
+        {
+            moveVelocity = new Vector2(moveInput * moveSpeed * ropeAcceleration, rb.velocity.y);
+        }
+        else
+        {
+            moveVelocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        }
+
         rb.velocity = moveVelocity;
 
         // 땅에 닿아 있는가?
@@ -48,6 +60,13 @@ public class Movement : MonoBehaviourPunCallbacks
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
+        }
+
+        // 스페이스 바를 누르고 있을 때 라인 렌더러의 끝점으로 이동
+        if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
+        {
+            Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
         }
     }
 
