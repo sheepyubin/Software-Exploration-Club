@@ -43,6 +43,12 @@ MonoBehaviour:
   - ShareVariable
   - ReceiveSharedVariable
   - RequestSharedVariable
+  - SyncDash
+  - SyncJump
+  - SyncRopeMove
+  - DisableRope
+  - LaunchRope
+  - SyncMoveVelocity
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
