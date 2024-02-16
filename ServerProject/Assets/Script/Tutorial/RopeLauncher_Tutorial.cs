@@ -6,8 +6,12 @@ public class RopeLauncher_Tutorial : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public DistanceJoint2D distanceJoint;
-
+    public Movement_Tutorial movementTutorial;
+    public bool step4= false;
+    
     private Camera mainCamera;
+    private int temp = 0;
+
 
     private void Start()
     {
@@ -20,6 +24,8 @@ public class RopeLauncher_Tutorial : MonoBehaviour
         {
             distanceJoint.enabled = false;
         }
+
+        step4 = false;
     }
 
     void Update()
@@ -28,15 +34,18 @@ public class RopeLauncher_Tutorial : MonoBehaviour
             return;
 
         // 로프 발사
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && movementTutorial.step3)
         {
             Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
             LaunchRope(mousePos);
+            temp++;
         }
         // 로프 비활성화
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             DisableRope();
+            if(temp>=2)
+            step4 = true; // 튜토리얼 4단계 완료
         }
     }
 
