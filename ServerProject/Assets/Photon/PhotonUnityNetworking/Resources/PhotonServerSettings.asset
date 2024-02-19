@@ -49,6 +49,9 @@ MonoBehaviour:
   - DisableRope
   - LaunchRope
   - SyncMoveVelocity
+  - SwitchScene
+  - SyncVoteCount
+  - LoadNextScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

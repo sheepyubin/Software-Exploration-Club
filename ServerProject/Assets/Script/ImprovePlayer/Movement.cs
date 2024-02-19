@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -22,6 +23,10 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D가 없습니다. GameObject에 Rigidbody2D 컴포넌트가 추가되어 있는지 확인하세요.");
+        }
     }
 
     void Update()
@@ -52,24 +57,23 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                photonView.RPC("SyncJump", RpcTarget.Others);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
             if (Input.GetKey(KeyCode.LeftShift) && canDash)
             {
                 StartCoroutine(Dash());
-                photonView.RPC("SyncDash", RpcTarget.Others);
             }
 
             if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
             {
                 Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
-                photonView.RPC("SyncRopeMove", RpcTarget.Others, transform.position);
+                transform.position = transform.position;
             }
 
-            // 좌우 이동 속도를 동기화
-            photonView.RPC("SyncMoveVelocity", RpcTarget.Others, rb.velocity);
+            // 위치 동기화
+            photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
         }
     }
 
@@ -113,9 +117,10 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void SyncMoveVelocity(Vector2 velocity)
+    void SyncMovement(Vector3 newPosition)
     {
-        rb.velocity = velocity;
+        // 다른 플레이어의 위치를 동기화
+        transform.position = newPosition;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
