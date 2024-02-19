@@ -25,6 +25,8 @@ public class Movement_Tutorial : MonoBehaviour
     private bool step5 = false;
     private int temp = 0;
 
+    private bool isDead = false; // 죽었는지 안 죽었는지 판별
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -118,7 +120,13 @@ public class Movement_Tutorial : MonoBehaviour
         // Boundary에 충돌
         if (collision.gameObject.CompareTag("Boundary") || collision.gameObject.CompareTag("Bullet"))
         {
-            ResetUser();
+            isDead = true; // 플레이어 사망
+
+            if(isDead)
+            {
+                // 여기에 관전 기능 구현
+                // 카메라 자유시점
+            }
         }
     }
 
