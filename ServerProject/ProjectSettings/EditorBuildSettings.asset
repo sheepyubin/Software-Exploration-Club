@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bulid/InGame.unity
     guid: 91c532a37188e884485b16ac0c15fa4b
-  - enabled: 0
-    path: Assets/Scenes/Stage3.unity
-    guid: a7712b1917fe8b941b04d2fe0777d7c3
   - enabled: 1
     path: Assets/Scenes/Bulid/Stage_1.unity
     guid: 40d9697e01028a24ab7dd69339bccf16
+  - enabled: 1
+    path: Assets/Scenes/Bulid/Stage_2.unity
+    guid: 3f168c3b85600c7499c0cc03fc8bf55c
+  - enabled: 1
+    path: Assets/Scenes/Bulid/Stage_3.unity
+    guid: 7f5c214204df8fe408dd8b1c0c822f16
   m_configObjects: {}
