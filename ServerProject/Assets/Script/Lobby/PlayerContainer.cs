@@ -30,4 +30,9 @@ public class PlayerContainer : ScriptableObject
     {
         return playerData[num];
     }
+    public void ResetContainer()
+    {
+        count = 0;
+        playerData.Clear();
+    }
 }
