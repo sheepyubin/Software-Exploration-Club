@@ -9,13 +9,16 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
     public DistanceJoint2D distanceJoint;
 
     private Camera mainCamera;
+    private Vector3 playerPosition; // 플레이어의 위치를 저장하기 위한 변수
 
     private void Start()
     {
+        distanceJoint.enabled = false;
+
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
-            Debug.LogError("카메라 찾을 수 없음");
+            Debug.LogError("카메라를 찾을 수 없습니다.");
         }
         else
         {
@@ -27,6 +30,7 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView != null && photonView.IsMine) // 자신의 캐릭터만 조종
         {
+            playerPosition = transform.position;
             if (mainCamera == null)
                 return;
 
@@ -41,15 +45,22 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
             {
                 photonView.RPC("DisableRope", RpcTarget.AllBuffered);
             }
+
+            if(distanceJoint.enabled)
+            {
+                photonView.RPC("UpdateNode", RpcTarget.AllBuffered, playerPosition);
+            }
         }
     }
 
     [PunRPC]
-    void LaunchRope(Vector2 mousePos)
+    void LaunchRope(Vector2 mousePos, PhotonMessageInfo info)
     {
-        lineRenderer.SetPosition(0, mousePos);
-        lineRenderer.SetPosition(1, transform.position);
-        distanceJoint.connectedAnchor = mousePos;
+        Vector3 node1Pos = mousePos;
+        Vector3 node2Pos = playerPosition; // 플레이어의 위치로 업데이트
+        lineRenderer.SetPosition(0, node1Pos);
+        //lineRenderer.SetPosition(1, node2Pos);
+        distanceJoint.connectedAnchor = node1Pos;
         distanceJoint.enabled = true;
         lineRenderer.enabled = true;
     }
@@ -61,6 +72,13 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
         lineRenderer.enabled = false;
     }
 
+    [PunRPC]
+    void UpdateNode(Vector3 position)
+    {
+        lineRenderer.SetPosition(1, position);
+    }
+
+    // IPunObservable 인터페이스 구현
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         // 사용하지 않음
