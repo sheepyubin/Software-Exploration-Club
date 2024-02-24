@@ -35,16 +35,10 @@ public class watching_camera : MonoBehaviour
             // 플레이어가 사망한 경우
             if (!freeCameraMode)
             {
-                // 플레이어 사망처리 로직을 추가
-                // 예를 들어, 플레이어 사망 애니메이션 재생 등
-
-                // 카메라를 wasd로 움직일 수 있는 자유 시점으로 전환
                 EnableFreeCameraMode();
             }
         }
 
-        // 자유 시점 카메라 모드에서의 움직임 로직을 추가
-        // 예를 들어, Input.GetAxis("Horizontal") 및 Input.GetAxis("Vertical")로 이동 구현
         if (freeCameraMode)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -63,17 +57,12 @@ public class watching_camera : MonoBehaviour
 
     private void EnableFreeCameraMode()
     {
-        // wasd로 카메라를 자유롭게 움직일 수 있는 로직을 추가
-        // 여기서는 간단하게 freeCameraMode를 true로 설정
         freeCameraMode = true;
     }
 
     private void MoveFreeCamera(Vector3 moveDirection)
     {
         Debug.Log("MoveFreeCamera is called");
-
-        // wasd로 이동하는 로직을 추가
-        // 여기서는 간단하게 카메라를 이동시킵니다.
-        transform.position += moveDirection * smoothing*60 * Time.deltaTime;
+        transform.position += moveDirection * 7 * Time.deltaTime;
     }
 }
