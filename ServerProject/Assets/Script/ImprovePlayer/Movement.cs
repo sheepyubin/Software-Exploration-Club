@@ -11,6 +11,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public float ropeAcceleration = 10f;
     public float moveTowardsSpeed = 5f;
     public RopeLauncher ropeLauncher;
+    public GhostEffect ghost;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -62,6 +63,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (Input.GetKey(KeyCode.LeftShift) && canDash)
             {
+                ghost.makeGhost = true;
                 StartCoroutine(Dash());
             }
 
@@ -91,6 +93,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         yield return new WaitForSeconds(dashTime);
 
         rb.gravityScale = originalGravity;
+        ghost.makeGhost = false;
         isDashing = false;
 
         yield return new WaitForSeconds(dashCool);

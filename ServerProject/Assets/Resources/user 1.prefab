@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6621558483590012673}
   - component: {fileID: 6621558483590012677}
   - component: {fileID: 8108073995093909871}
+  - component: {fileID: -7738155568445475223}
   m_Layer: 0
   m_Name: user 1
   m_TagString: Player
@@ -288,6 +289,7 @@ MonoBehaviour:
   ropeAcceleration: 1.3
   moveTowardsSpeed: 15
   ropeLauncher: {fileID: 6621558483590012673}
+  ghost: {fileID: -7738155568445475223}
 --- !u!114 &8108073995093909871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +309,23 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 6621558483590012673}
   - {fileID: 6621558483590012677}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-7738155568445475223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621558483590012682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37fbfa8678fa524eb3eeab8788b7410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostDelay: 0.03
+  ghost: {fileID: 7869796616140437893, guid: e7688ba7086ae3646b380cf2173050b1, type: 3}
+  makeGhost: 0

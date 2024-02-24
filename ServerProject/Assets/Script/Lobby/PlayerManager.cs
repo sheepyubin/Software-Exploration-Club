@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        container.ResetIndex();
+
         if (PhotonNetwork.IsConnectedAndReady && photonView != null)
         {
             // PlayerContainer에서 스폰 위치 인덱스를 가져옴
