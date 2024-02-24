@@ -30,7 +30,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (photonView != null && photonView.IsMine)
         {
@@ -55,8 +55,25 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.6f), 0.1f, LayerMask.GetMask("Ground"));
 
+            if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
+            {
+                Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
+                transform.position = transform.position;
+            }
+
+            // 위치 동기화
+            photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
+        }
+    }
+
+    void Update()
+    {
+        if (photonView != null && photonView.IsMine)
+        {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
+                Debug.Log("dd");
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
@@ -67,15 +84,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
                 StartCoroutine(Dash());
             }
 
-            if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
-            {
-                Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
-                transform.position = transform.position;
-            }
-
-            // 위치 동기화
-            photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
         }
     }
 
