@@ -3,49 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using System;
 using System.Text.RegularExpressions;
-using UnityEngine.SceneManagement;
 using TMPro;
-using System.Text;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SeverLauncher : MonoBehaviourPunCallbacks
 {
     [Header("---InputFields UI---")]
-    public TMP_InputField joinRoom; // 로비 코드 입력 필드
-    public TMP_InputField userIdText;//닉네임 입력 필드
+    public TMP_InputField inputRoomCode; // 로비 코드 입력 필드
+    //public TMP_InputField userIdText;// 닉네임 입력 필드
 
     [Header("---Server UI---")]
-    public Image serverConnector; // 서버 커넥터 이미지
-    public TextMeshProUGUI serverConnectortext; // 서버 커넥터 텍스트
-    public GameObject serverUI; // 서버 UI 오브젝트
-    public GameObject loadingPanel; // 로딩 판넬
+    //public Image serverConnector; // 서버 커넥터 이미지
+    // public TextMeshProUGUI serverConnectortext; // 서버 커넥터 텍스트
+    public GameObject lobbyUI; // Lobby UI 오브젝트
+    public GameObject RoomUI; // Room UI 오브젝트
+    public GameObject JoinUI; // Join UI 오브젝트
+    public GameObject loadingScreen; // 로딩 화면
+    public Slider loadingSlider; // 로딩 슬라이더
+    public GameObject titleScreen; // 타이틀 화면
 
+   [Header("---Loddy Info---")]
     public string lobbyCode; // 로비 코드
+
     private string lobbyName = "lobby"; // 로비 이름
     private bool Isconnected = false; // 서버에 연결 되었는가?
-    private string userId = "Hi world";
+    private bool Isloading = true; // 로딩중인가?
+    private Coroutine sliderCoroutine; // 로딩 슬라이더 코루틴
+    //private string userId = "Hi world";
 
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings(); // 포톤 서버 연결
 
+        titleScreen.SetActive(false);
+        lobbyUI.SetActive(false);
+        RoomUI.SetActive(false);
+        JoinUI.SetActive(false);
+
+        loadingScreen.SetActive(true);
+        loadingSlider.gameObject.SetActive(true);
+
+        Loading();
     }
 
     private void Update()
     {
         // 서버 연결 시에만 UI 활성화
-        if (Isconnected)
+        if (Isconnected && !Isloading)
         {
+            titleScreen.SetActive(true);
+
+            loadingScreen.SetActive(false);
+            loadingSlider.gameObject.SetActive(false);
+
             lobbyCode = ExtractNumbersUsingRegex(lobbyName);
-            serverConnector.color = Color.green;
-            serverConnectortext.text = "Server connected";
-            serverUI.SetActive(true);
+            // serverConnector.color = Color.green;
+            // serverConnectortext.text = "Server connected";
+            lobbyUI.SetActive(true);
         }
-        PlayerPrefs.SetString("USER_ID", userId);
+        //PlayerPrefs.SetString("USER_ID", userId);
         PlayerPrefs.SetString("LobbyCode", lobbyCode);
-        PhotonNetwork.NickName = userIdText.text;
+        //PhotonNetwork.NickName = userIdText.text;
     }
 
     // 포톤 서버 연결 시 콜백
@@ -75,7 +95,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     // 로비 생성 매서드 (버튼 UI)
     public void CreateAndJoinRoom_BTN()
     {
-        loadingPanel.SetActive(true);
+        loadingScreen.SetActive(true);
         string roomName = "Room " + UnityEngine.Random.Range(1, 100); // 로비 이름 설정
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 4 }, TypedLobby.Default); // 로비 생성
         lobbyName = roomName;
@@ -85,21 +105,21 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public void JoinRandomRoom_BTN()
     {
         PhotonNetwork.JoinRandomRoom();
-        loadingPanel.SetActive(true);
+        loadingScreen.SetActive(true);
     }
 
     // 지정 로비 입장 매서드 (버트 UI)
     public void JoinDesignatedRoom_BTN()
     {
-        if (!string.IsNullOrEmpty(joinRoom.text)) // 입력 텍스트가 NULL이 아닌가?
+        if (!string.IsNullOrEmpty(inputRoomCode.text)) // 입력 텍스트가 NULL이 아닌가?
         {
-            if (int.TryParse(joinRoom.text, out int roomNumber)) // 숫자로 이루어진 문자열인가?
+            if (int.TryParse(inputRoomCode.text, out int roomNumber)) // 숫자로 이루어진 문자열인가?
             {
                 string roomName = "Room " + roomNumber; // 로비 이름 설정
                 lobbyName = roomName;
                 PhotonNetwork.JoinRoom(roomName); // 로비 입장
                 // 입력받은 로비로 입장 없다면 생성 후 입장   
-                loadingPanel.SetActive(true);
+                loadingScreen.SetActive(true);
             }
             else
             {
@@ -115,7 +135,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("JoinRandomFailed: " + message + " (Code: " + returnCode + ")");
-        loadingPanel.SetActive(false);
+        loadingScreen.SetActive(false);
 
         CreateAndJoinRoom_BTN();
     }
@@ -124,7 +144,7 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("Failed to join room: " + message);
-        loadingPanel.SetActive(false);
+        loadingScreen.SetActive(false);
     }
     // 서버 리스트 갱신
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -148,5 +168,38 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
 
         // 문자열 반환
         return string.Join("", matches);
+    }
+
+    public void Loading()
+    {
+        loadingScreen.SetActive(true);
+        loadingSlider.gameObject.SetActive(true);
+
+        sliderCoroutine = StartCoroutine(IncreaseLoadingSliderValue());
+    }
+
+    public void Tutorial()
+    {
+
+    }
+
+    // 로딩 슬라이더의 값을 증가시키는 코루틴
+    IEnumerator IncreaseLoadingSliderValue()
+    {
+        while (true)
+        {
+            float increaseAmount = Random.Range(0.01f, 0.2f);
+
+            yield return new WaitForSeconds(0.05f);
+            loadingSlider.value += increaseAmount;
+
+            if (loadingSlider.value >= loadingSlider.maxValue)
+            {
+                yield return new WaitForSeconds(0.5f);
+
+                Isloading = false;
+                StopCoroutine(sliderCoroutine);
+            }
+        }
     }
 }

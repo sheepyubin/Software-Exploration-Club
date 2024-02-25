@@ -6,6 +6,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public PlayerContainer container; // PlayerContainer 참조
     public Vector3 spawnPoint; // 스폰 위치 벡터 값
 
+
+    private void Awake()
+    {
+        container.ResetIndex();
+    }
     private void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady && photonView != null)

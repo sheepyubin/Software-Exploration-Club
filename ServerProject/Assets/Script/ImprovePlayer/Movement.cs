@@ -73,7 +73,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
-                Debug.Log("dd");
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
@@ -137,5 +136,13 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         // 사용하지 않음
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Boundary"))
+        {
+            transform.position = Vector3.zero;
+        }
     }
 }

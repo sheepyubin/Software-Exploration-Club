@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1411948001}
-  smoothing: 0.2
+  smoothing: 0
   minCameraBoundary: {x: -5, y: -3}
   maxCameraBoundary: {x: 92, y: 20}
 --- !u!1 &871259097
