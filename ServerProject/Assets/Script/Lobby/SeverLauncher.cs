@@ -63,6 +63,13 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
             // serverConnectortext.text = "Server connected";
             lobbyUI.SetActive(true);
         }
+        else
+        {
+            titleScreen.SetActive(false);
+            lobbyUI.SetActive(false);
+            RoomUI.SetActive(false);
+            JoinUI.SetActive(false);
+        }
         //PlayerPrefs.SetString("USER_ID", userId);
         PlayerPrefs.SetString("LobbyCode", lobbyCode);
         //PhotonNetwork.NickName = userIdText.text;
@@ -180,12 +187,18 @@ public class SeverLauncher : MonoBehaviourPunCallbacks
 
     public void Tutorial()
     {
+        Isloading = true;
 
+        Loading();
+
+        SceneManager.LoadScene("Tutorial");
     }
 
     // 로딩 슬라이더의 값을 증가시키는 코루틴
     IEnumerator IncreaseLoadingSliderValue()
     {
+        loadingSlider.value = 0;
+
         while (true)
         {
             float increaseAmount = Random.Range(0.01f, 0.2f);

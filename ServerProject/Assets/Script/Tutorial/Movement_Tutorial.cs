@@ -19,10 +19,10 @@ public class Movement_Tutorial : MonoBehaviour
     private float dashCool = 1;
 
     // 튜토리얼
-    private bool step1 = false;
-    private bool step2 = false;
+    public bool step1 = false;
+    public bool step2 = false;
     public bool step3= false;
-    private bool step5 = false;
+    public bool step5 = false;
     private int temp = 0;
 
     private bool isDead = false; // 죽었는지 안 죽었는지 판별
