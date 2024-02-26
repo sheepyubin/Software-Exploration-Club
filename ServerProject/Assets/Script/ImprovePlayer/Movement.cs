@@ -144,5 +144,9 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         {
             transform.position = Vector3.zero;
         }
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("Dead");
+        }
     }
 }

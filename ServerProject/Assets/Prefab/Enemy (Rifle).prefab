@@ -167,4 +167,3 @@ MonoBehaviour:
   detectionRadius: 8
   bulletPrefab: {fileID: 7721075459714272707, guid: bce1776e0de14454eaca226aadc9590f, type: 3}
   fireRate: 1
-  poolSize: 3
