@@ -42,6 +42,12 @@ MonoBehaviour:
   - SyncRopeMove
   - SyncJump
   - SyncDash
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - RespawnSpaceship
+  - SyncMovement
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
