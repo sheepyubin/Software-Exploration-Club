@@ -6,25 +6,22 @@ public class EnemyMoveS3 : MonoBehaviour
     public float maxX = 5f; // X 축 최대 값
     public float moveSpeed = 2f; // 이동 속도
 
-    private float minChangeInterval = 0.5f; // 방향 전환 최소 간격
-    private float maxChangeInterval = 1.5f; // 방향 전환 최대 간격
-    private float changeDirectionInterval; // 방향 전환 간격
     private int moveDirection = 1; // 이동 방향 (1: R, -1: L)
 
     private void Start()
     {
         // 이동 방향 설정
         SetRandomDirection();
-
-        // 방향 전환 간격 초기화
-        SetRandomDirectionInterval();
-
-        // 방향 전환
-        InvokeRepeating(nameof(SetRandomDirection), changeDirectionInterval, changeDirectionInterval);
     }
 
     private void Update()
     {
+        // 현재 위치가 최소 또는 최대 X값에 도달하면 방향 전환
+        if (transform.position.x <= minX || transform.position.x >= maxX)
+        {
+            ChangeDirection();
+        }
+
         // 이동
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * moveDirection);
 
@@ -38,10 +35,10 @@ public class EnemyMoveS3 : MonoBehaviour
         moveDirection = Random.Range(0, 2) == 0 ? -1 : 1;
     }
 
-    // 무작위 방향 전환 간격 설정
-    private void SetRandomDirectionInterval()
+    // 방향 전환
+    private void ChangeDirection()
     {
-        changeDirectionInterval = Random.Range(minChangeInterval, maxChangeInterval);
+        moveDirection *= -1; // 현재 방향을 반전시킴
     }
 
     // X 범위를 표시
