@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class EnemyShotgunS3 : MonoBehaviour
+public class EnemyShotgunS3 : MonoBehaviourPun
 {
     public float detectionRadius = 8f; // 플레이어 감지 범위
     public GameObject bulletPrefab; // 총알 프리팹
@@ -12,13 +13,18 @@ public class EnemyShotgunS3 : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Player의 트랜스폼
-
         nextFireTime = Time.time + fireRate;
+
+        // 모든 클라이언트에서 이 오브젝트를 볼 수 있도록 설정
+        photonView.OwnershipTransfer = OwnershipOption.Takeover;
     }
 
     void Update()
     {
+        // 타겟 찾기
+        player = FindClosestPlayer().transform;
+
+
         if (bulletPrefab != null)
         {
             if (Time.time >= nextFireTime)
@@ -35,6 +41,24 @@ public class EnemyShotgunS3 : MonoBehaviour
         {
             Debug.LogWarning("Enemy bulletPrefab is NULL");
         }
+    }
+
+    // 가장 가까운 플레이어 찾기
+    GameObject FindClosestPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closestPlayer = null;
+        float closestDistance = Mathf.Infinity;
+        foreach (GameObject player in players)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer < closestDistance)
+            {
+                closestPlayer = player;
+                closestDistance = distanceToPlayer;
+            }
+        }
+        return closestPlayer;
     }
 
     void Shoot()

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3888100525901758377}
   - component: {fileID: 3888100525901758374}
   - component: {fileID: 3888100525901758378}
+  - component: {fileID: -8777237237356572302}
   m_Layer: 10
   m_Name: Enemy (Shotgun)
   m_TagString: Untagged
@@ -168,3 +169,25 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7721075459714272707, guid: bce1776e0de14454eaca226aadc9590f, type: 3}
   fireRate: 2
   ammo: 5
+--- !u!114 &-8777237237356572302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888100525901758373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

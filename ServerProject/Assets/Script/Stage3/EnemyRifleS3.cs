@@ -11,7 +11,6 @@ public class EnemyRifleS3 : MonoBehaviourPun
     public float bulletSpeed = 10f; // 총알 속도
 
     private float nextFireTime; // 다음 발사 시간
-    private Transform target; // 타겟
 
     void Start()
     {
