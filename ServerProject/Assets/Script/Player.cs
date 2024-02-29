@@ -6,16 +6,36 @@ public class Player : MonoBehaviourPun
    
 
     public float speed = 5f;
-   
-   
+    private int actorNumber;
+    private static flag flag;
+
+    private void Start()
+    {
+        flag=gameObject.GetComponent<flag>();
+    }
     void Update()
     {
         if (photonView.IsMine)
         {
             HandleMovementInput();
         }
+        if(PhotonNetwork.IsConnected)
+        {
+            actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (photonView.IsMine)
+        {
+            if (collision.gameObject.tag == "flag")
+            {
+                 Debug.Log("Ãæµ¹");
+                flag.callScore(actorNumber);
 
+            }
+        }
+    }
     void HandleMovementInput()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
