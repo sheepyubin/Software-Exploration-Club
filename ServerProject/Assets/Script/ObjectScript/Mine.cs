@@ -4,30 +4,18 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
+    public GameObject bommEffect;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Boom");
-            Damage();
+            Boom();
         }
     }
-    void Destroy()
+
+    void Boom()
     {
+        Instantiate(bommEffect, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-    }
-    void Damage()
-    {
-        Debug.Log("Damage(Mine)");
-        Destroy();
     }
 }
