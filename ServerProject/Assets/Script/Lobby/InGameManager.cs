@@ -31,16 +31,6 @@ public class InGameManager : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PhotonNetwork.Disconnect();
-            PhotonNetwork.LoadLevel("Lobby");
-        }
-    }
-
     // 문자열에서 숫자를 추출하는 메서드 (로비 코드)
     private string ExtractNumbersUsingRegex(string input)
     {

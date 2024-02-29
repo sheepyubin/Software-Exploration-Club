@@ -1231,7 +1231,9 @@ Internal:
 *** Version 3.0.1.1
 - Added: PhotonPeer.TrafficStatsElapsedMs, which gives you the milliseconds that the traffic stats are enabled. This internally uses a stopwatch (for now) which might not be available on all platforms. Please report if this new SDK causes issues.
 - Added: PhotonPeer.TrafficStatsReset() to reset the traffic stats and the timer. This could be useful to get stats of "in game" versus "out of game". Note: Loadbalancing includes frequent server-switching and each disconnect/reconnect causes a reset.
-- Changed: In LoadBalancingPeer EventCode.SetProperties is obsolete and replaced with EventCode.PropertiesChanged. Please switch to new constant.
+- Changed: In LoadBalancingPeer EventCode.SetProperties is obsolete and replaced with EventCode.Properti
+
+hanged. Please switch to new constant.
 - Added: Support in LoadBalancingAPI for Player.IsMasterClient. For this, the Players now get a RoomReference set (when added). The active player with the lowest ID is the master (per room).
 - Added: Room.MasterClientId, which is updated when new players are added or the current master is removed.
 - Added: SupportClass.DictionaryToString() has an overload which doesn't "print" the Type per key/value.
