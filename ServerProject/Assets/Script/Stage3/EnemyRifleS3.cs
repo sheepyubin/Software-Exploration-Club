@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyRifleS3 : MonoBehaviourPun
 {
+    AudioSource audioSource;
     public float detectionRadius = 8f; // 플레이어 감지 범위
     public GameObject bulletPrefab; // 총알 프리팹
     public float fireRate = 1f; // 발사 속도
@@ -15,6 +16,9 @@ public class EnemyRifleS3 : MonoBehaviourPun
     void Start()
     {
         nextFireTime = Time.time + fireRate;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.mute = false;
 
         // 모든 클라이언트에서 이 오브젝트를 볼 수 있도록 설정
         photonView.OwnershipTransfer = OwnershipOption.Takeover;
@@ -33,7 +37,9 @@ public class EnemyRifleS3 : MonoBehaviourPun
                 if (Time.time >= nextFireTime)
                 {
                     Shoot(SetBulletDirection(closestPlayer.transform));
+                    audioSource.Play();
                     nextFireTime = Time.time + fireRate; // 다음 발사까지의 시간 설정
+                    
                 }
             }
         }
@@ -63,7 +69,9 @@ public class EnemyRifleS3 : MonoBehaviourPun
         Quaternion rotationToTarget = Quaternion.LookRotation(Vector3.forward, bulletDirection) * Quaternion.Euler(0f, 0f, 90f);
 
         // 총알 생성 및 발사
+
         GameObject bullet = Instantiate(bulletPrefab, transform.position, rotationToTarget);
+
     }
 
     Vector3 SetBulletDirection(Transform target)
