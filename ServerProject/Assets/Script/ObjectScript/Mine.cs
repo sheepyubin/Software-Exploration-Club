@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    AudioSource audioSource; // AudioSource를 선언
+
 
     public GameObject bommEffect;
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>(); // 반환 값을 저장
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.Play();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.MineExplosion);
             Boom();
         }
     }

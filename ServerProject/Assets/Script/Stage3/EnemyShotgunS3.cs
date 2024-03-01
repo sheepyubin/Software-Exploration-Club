@@ -38,7 +38,7 @@ public class EnemyShotgunS3 : MonoBehaviourPun
                 if (Vector3.Distance(transform.position, player.position) <= detectionRadius)
                 {
                     Shoot(); // 총알 발사
-                    audioSource.Play();
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.ShotGun);
                     nextFireTime = Time.time + fireRate; // 다음 발사까지의 시간 설정
                 }
             }

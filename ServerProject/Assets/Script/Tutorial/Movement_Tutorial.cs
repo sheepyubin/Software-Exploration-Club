@@ -30,7 +30,7 @@ public class Movement_Tutorial : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        AudioManager.instance.PlayBgm(true);
         step1 = false;
         step2 = false;
         step3 = false;

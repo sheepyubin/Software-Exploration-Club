@@ -168,6 +168,7 @@ MonoBehaviour:
   detectionRadius: 8
   bulletPrefab: {fileID: 7721075459714272707, guid: bce1776e0de14454eaca226aadc9590f, type: 3}
   fireRate: 1
+  bulletSpeed: 10
 --- !u!114 &5254442662949747759
 MonoBehaviour:
   m_ObjectHideFlags: 0
