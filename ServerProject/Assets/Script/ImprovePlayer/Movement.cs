@@ -13,21 +13,23 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public RopeLauncher ropeLauncher;
     public GhostEffect ghost;
 
-    private Rigidbody2D rb;
-    private bool isGrounded;
-
     private bool canDash = true;
     private bool isDashing;
     private float dashTime = 0.2f;
     private float dashCool = 1;
 
+    private Rigidbody2D rb;
+    public bool isGrounded;
+
+    private Animator ani;
+    private SpriteRenderer sp;
+    private bool isClimbing;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody2D가 없습니다. GameObject에 Rigidbody2D 컴포넌트가 추가되어 있는지 확인하세요.");
-        }
+        ani = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -40,6 +42,23 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             }
 
             float moveInput = Input.GetAxis("Horizontal");
+
+            if (moveInput != 0)
+                ani.SetBool("isWalk", true);
+            else
+                ani.SetBool("isWalk", false);
+
+            if (rb.velocity.x < 0)
+            {
+                ghost.isFlip = true;
+                sp.flipX = true;
+            }
+            else
+            {
+                ghost.isFlip = false;
+                sp.flipX = false;
+            }
+
             Vector2 moveVelocity;
 
             if (ropeLauncher.distanceJoint.enabled)
@@ -53,14 +72,35 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             rb.velocity = moveVelocity;
 
-            isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.6f), 0.1f, LayerMask.GetMask("Ground"));
+            isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.8f), 0.1f, LayerMask.GetMask("Ground"));
 
             if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
             {
+                ani.SetBool("isClimbing", true);
+                isClimbing= true;
                 Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
                 transform.position = transform.position;
             }
+            else
+            {
+                isClimbing = false;
+                ani.SetBool("isClimbing", false);
+            }
+
+            if (!isGrounded && !isClimbing)
+            {
+                if (rb.velocity.y > 0)
+                    ani.SetBool("isJumping", true);
+
+                else if (rb.velocity.y < 0)
+                {
+                    ani.SetBool("isFalling", true);
+                    ani.SetBool("isJumping", false);
+                }
+            }
+            else
+                ani.SetBool("isFalling", false);
 
             // 위치 동기화
             photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
@@ -79,10 +119,10 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (Input.GetKey(KeyCode.LeftShift) && canDash)
             {
+                ani.SetBool("isDashing", true);
                 ghost.makeGhost = true;
                 StartCoroutine(Dash());
             }
-
         }
     }
 
@@ -101,6 +141,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
         rb.gravityScale = originalGravity;
         ghost.makeGhost = false;
+        ani.SetBool("isDashing", false);
         isDashing = false;
 
         yield return new WaitForSeconds(dashCool);
