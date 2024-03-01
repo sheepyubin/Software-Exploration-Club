@@ -555,12 +555,20 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7808519406540743026, guid: e41a934b3b4237b40a6f375bf28ea55e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808519406540743026, guid: e41a934b3b4237b40a6f375bf28ea55e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808519406540743026, guid: e41a934b3b4237b40a6f375bf28ea55e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.46
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7808519406540743026, guid: e41a934b3b4237b40a6f375bf28ea55e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 7808519406540743026, guid: e41a934b3b4237b40a6f375bf28ea55e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3891,13 +3899,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18e5940709973a46bc1dbc9a2a294ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: ab0e07e19f79cc2408d144fca0525fc2, type: 3}
   bgmVolume: 0.2
   sfxClips:
   - {fileID: 8300000, guid: a24b0d187260ac74892fabdb10364e37, type: 3}
   - {fileID: 8300000, guid: ece22cf66a1a5624b83d42c26cc0754e, type: 3}
-  - {fileID: 8300000, guid: 6ed487e2e26f73241a5eb17e577d63c3, type: 3}
-  sfxVolume: 0.1
+  - {fileID: 8300000, guid: 566edc1d3f80ad547a1365c9c8efaf50, type: 3}
+  sfxVolume: 0.5
   channels: 16
 --- !u!4 &1701450843
 Transform:
