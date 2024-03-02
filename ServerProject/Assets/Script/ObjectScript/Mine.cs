@@ -17,8 +17,8 @@ public class Mine : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.MineExplosion);
             Boom();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.MineExplosion);
         }
     }
 

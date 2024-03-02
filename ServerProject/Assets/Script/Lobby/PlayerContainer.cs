@@ -6,33 +6,17 @@ using System.Reflection;
 [CreateAssetMenu(fileName = "PlayerContainer", menuName = "ScriptableObjects/PlayerContainer", order = 1)]
 public class PlayerContainer : ScriptableObject
 {
-    public GameObject[] playerPrefabs;
-    public Dictionary<int, int> playerData = new Dictionary<int, int>(); // 프리팹 배열 인덱스, 번호
-    public int count = 0;
+    public GameObject playerPrefab;
+    public Dictionary<int, Color> playerData = new Dictionary<int, Color>(); // 키(번호), RGB
+    public int index = 0;
 
-    public int GetIndex()
+    public void AddPlayerData(int playerNumber, Color playerColor)
     {
-        count++;
-        return count-1;
+        playerData[playerNumber] = playerColor;
     }
 
-    public void ResetIndex()
+    public Color ReturnPlayerColor(int playerNumber)
     {
-        count = 0;
-    }
-
-    public void RestoreNum(int index, int num)
-    {
-        playerData[num] = index;
-    }
-
-    public int GetNum(int num)
-    {
-        return playerData[num];
-    }
-    public void ResetContainer()
-    {
-        count = 0;
-        playerData.Clear();
+        return playerData[playerNumber];
     }
 }

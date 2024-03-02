@@ -34,8 +34,6 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     [PunRPC]
     void SwitchScene(string sceneName)
     {
-        container.ResetContainer();
-
         PhotonNetwork.Disconnect();
 
         // 다음 씬으로 전환

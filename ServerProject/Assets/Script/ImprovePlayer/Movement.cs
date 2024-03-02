@@ -77,10 +77,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
             {
                 ani.SetBool("isClimbing", true);
-                isClimbing= true;
-                Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
-                transform.position = transform.position;
+                Climb();
             }
             else
             {
@@ -126,6 +123,13 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    void Climb()
+    {
+        Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
+        transform.position = transform.position;
+        isClimbing = true;
+    }
     private IEnumerator Dash()
     {
         canDash = false;
