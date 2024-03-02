@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1276224902, guid: 43d3a24db262c1b4f97feee5e04d5540, type: 3}
-  m_Color: {r: 0.3592569, g: 0.885695, b: 0.23366538, a: 1}
+  m_Color: {r: 0.96809864, g: 0.34680918, b: 0.031889204, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   ropeLauncher: {fileID: 4594634228712182782}
   ghost: {fileID: 8123200311880743574}
   isGrounded: 0
+  container: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
 --- !u!114 &1486822778303770000
 MonoBehaviour:
   m_ObjectHideFlags: 0

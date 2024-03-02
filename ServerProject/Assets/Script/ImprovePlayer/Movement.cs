@@ -25,16 +25,20 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     private SpriteRenderer sp;
     private bool isClimbing;
 
+    public PlayerContainer container;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+
+        container.AddisDead(photonView.OwnerActorNr, false);
     }
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine)
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(photonView.OwnerActorNr))
         {
             if (isDashing)
             {
@@ -106,7 +110,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine)
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(photonView.OwnerActorNr))
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
@@ -191,7 +195,8 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log("Dead");
+            container.AddisDead(photonView.OwnerActorNr, true);
+            sp.color = Color.black;
         }
     }
 }

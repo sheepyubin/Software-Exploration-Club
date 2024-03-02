@@ -38,7 +38,6 @@ public class EnemyShotgunS3 : MonoBehaviourPun
                 if (Vector3.Distance(transform.position, player.position) <= detectionRadius)
                 {
                     Shoot(); // 총알 발사
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.ShotGun);
                     nextFireTime = Time.time + fireRate; // 다음 발사까지의 시간 설정
                 }
             }
@@ -69,6 +68,8 @@ public class EnemyShotgunS3 : MonoBehaviourPun
 
     void Shoot()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShotGun);
+
         Vector3 targetDirection = player.position - transform.position; // 방향 백터 계산
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // 각도 계산 (라디안 -> 각도) 
 
