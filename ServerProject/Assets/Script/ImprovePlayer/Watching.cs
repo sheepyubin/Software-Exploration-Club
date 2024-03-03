@@ -16,7 +16,7 @@ public class Watching : MonoBehaviourPunCallbacks
 
             Vector3 moveDirection = new Vector3(horizontalInput, verticalInput, 0f).normalized;
 
-            transform.position += moveDirection * 7 * Time.deltaTime;
+            transform.position += moveDirection * Time.deltaTime;
         }
     }
 }
