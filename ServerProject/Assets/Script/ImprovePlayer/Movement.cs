@@ -27,6 +27,8 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     public PlayerContainer container;
 
+    public bool isDead = false; // 플레이어의 생존 여부
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -195,6 +197,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (other.CompareTag("Bullet"))
         {
+            isDead = true;
             container.AddisDead(photonView.OwnerActorNr, true);
             sp.color = Color.black;
         }
