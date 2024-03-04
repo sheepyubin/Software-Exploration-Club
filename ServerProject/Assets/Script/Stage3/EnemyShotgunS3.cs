@@ -68,24 +68,54 @@ public class EnemyShotgunS3 : MonoBehaviourPun
 
     void Shoot()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.ShotGun);
-
-        Vector3 targetDirection = player.position - transform.position; // 방향 백터 계산
-        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // 각도 계산 (라디안 -> 각도) 
-
-        // 총알 프리팹 5개 생성
-        for (int i = 0; i < ammo; i++)
+        if (AudioManager.instance != null)
         {
-            // 각도 계산
-            float bulletAngle = angle - 30f + i * 15f;
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.ShotGun);
 
-            // 각도 설정
-            Quaternion rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+            if (player != null)
+            {
+                Vector3 targetDirection = player.position - transform.position; // 방향 벡터 계산
+                float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // 각도 계산 (라디안 -> 각도) 
 
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
-            bullet.SetActive(true); // 활성화
+                // 총알 프리팹 5개 생성
+                for (int i = 0; i < ammo; i++)
+                {
+                    // 각도 계산
+                    float bulletAngle = angle - 30f + i * 15f;
+
+                    // 각도 설정
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+
+                    if (bulletPrefab != null)
+                    {
+                        GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
+
+                        if (bullet != null)
+                        {
+                            bullet.SetActive(true); // 활성화
+                        }
+                        else
+                        {
+                            Debug.LogError("Failed to instantiate bullet prefab.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("Bullet prefab is not assigned.");
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Player is not assigned.");
+            }
+        }
+        else
+        {
+            Debug.LogError("AudioManager instance is not assigned.");
         }
     }
+
 
     void OnDrawGizmosSelected()
     {
