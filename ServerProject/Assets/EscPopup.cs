@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
 public class EscPopup : MonoBehaviourPunCallbacks
 {
     public GameObject popupObject; // 활성화할 게임 오브젝트 변수
+    public Slider volumeSlider; // 슬라이더를 가리키는 레퍼런스
+
 
     private int count = 0;
 
@@ -24,6 +27,8 @@ public class EscPopup : MonoBehaviourPunCallbacks
 
         if (count % 2 == 0)
             Disabled();
+
+        AudioListener.volume = volumeSlider.value;
     }
 
     public void DisabledButton()
