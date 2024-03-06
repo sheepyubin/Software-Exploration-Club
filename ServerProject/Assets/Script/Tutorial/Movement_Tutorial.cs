@@ -60,6 +60,7 @@ public class Movement_Tutorial : MonoBehaviour
         {
             moveVelocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
         }
+
         rb.velocity = moveVelocity;
 
         isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.6f), 0.1f, LayerMask.GetMask("Ground"));
@@ -120,13 +121,7 @@ public class Movement_Tutorial : MonoBehaviour
         // Boundary에 충돌
         if (collision.gameObject.CompareTag("Boundary") || collision.gameObject.CompareTag("Bullet"))
         {
-            isDead = true; // 플레이어 사망
-
-            if(isDead)
-            {
-                // 여기에 관전 기능 구현
-                // 카메라 자유시점
-            }
+            transform.position = new Vector2(-15, -1);
         }
     }
 

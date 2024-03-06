@@ -7,7 +7,9 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
 {
     public LineRenderer lineRenderer;
     public DistanceJoint2D distanceJoint;
+    public LayerMask targetLayer; // 타겟 레이어
 
+    private string targetTag = "Grappleable"; // 타겟 태그
     private Camera mainCamera;
     private Vector3 playerPosition; // 플레이어의 위치를 저장하기 위한 변수
 
@@ -37,8 +39,12 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
             // 로프 발사
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                photonView.RPC("LaunchRope", RpcTarget.AllBuffered, mousePos);
+                RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, targetLayer);
+
+                if (hit.collider != null && hit.collider.CompareTag(targetTag))
+                {
+                    photonView.RPC("LaunchRope", RpcTarget.AllBuffered, hit.point);
+                }
             }
             // 로프 비활성화
             else if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -46,7 +52,7 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
                 photonView.RPC("DisableRope", RpcTarget.AllBuffered);
             }
 
-            if(distanceJoint.enabled)
+            if (distanceJoint.enabled)
             {
                 photonView.RPC("UpdateNode", RpcTarget.AllBuffered, playerPosition);
             }
@@ -54,9 +60,9 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void LaunchRope(Vector2 mousePos, PhotonMessageInfo info)
+    void LaunchRope(Vector2 targetPosition, PhotonMessageInfo info)
     {
-        Vector3 node1Pos = mousePos;
+        Vector3 node1Pos = targetPosition;
         Vector3 node2Pos = playerPosition; // 플레이어의 위치로 업데이트
         lineRenderer.SetPosition(0, node1Pos);
         //lineRenderer.SetPosition(1, node2Pos);

@@ -274,6 +274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 4594634228712182780}
   distanceJoint: {fileID: 4594634228712182781}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &4594634228712182778
 MonoBehaviour:
   m_ObjectHideFlags: 0
