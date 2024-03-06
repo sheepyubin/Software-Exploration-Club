@@ -12,7 +12,6 @@ public class flag : MonoBehaviour
     void Start()
     {
         GetScore= gameObject.GetComponent<Score>();
-        Debug.Log("시작");
     }
 
     // Update is called once per frame
@@ -23,6 +22,7 @@ public class flag : MonoBehaviour
 
     public void callScore(int actorNumber)
     {
-        GetScore.UpdateScore();
+        Debug.Log("스코어호출");
+        GetScore.UpdateScore(actorNumber);
     }
 }

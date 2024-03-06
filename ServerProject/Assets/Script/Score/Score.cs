@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
         
     }
 
-    public void UpdateScore() 
+    public void UpdateScore(int actorNumber) 
     {
         
     }

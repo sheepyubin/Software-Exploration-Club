@@ -8,7 +8,7 @@ public class ScoreContainer : ScriptableObject
     public Dictionary<int, float> playerScore = new Dictionary<int, float>(); // 키(번호), 점수
 
     // 점수 추가
-    public void AddScore(int id, float score)
+    public void AddScore(int id, float score) // score =  이번에 받아야 하는 점수 + ReturnScore(기존) 점수
     {
         playerScore[id] = score;
     }

@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - EndPoint
   - Boundary
+  - flag
   layers:
   - Default
   - TransparentFX

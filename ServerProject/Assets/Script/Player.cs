@@ -30,9 +30,8 @@ public class Player : MonoBehaviourPun
         {
             if (collision.gameObject.tag == "flag")
             {
-                 Debug.Log("충돌");
+                 Debug.Log("깃발과 충돌");
                 flag.callScore(actorNumber);
-
             }
         }
     }
