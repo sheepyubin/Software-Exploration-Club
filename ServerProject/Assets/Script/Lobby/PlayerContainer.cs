@@ -29,4 +29,17 @@ public class PlayerContainer : ScriptableObject
     {
         return isDead[playerNumber];
     }
+
+    public bool CheckAllDead()
+    {
+        foreach (var kvp in isDead)
+        {
+            if (!kvp.Value)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
