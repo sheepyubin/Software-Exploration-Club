@@ -17143,6 +17143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Stage_2
+  container: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
 --- !u!4 &1456765178
 Transform:
   m_ObjectHideFlags: 0
