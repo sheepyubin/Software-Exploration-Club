@@ -8,6 +8,26 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     public PlayerContainer container; // 플레이어 컨테이너 스크립터블 오브젝트
     public KeyDataS3 keyData; // 스테이지 1의 KeyData 스크립터블 오브젝트
     public string nextStage;
+    public GameObject Key1;
+    public GameObject Key2;
+
+    private void Start()
+    {
+        Key1.SetActive(false);
+        Key1.SetActive(false);
+
+        keyData.Key1 = false;
+        keyData.Key2 = false;
+    }
+
+    private void Update()
+    {
+        if (keyData.Key1)
+            Key1.SetActive(true);
+
+        if (keyData.Key2)
+            Key2.SetActive(true);
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
