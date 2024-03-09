@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 299647182}
   m_Layer: 8
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Grappleable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

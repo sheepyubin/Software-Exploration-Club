@@ -25,11 +25,16 @@ public class Movement_Tutorial : MonoBehaviour
     public bool step5 = false;
     private int temp = 0;
 
-    private bool isDead = false; // 죽었는지 안 죽었는지 판별
+    private Animator ani;
+    private SpriteRenderer sp;
+    private bool isClimbing;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
+
         AudioManager.instance.PlayBgm(true);
         step1 = false;
         step2 = false;
@@ -50,6 +55,18 @@ public class Movement_Tutorial : MonoBehaviour
         if (moveInput != 0)
         {
             step1 = true; // 튜토리얼 1단계 완료
+            ani.SetBool("isWalk", true);
+        }
+        else
+            ani.SetBool("isWalk", false);
+
+        if (rb.velocity.x < 0)
+        {
+            sp.flipX = true;
+        }
+        else
+        {
+            sp.flipX = false;
         }
 
         if (ropeLauncher.distanceJoint.enabled)
@@ -63,10 +80,12 @@ public class Movement_Tutorial : MonoBehaviour
 
         rb.velocity = moveVelocity;
 
-        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.6f), 0.1f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.8f), 0.1f, LayerMask.GetMask("Ground"));
 
         if (Input.GetKey(KeyCode.LeftShift) && canDash && step1)
         {
+            ani.SetBool("isDashing", true);
+
             StartCoroutine(Dash());
             step2 = true; // 튜토리얼 2단계 완료
         }
@@ -80,12 +99,36 @@ public class Movement_Tutorial : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled && ropeLauncher.step4)
+        if (ropeLauncher.step4)
         {
-            Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
-            step5 = true;
+            if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
+            {
+                ani.SetBool("isClimbing", true);
+                Vector3 targetPosition = ropeLauncher.distanceJoint.connectedAnchor;
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveTowardsSpeed * Time.deltaTime);
+                step5 = true;
+            }
+            else
+            {
+                isClimbing = false;
+                ani.SetBool("isClimbing", false);
+            }
         }
+
+
+        if (!isGrounded && !isClimbing)
+        {
+            if (rb.velocity.y > 0)
+                ani.SetBool("isJumping", true);
+
+            else if (rb.velocity.y < 0)
+            {
+                ani.SetBool("isFalling", true);
+                ani.SetBool("isJumping", false);
+            }
+        }
+        else
+            ani.SetBool("isFalling", false);
     }
 
     private IEnumerator Dash()
@@ -102,6 +145,7 @@ public class Movement_Tutorial : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
 
         rb.gravityScale = originalGravity;
+        ani.SetBool("isDashing", false);
         isDashing = false;
 
         yield return new WaitForSeconds(dashCool);

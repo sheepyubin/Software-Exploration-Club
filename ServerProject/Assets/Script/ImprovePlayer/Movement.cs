@@ -101,6 +101,11 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
                     ani.SetBool("isFalling", true);
                     ani.SetBool("isJumping", false);
                 }
+                else
+                {
+                    ani.SetBool("isFalling", false);
+                    ani.SetBool("isJumping", false);
+                }
             }
             else
                 ani.SetBool("isFalling", false);

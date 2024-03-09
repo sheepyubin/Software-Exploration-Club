@@ -39,13 +39,15 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
             // 로프 발사
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, targetLayer);
+                Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity);
 
                 if (hit.collider != null && hit.collider.CompareTag(targetTag))
                 {
                     photonView.RPC("LaunchRope", RpcTarget.AllBuffered, hit.point);
                 }
             }
+
             // 로프 비활성화
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
