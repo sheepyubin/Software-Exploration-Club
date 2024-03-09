@@ -45,6 +45,8 @@ public class SceneSwitcher : MonoBehaviourPunCallbacks
     void SwitchScene(string sceneName)
     {
         // 다음 씬으로 전환
+        int playerCount = PhotonNetwork.PlayerList.Length;
+        Debug.Log("씬에 존재하는 플레이어 수: " + playerCount);
         PhotonNetwork.LoadLevel(sceneName);
     }
 }

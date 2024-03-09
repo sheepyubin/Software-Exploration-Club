@@ -28921,8 +28921,8 @@ MonoBehaviour:
   nextStage: Lobby
   Key1: {fileID: 353453843}
   Key2: {fileID: 1825229929}
-  scoreBoard: {fileID: 0}
-  scoreBoardScrpit: {fileID: 0}
+  scoreBoard: {fileID: 839638177}
+  scoreBoardScrpit: {fileID: 839638179}
   delayTIme: 3
 --- !u!1 &1887828627
 GameObject:
