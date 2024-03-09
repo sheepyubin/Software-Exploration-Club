@@ -21,5 +21,7 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
         spriteRenderer.color = color;
 
         PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity);
+
+        playerContainer.AddNum();
     }
 }

@@ -39891,7 +39891,7 @@ GameObject:
   - component: {fileID: 1356113924}
   m_Layer: 0
   m_Name: EndPoint
-  m_TagString: Untagged
+  m_TagString: EndPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39930,6 +39930,7 @@ MonoBehaviour:
   scoreBoard: {fileID: 2013981540}
   scoreBoardScrpit: {fileID: 2013981542}
   delayTIme: 3
+  container: {fileID: 0}
 --- !u!114 &1356113925
 MonoBehaviour:
   m_ObjectHideFlags: 0

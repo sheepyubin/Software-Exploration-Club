@@ -26,6 +26,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     private bool isClimbing;
 
     public PlayerContainer container;
+    public Score score;
 
     public bool isDead = false; // 플레이어의 생존 여부
 
@@ -203,8 +204,19 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         if (other.CompareTag("Bullet"))
         {
             isDead = true;
+
             container.AddisDead(photonView.OwnerActorNr, true);
+            container.DelNum(photonView.OwnerActorNr);
+            
+            score.AddDeadScore(photonView.OwnerActorNr);
+
             sp.color = Color.black;
+        }
+        if (other.CompareTag("EndPoint"))
+        {
+            score.AddSuccessScore(photonView.OwnerActorNr);
+
+
         }
     }
 }

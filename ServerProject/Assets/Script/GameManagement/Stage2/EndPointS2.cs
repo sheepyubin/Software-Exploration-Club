@@ -12,6 +12,7 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme = 3f;
+    public PlayerContainer container;
 
     private void Start()
     {
