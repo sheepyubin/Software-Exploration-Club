@@ -10,6 +10,9 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     public string nextStage;
     public GameObject Key1;
     public GameObject Key2;
+    public GameObject scoreBoard;
+    public ScoreBoard scoreBoardScrpit;
+    public float delayTIme = 3f;
 
     private void Start()
     {
@@ -40,7 +43,8 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
 
                 // æ¿ ¿¸»Ø
                 Debug.Log(nextStage);
-                photonView.RPC("SwitchScene", RpcTarget.All, nextStage);
+
+                End();
             }
             else
             {
@@ -58,5 +62,21 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
 
         // ¥Ÿ¿Ω æ¿¿∏∑Œ ¿¸»Ø
         PhotonNetwork.LoadLevel(sceneName);
+    }
+
+
+    public void End()
+    {
+        scoreBoard.SetActive(true);
+        scoreBoardScrpit.Score();
+
+        StartCoroutine(DelayedFunction(delayTIme));
+    }
+
+    IEnumerator DelayedFunction(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        photonView.RPC("SwitchScene", RpcTarget.All, nextStage);
     }
 }
