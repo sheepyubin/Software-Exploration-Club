@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class ScoreBoard : MonoBehaviour

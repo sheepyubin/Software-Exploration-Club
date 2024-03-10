@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: PlayerContainer
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4594634228712182773, guid: 9d4c0cff76e5c224d9320eece64c23fe, type: 3}
-  index: 0

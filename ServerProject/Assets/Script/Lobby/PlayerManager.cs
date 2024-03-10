@@ -8,21 +8,28 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private Color color;
     private SpriteRenderer spriteRenderer;
+    private int playerNum;
     private void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady && photonView != null)
         {
+            playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
+
             color = new Color(Random.value, Random.value, Random.value);
 
-            container.AddPlayerData(photonView.OwnerActorNr, color);
+            container.AddPlayerColor(playerNum, color);
 
             GameObject prefab = container.playerPrefab;
 
             spriteRenderer = prefab.GetComponent<SpriteRenderer>();
 
-            spriteRenderer.color = color;
+            spriteRenderer.color = container.ReturnPlayerColor(playerNum);
+
+            container.AddPlayerData(playerNum, prefab);
 
             PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity);
+
+            container.ResetScore(playerNum);
         }
 
         //// PlayerContainer에서 스폰 위치 인덱스를 가져옴

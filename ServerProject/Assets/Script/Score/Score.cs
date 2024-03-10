@@ -10,29 +10,27 @@ public class Score : ScriptableObject
 {
     public PlayerContainer playerContainer;
 
+    private const int deadScore = 0;
+    private const int liveScore = 50;
+    private const int SuccessScore = 100;
     public void AddDeadScore(int actorNumber)
     {
-        playerContainer.AddScoreData(actorNumber, 0);
+        playerContainer.AddScore(actorNumber, deadScore);
 
-        Debug.Log(actorNumber + ": " + 0);
+        Debug.Log("In AddDeadScore '+ 0'  Score - " + actorNumber + ": " + playerContainer.playerScore[actorNumber]);
     }
 
     public void AddLiveScore(int actorNumber)
     {
-        playerContainer.AddScoreData(actorNumber, 50);
+        playerContainer.AddScore(actorNumber, liveScore);
 
-        Debug.Log(actorNumber + ": " + 50);
+        Debug.Log("In AddLiveScore '+ 50'  Score - " + actorNumber + ": " + playerContainer.playerScore[actorNumber]);
     }
 
     public void AddSuccessScore(int actorNumber)
     {
-        playerContainer.AddScoreData(actorNumber, 100);
+        playerContainer.AddScore(actorNumber, SuccessScore);
 
-        Debug.Log(actorNumber + ": " + 100);
-
-        foreach (var item in playerContainer.playerNum)
-        {
-            AddLiveScore(item);
-        }
+        Debug.Log("In AddSuccessScore '+ 100' Score - " + actorNumber + ": " + playerContainer.playerScore[actorNumber]);
     }
 }

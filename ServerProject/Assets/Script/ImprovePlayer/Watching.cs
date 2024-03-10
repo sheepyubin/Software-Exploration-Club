@@ -8,15 +8,18 @@ public class Watching : MonoBehaviourPunCallbacks
     public PlayerContainer PlayerContainer;
     public Follow follow;
     private Rigidbody2D rb;
+    private int playerNum;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
     }
 
     private void Update()
     {
-        if (photonView.IsMine && PlayerContainer.ReturnisDead(photonView.OwnerActorNr))
+        if (photonView.IsMine && PlayerContainer.ReturnisDead(playerNum))
         {
             follow.isDead = true;
 

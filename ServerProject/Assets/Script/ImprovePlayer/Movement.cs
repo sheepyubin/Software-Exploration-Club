@@ -29,6 +29,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public Score score;
 
     public bool isDead = false; // 플레이어의 생존 여부
+    private int playerNum;
 
     void Start()
     {
@@ -36,12 +37,14 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         ani = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
 
-        container.AddisDead(photonView.OwnerActorNr, false);
+        playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        container.AddisDead(playerNum, false);
     }
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(photonView.OwnerActorNr))
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerNum))
         {
             if (isDashing)
             {
@@ -114,11 +117,13 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             // 위치 동기화
             photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
         }
+        else
+            rb.velocity = Vector3.zero;
     }
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(photonView.OwnerActorNr))
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerNum))
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
@@ -184,10 +189,10 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void SyncMovement(Vector3 newPosition)
+    void SyncMovement(Vector3 position)
     {
         // 다른 플레이어의 위치를 동기화
-        transform.position = newPosition;
+        transform.position = position;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -205,18 +210,20 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         {
             isDead = true;
 
-            container.AddisDead(photonView.OwnerActorNr, true);
-            container.DelNum(photonView.OwnerActorNr);
+            container.AddisDead(playerNum, true);
             
-            score.AddDeadScore(photonView.OwnerActorNr);
+            score.AddDeadScore(playerNum);
 
             sp.color = Color.black;
         }
         if (other.CompareTag("EndPoint"))
         {
-            score.AddSuccessScore(photonView.OwnerActorNr);
+            score.AddSuccessScore(playerNum);
 
-
+            if (!isDead)
+            {
+                score.AddLiveScore(playerNum);
+            }
         }
     }
 }

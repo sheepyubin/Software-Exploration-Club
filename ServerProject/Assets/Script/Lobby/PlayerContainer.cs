@@ -7,19 +7,29 @@ using System.Reflection;
 public class PlayerContainer : ScriptableObject
 {
     public GameObject playerPrefab;
-    public Dictionary<int, Color> playerData = new Dictionary<int, Color>(); // 키(번호), RGB
+    public Dictionary<int, GameObject> PlayerData = new Dictionary<int, GameObject>(); // 키(번호), 플레이어 프리팹
+    public Dictionary<int, Color> playerColor = new Dictionary<int, Color>(); // 키(번호), RGB
     public Dictionary<int, bool> isDead = new Dictionary<int, bool>(); // 키(번호), 죽었는가?
     public Dictionary<int, int> scoreData = new Dictionary<int, int>(); // 키(번호), 점수
-    public List<int> playerNum = new List<int>(); // 플레이어 번호
+    public Dictionary<int, int> playerScore = new Dictionary<int, int>(); // 키(번호), 점수
 
-    public void AddPlayerData(int playerNumber, Color playerColor)
+    public void AddPlayerData(int playerNumber, GameObject player)
     {
-        playerData[playerNumber] = playerColor;
+        PlayerData[playerNumber] = player;
+    }
+
+    public GameObject ReturnPlayerData(int playerNumber)
+    {
+        return PlayerData[playerNumber];
+    }
+    public void AddPlayerColor(int playerNumber, Color color)
+    {
+        playerColor[playerNumber] = color;
     }
 
     public Color ReturnPlayerColor(int playerNumber)
     {
-        return playerData[playerNumber];
+        return playerColor[playerNumber];
     }
 
     public void AddisDead(int playerNumber, bool dead)
@@ -45,25 +55,13 @@ public class PlayerContainer : ScriptableObject
         return true;
     }
 
-    public void AddScoreData(int playerNumber, int score)
+    public void ResetScore(int playerNumber)
     {
-        scoreData[playerNumber] = score;
+        playerScore[playerNumber] = 0;
     }
 
-    public int ReturnScoreData(int playerNumber)
+    public void AddScore(int playerNumber, int score)
     {
-        return scoreData[playerNumber];
-    }
-
-    public void AddNum()
-    {
-        foreach (var kvp in playerData)
-        {
-            playerNum.Add(kvp.Key);
-        }
-    }
-    public void DelNum(int Num)
-    {
-        playerNum.Remove(Num);
+        playerScore[playerNumber] += score;
     }
 }
