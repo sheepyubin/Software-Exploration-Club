@@ -8,39 +8,26 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private Color color;
     private SpriteRenderer spriteRenderer;
-    private int playerNum;
+    private string playerID;
     private void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady && photonView != null)
         {
-            playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
+            playerID = PhotonNetwork.LocalPlayer.UserId; // 플레이어 ID 설정
 
-            color = new Color(Random.value, Random.value, Random.value);
+            GameObject prefab = container.playerPrefab; // 컨테이너의 플레이어 프리팹
 
-            container.AddPlayerColor(playerNum, color);
+            color = new Color(Random.value, Random.value, Random.value); // 랜덤 색상 설정
 
-            GameObject prefab = container.playerPrefab;
+            spriteRenderer = prefab.GetComponent<SpriteRenderer>(); // 플레이어 프리팹의 스프라이트 랜더러 접근
 
-            spriteRenderer = prefab.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = color; // 플레이어 프리팹의 색상 변경
 
-            spriteRenderer.color = container.ReturnPlayerColor(playerNum);
-
-            container.AddPlayerData(playerNum, prefab);
+            container.AddPlayerData(playerID, prefab); // 컨테이너의 playerData에 저장
 
             PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity);
 
-            container.ResetScore(playerNum);
+            container.ResetScore(playerID);
         }
-
-        //// PlayerContainer에서 스폰 위치 인덱스를 가져옴
-        //int index = container.GetIndex();
-        //int playerNum = photonView.OwnerActorNr;
-
-        //container.RestoreNum(index, playerNum);
-        //// PlayerContainer에서 해당 인덱스에 있는 프리팹을 가져옴
-        //GameObject prefabToSpawn = container.playerPrefabs[index];
-
-        //// 프리팹을 생성
-        //PhotonNetwork.Instantiate(prefabToSpawn.name, spawnPoint, Quaternion.identity);
     }
-    }
+}

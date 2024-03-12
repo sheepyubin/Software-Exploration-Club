@@ -28,21 +28,21 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public Score score;
 
     public bool isDead = false; // 플레이어의 생존 여부
-    private int playerNum;
+    private string playerID;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
 
-        playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
+        playerID = PhotonNetwork.LocalPlayer.UserId;
 
-        container.AddisDead(playerNum, false);
+        container.AddisDead(playerID, false);
     }
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerNum))
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerID))
         {
             if (isDashing)
             {
@@ -94,7 +94,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerNum))
+        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerID))
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
@@ -179,19 +179,19 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         {
             isDead = true;
 
-            container.AddisDead(playerNum, true);
+            container.AddisDead(playerID, true);
             
-            score.AddDeadScore(playerNum);
+            score.AddDeadScore(playerID);
 
             sp.color = Color.black;
         }
         if (other.CompareTag("EndPoint"))
         {
-            score.AddSuccessScore(playerNum);
+            score.AddSuccessScore(playerID);
 
             if (!isDead)
             {
-                score.AddLiveScore(playerNum);
+                score.AddLiveScore(playerID);
             }
         }
     }

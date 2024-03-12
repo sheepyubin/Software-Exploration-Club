@@ -7,39 +7,28 @@ using System.Reflection;
 public class PlayerContainer : ScriptableObject
 {
     public GameObject playerPrefab;
-    public Dictionary<int, GameObject> PlayerData = new Dictionary<int, GameObject>(); // 키(번호), 플레이어 프리팹
-    public Dictionary<int, Color> playerColor = new Dictionary<int, Color>(); // 키(번호), RGB
-    public Dictionary<int, bool> isDead = new Dictionary<int, bool>(); // 키(번호), 죽었는가?
-    public Dictionary<int, int> scoreData = new Dictionary<int, int>(); // 키(번호), 점수
-    public Dictionary<int, int> playerScore = new Dictionary<int, int>(); // 키(번호), 점수
+    public Dictionary<string, GameObject> PlayerData = new Dictionary<string, GameObject>(); // 키(번호), 플레이어 프리팹
+    public Dictionary<string, bool> isDead = new Dictionary<string, bool>(); // 키(번호), 죽었는가?
+    public Dictionary<string, int> scoreData = new Dictionary<string, int>(); // 키(번호), 점수
+    public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // 키(번호), 점수
 
-    public void AddPlayerData(int playerNumber, GameObject player)
+    public void AddPlayerData(string playerID, GameObject player)
     {
-        PlayerData[playerNumber] = player;
+        PlayerData[playerID] = player;
     }
 
-    public GameObject ReturnPlayerData(int playerNumber)
+    public GameObject ReturnPlayerData(string playerID)
     {
-        return PlayerData[playerNumber];
+        return PlayerData[playerID];
     }
-    public void AddPlayerColor(int playerNumber, Color color)
+    public void AddisDead(string playerID, bool dead)
     {
-        playerColor[playerNumber] = color;
-    }
-
-    public Color ReturnPlayerColor(int playerNumber)
-    {
-        return playerColor[playerNumber];
+        isDead[playerID] = dead;
     }
 
-    public void AddisDead(int playerNumber, bool dead)
+    public bool ReturnisDead(string playerID)
     {
-        isDead[playerNumber] = dead;
-    }
-
-    public bool ReturnisDead(int playerNumber)
-    {
-        return isDead[playerNumber];
+        return isDead[playerID];
     }
 
     public bool CheckAllDead()
@@ -55,13 +44,13 @@ public class PlayerContainer : ScriptableObject
         return true;
     }
 
-    public void ResetScore(int playerNumber)
+    public void ResetScore(string playerID)
     {
-        playerScore[playerNumber] = 0;
+        playerScore[playerID] = 0;
     }
 
-    public void AddScore(int playerNumber, int score)
+    public void AddScore(string playerID, int score)
     {
-        playerScore[playerNumber] += score;
+        playerScore[playerID] += score;
     }
 }
