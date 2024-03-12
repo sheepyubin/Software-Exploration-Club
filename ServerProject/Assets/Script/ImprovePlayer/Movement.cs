@@ -13,17 +13,16 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public RopeLauncher ropeLauncher;
     public GhostEffect ghost;
 
-    private bool canDash = true;
-    private bool isDashing;
+    public bool canDash = true;
+    public bool isDashing;
     private float dashTime = 0.2f;
     private float dashCool = 1;
 
     private Rigidbody2D rb;
     public bool isGrounded;
 
-    private Animator ani;
     private SpriteRenderer sp;
-    private bool isClimbing;
+    public bool isClimbing;
 
     public PlayerContainer container;
     public Score score;
@@ -34,7 +33,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
 
         playerNum = PhotonNetwork.LocalPlayer.ActorNumber;
@@ -52,11 +50,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             }
 
             float moveInput = Input.GetAxis("Horizontal");
-
-            if (moveInput != 0)
-                ani.SetBool("isWalk", true);
-            else
-                ani.SetBool("isWalk", false);
 
             if (rb.velocity.x < 0)
             {
@@ -86,34 +79,12 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled)
             {
-                ani.SetBool("isClimbing", true);
                 Climb();
             }
             else
             {
                 isClimbing = false;
-                ani.SetBool("isClimbing", false);
             }
-
-            if (!isGrounded && !isClimbing)
-            {
-                if (rb.velocity.y > 0)
-                    ani.SetBool("isJumping", true);
-
-                else if (rb.velocity.y < 0)
-                {
-                    ani.SetBool("isFalling", true);
-                    ani.SetBool("isJumping", false);
-                }
-                else
-                {
-                    ani.SetBool("isFalling", false);
-                    ani.SetBool("isJumping", false);
-                }
-            }
-            else
-                ani.SetBool("isFalling", false);
-
             // 위치 동기화
             photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
         }
@@ -133,7 +104,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (Input.GetKey(KeyCode.LeftShift) && canDash)
             {
-                ani.SetBool("isDashing", true);
                 ghost.makeGhost = true;
                 StartCoroutine(Dash());
             }
@@ -162,7 +132,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
         rb.gravityScale = originalGravity;
         ghost.makeGhost = false;
-        ani.SetBool("isDashing", false);
         isDashing = false;
 
         yield return new WaitForSeconds(dashCool);
