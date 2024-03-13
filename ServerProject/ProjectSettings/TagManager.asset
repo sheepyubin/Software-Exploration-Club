@@ -10,6 +10,7 @@ TagManager:
   - EndPoint
   - Boundary
   - flag
+  - test
   layers:
   - Default
   - TransparentFX

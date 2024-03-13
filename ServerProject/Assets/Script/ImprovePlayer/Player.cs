@@ -48,4 +48,17 @@ public class Player
     {
         this.score += newScore;
     }
+
+    public string ReturnID()
+    {
+        return ID;
+    }
+    public bool ReturnisDead()
+    {
+        return isDead;
+    }
+    public int Returnscore()
+    {
+        return score;
+    }
 }

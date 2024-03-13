@@ -8,10 +8,22 @@ public class Test : MonoBehaviourPunCallbacks
 {
     TextMeshProUGUI textMeshProUGUI;
 
+    string text;
+
     private void Start()
     {
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+    }
 
-        textMeshProUGUI.text = PhotonNetwork.LocalPlayer.UserId;
+    private void Update()
+    {
+        textMeshProUGUI.text = text;
+    }
+
+    public void Info(string ID, string isDead, string score)
+    {
+        text = ID + " " + isDead + " "+ score;
+        
+        Debug.Log(text);
     }
 }
