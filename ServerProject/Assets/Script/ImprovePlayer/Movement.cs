@@ -28,21 +28,16 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public Score score;
 
     public bool isDead = false; // 플레이어의 생존 여부
-    private string playerID;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
-
-        playerID = PhotonNetwork.LocalPlayer.UserId;
-
-        container.AddisDead(playerID, false);
     }
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerID))
+        if (photonView != null && photonView.IsMine)
         {
             if (isDashing)
             {
@@ -94,7 +89,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine && !container.ReturnisDead(playerID))
+        if (photonView != null && photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
@@ -178,20 +173,14 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         if (other.CompareTag("Bullet"))
         {
             isDead = true;
-
-            container.AddisDead(playerID, true);
-            
-            score.AddDeadScore(playerID);
-
             sp.color = Color.black;
         }
         if (other.CompareTag("EndPoint"))
         {
-            score.AddSuccessScore(playerID);
 
             if (!isDead)
             {
-                score.AddLiveScore(playerID);
+                
             }
         }
     }
