@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 527907769456531032}
   - component: {fileID: 2291635966703987158}
   - component: {fileID: 1913194559630917595}
+  - component: {fileID: -5697984897464263071}
   m_Layer: 9
   m_Name: user
   m_TagString: Player
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1276224902, guid: 43d3a24db262c1b4f97feee5e04d5540, type: 3}
-  m_Color: {r: 0.2968563, g: 0.3921545, b: 0.7486718, a: 1}
+  m_Color: {r: 0.61565834, g: 0.40340728, b: 0.8279396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -397,3 +398,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 4594634228712182778}
   ropeLauncher: {fileID: 4594634228712182782}
+--- !u!114 &-5697984897464263071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594634228712182773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c12919122065b7479466cef46a9f8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

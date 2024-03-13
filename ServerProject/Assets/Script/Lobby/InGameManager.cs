@@ -10,7 +10,7 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
     [Tooltip("The Player's UI GameObject Prefab")]
     [SerializeField]
-    private GameObject playerUiPrefab;
+    private GameObject playerUiPrefab;  
 
     private string lobbyCode;
 
