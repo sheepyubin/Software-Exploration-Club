@@ -11,13 +11,11 @@ public class flag : MonoBehaviour
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public PlayerContainer playerContainer;
-    private static Score GetScore;
     int playerCount;
     void Start()
     {
         playerCount = PhotonNetwork.PlayerList.Length;
         Debug.Log("씬에 존재하는 플레이어 수: " + playerCount);
-        GetScore = gameObject.GetComponent<Score>();
     }
 
     // Update is called once per frame

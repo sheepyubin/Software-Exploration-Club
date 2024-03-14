@@ -7,6 +7,7 @@ public class Player
     private string ID; // ID
     private bool isDead; // 죽었는가?
     private int score; // 점수
+    private Color color; // 색상
 
     // ID 프로퍼티
     public string PlayerID
@@ -29,12 +30,20 @@ public class Player
         set { score = value; }
     }
 
+    // color 프로퍼티
+    public Color Color
+    {
+        get { return color; }
+        set { color = value; }
+    }
+
     // 생성자
-    public Player(string id, bool dead, int initialScore)
+    public Player(string id, bool dead, int initialScore, Color color)
     {
         ID = id;
         isDead = dead;
         score = initialScore;
+        this.color = color;
     }
 
     // isDead 설정
@@ -49,16 +58,33 @@ public class Player
         this.score += newScore;
     }
 
+    // color 설정
+    public void SetColor(Color color)
+    {
+        this.color += color;
+    }
+
+    // ID 반환
     public string ReturnID()
     {
         return ID;
     }
+
+    // isDead 반환
     public bool ReturnisDead()
     {
         return isDead;
     }
+
+    // score 반환
     public int Returnscore()
     {
         return score;
+    }
+
+    // color 반환
+    public Color Returncolor()
+    {
+        return color;
     }
 }

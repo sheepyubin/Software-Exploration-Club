@@ -13,8 +13,8 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
     {
         playerId = PhotonNetwork.LocalPlayer.UserId;
 
-        GameObject prefab = playerContainer.ReturnPlayerData(playerId);
+        GameObject prefab = playerContainer.ReturnPlayerData(playerId); // prefab에 로컬 플레이어의 프리팹을 저장
 
-        PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity);
+        PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // 생성
     }
 }

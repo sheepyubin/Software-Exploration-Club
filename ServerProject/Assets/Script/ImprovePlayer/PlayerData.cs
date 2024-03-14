@@ -4,43 +4,72 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviourPunCallbacks
 {
-    public Player player;
+    public Player player; // 플레이어 클래스
 
-    Test test;
-    string info;
+    string userID; // 유저 UI
+    bool isDead; // 죽었는가?
+    int score; // 점수
+    Color color; // 색상
+    int newScore; // 추가 할 점수
 
     private void Start()
     {
-        test = new Test();
-        if (photonView.IsMine) // 현재 플레이어가 로컬 플레이어인 경우에만 실행
+        // 변수 초기화
+        userID = PhotonNetwork.LocalPlayer.UserId;
+        isDead = false;
+        score = 0;
+        color = SetRandomColor();
+
+        if (photonView.IsMine) // 로컬 플레이어인가?
         {
-            player = new Player(PhotonNetwork.LocalPlayer.UserId, false, 0); // 유저 아이디, false, 초기 점수(0)
+            player = new Player(userID, isDead, score, color); // 유저 아이디, false, 초기 점수(0), 색상
+
+            Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
         }
     }
 
-    private void Update()
+    // 초기화가 필요한 데이터들을 초기화 하는 매서드
+    public void ResetData()
     {
-        string ID = "ID: " + PhotonNetwork.LocalPlayer.UserId;
-        string isDead = "isDead: " + player.ReturnisDead().ToString();
-        string Score = "Score: " + player.Returnscore().ToString();
-
-        test.Info(ID, isDead, Score);
-
-        //Debug.Log(ID);
-        //Debug.Log(isDead);
-        //Debug.Log(Score);
+        isDead = false;
+        newScore = 0;
     }
 
-    public void TestScore()
+    // 랜덤 색상 값을 반환하는 매서드
+    Color SetRandomColor()
     {
-        player.SetScore(10);
+        // 랜덤 RGB 값 생성
+        float r = Random.Range(0f, 1f);
+        float g = Random.Range(0f, 1f);
+        float b = Random.Range(0f, 1f);
+        float a = 1f; // Alpha
+
+        Color color = new Color(r, g, b, a);
+
+        return color;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("test"))
+        if (other.CompareTag("Dead")) // Dead 태그에 닿았는가?
         {
-            TestScore();
+            // 사망
+            isDead = true;
+            player.SetisDead(isDead);
+
+            // 사망 점수(0) 추가
+            newScore = 0;
+            player.SetScore(newScore);
+
+            Debug.Log(player.Returnscore().ToString());
+        }
+        if (other.CompareTag("EndPoint")) // EndPoint 태그에 닿았는가?
+        {
+            // 성공 점수(100) 추가
+            newScore = 100;
+            player.SetScore(newScore);
+
+            Debug.Log(player.Returnscore().ToString());
         }
     }
 }

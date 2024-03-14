@@ -34,21 +34,19 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - SyncMovement
   - SwitchScene
   - CreateGhost
   - DisableRope
   - LaunchRope
   - UpdateNode
-  - SyncRopeMove
-  - SyncJump
-  - SyncDash
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - SyncMovement
   - SyncColor
+  - ApplyColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

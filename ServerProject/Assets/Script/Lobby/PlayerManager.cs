@@ -17,9 +17,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
             container.AddPlayerData(playerID, prefab); // 컨테이너의 playerData에 저장
 
-            PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity);
-
-            container.ResetScore(playerID);
+            PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // 플레이어 생성
         }
     }
 }

@@ -25,7 +25,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public bool isClimbing;
 
     public PlayerContainer container;
-    public Score score;
 
     public bool isDead = false; // 플레이어의 생존 여부
 
@@ -135,24 +134,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void SyncJump()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-    }
-
-    [PunRPC]
-    void SyncDash()
-    {
-        StartCoroutine(Dash());
-    }
-
-    [PunRPC]
-    void SyncRopeMove(Vector3 position)
-    {
-        transform.position = position;
-    }
-
-    [PunRPC]
     void SyncMovement(Vector3 position)
     {
         // 다른 플레이어의 위치를 동기화
@@ -161,27 +142,6 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        // 사용하지 않음
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Boundary"))
-        {
-            transform.position = Vector3.zero;
-        }
-        if (other.CompareTag("Bullet"))
-        {
-            isDead = true;
-            sp.color = Color.black;
-        }
-        if (other.CompareTag("EndPoint"))
-        {
-
-            if (!isDead)
-            {
-                
-            }
-        }
     }
 }

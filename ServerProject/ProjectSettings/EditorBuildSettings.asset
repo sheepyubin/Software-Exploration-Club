@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Bulid/Tutorial.unity
     guid: f562913b9e99cd14dbd38cdb3c1b0de9
   - enabled: 1
+    path: Assets/Scenes/Bulid/Stage.unity
+    guid: 3f3a979df620706498e7f487b982667d
+  - enabled: 1
     path: Assets/Scenes/Bulid/Stage_1.unity
     guid: 40d9697e01028a24ab7dd69339bccf16
   - enabled: 1

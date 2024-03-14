@@ -19,7 +19,7 @@ public class Watching : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (photonView.IsMine && PlayerContainer.ReturnisDead(playerID))
+        if (photonView.IsMine)
         {
             follow.isDead = true;
 
