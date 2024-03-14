@@ -6,7 +6,7 @@ using UnityEngine;
 public class Watching : MonoBehaviourPunCallbacks
 {
     public PlayerContainer PlayerContainer;
-    public Follow follow;
+    //public Follow follow;
     private Rigidbody2D rb;
     private string playerID;
 
@@ -21,7 +21,7 @@ public class Watching : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            follow.isDead = true;
+            //follow.isDead = true;
 
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");

@@ -29,7 +29,7 @@ public class EscPopup : MonoBehaviourPunCallbacks
             count++;
         }
 
-        if (count % 2 == 0)
+        if (count % 2 == 0) 
             Disabled();
 
         AudioListener.volume = volumeSlider.value;

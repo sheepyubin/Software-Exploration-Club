@@ -9,6 +9,7 @@ public class PlayerContainer : ScriptableObject
     public GameObject playerPrefab; // 플레이어 프리팹(원본)
     public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>(); // 키(ID), 플레이어 프리팹
     public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // 키(ID), 색
+    public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // 키(ID), 점수
 
     public void AddPlayerData(string playerID, GameObject player)
     {
@@ -34,6 +35,23 @@ public class PlayerContainer : ScriptableObject
         else
         {
             return Color.white;
+        }
+    }
+
+    public void AddPlayerScore(string playerID, int score)
+    {
+        playerScore[playerID] = score;
+    }
+
+    public int ReturnPlayerScore(string playerID)
+    {
+        if (playerScore.ContainsKey(playerID))
+        {
+            return playerScore[playerID];
+        }
+        else
+        {
+            return -1;
         }
     }
 }

@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class EndPointS2 : MonoBehaviourPunCallbacks
 {
-    public KeyDataS2 keyData; // 스테이지 1의 KeyData 스크립터블 오브젝트
+    public KeyDataS2 keyData; // 스테이지 2의 KeyData 스크립터블 오브젝트
     public string nextStage;
     public GameObject Key1;
     public GameObject Key2;
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme = 3f;
-    public PlayerContainer container;
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
 
                 // 씬 전환
                 Debug.Log(nextStage);
-                
+
                 End();
             }
             else

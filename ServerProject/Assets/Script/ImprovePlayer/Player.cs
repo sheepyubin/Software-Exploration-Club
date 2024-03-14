@@ -55,7 +55,7 @@ public class Player
     // Score 설정
     public void SetScore(int newScore)
     {
-        this.score += newScore;
+        score += newScore;
     }
 
     // color 설정
