@@ -85,6 +85,10 @@ public class Player
     // color ¹ÝÈ¯
     public Color Returncolor()
     {
+        if (color == null)
+        {
+            Debug.Log("null");
+        }
         return color;
     }
 }
