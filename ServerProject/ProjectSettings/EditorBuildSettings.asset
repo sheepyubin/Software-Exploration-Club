@@ -6,24 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Bulid/Lobby.unity
+    path: Assets/Scenes/Bulid/Lobby/Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Bulid/InGame.unity
+    path: Assets/Scenes/Bulid/Lobby/InGame.unity
     guid: 91c532a37188e884485b16ac0c15fa4b
   - enabled: 1
-    path: Assets/Scenes/Bulid/Tutorial.unity
+    path: Assets/Scenes/Bulid/Tutorial/Tutorial.unity
     guid: f562913b9e99cd14dbd38cdb3c1b0de9
   - enabled: 1
-    path: Assets/Scenes/Bulid/Stage.unity
-    guid: 3f3a979df620706498e7f487b982667d
-  - enabled: 1
-    path: Assets/Scenes/Bulid/Stage_1.unity
+    path: Assets/Scenes/Bulid/Baisc/Stage_1.unity
     guid: 40d9697e01028a24ab7dd69339bccf16
   - enabled: 1
-    path: Assets/Scenes/Bulid/Stage_2.unity
+    path: Assets/Scenes/Bulid/Baisc/Stage_2.unity
     guid: 3f168c3b85600c7499c0cc03fc8bf55c
   - enabled: 1
-    path: Assets/Scenes/Bulid/Stage_3.unity
+    path: Assets/Scenes/Bulid/Baisc/Stage_3.unity
     guid: 7f5c214204df8fe408dd8b1c0c822f16
+  - enabled: 1
+    path: Assets/Scenes/Bulid/Lava/Lava.unity
+    guid: d36a9141ea3268d48a053fe4ef2f279c
+  - enabled: 1
+    path: Assets/Scenes/Bulid/Boom/Boom.unity
+    guid: 7dfc0dbdea2786243a40a233df7ac6c5
   m_configObjects: {}

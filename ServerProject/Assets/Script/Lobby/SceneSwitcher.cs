@@ -6,30 +6,43 @@ using System.Collections.Generic;
 
 public class SceneSwitcher : MonoBehaviourPunCallbacks
 {
-    public string nextSceneName; // ¿¸»Ø æ¿ ¿Ã∏ß
+    public string nextSceneName = "Stage_1";
     public Button button;
+    public GameObject gameMode;
+    public GameModeSelect gameModeSelect;
 
     void Start()
     {
-
         if (PhotonNetwork.IsMasterClient)
         {
             if (button != null)
             {
                 button.onClick.AddListener(OnButtonClick);
                 button.enabled = true;
+                gameMode.SetActive(true);
             }
         }
         else
         {
             button.enabled = false;
+            gameMode.SetActive(false);
         }
+    }
+
+    private void Update()
+    {
+        nextSceneName = gameModeSelect.ReturnGameMode();
     }
 
     void OnButtonClick()
     {
         // æ¿ ¿¸»Ø
-        photonView.RPC("SwitchScene", RpcTarget.All, nextSceneName);
+        if (nextSceneName != null)
+        {
+            Debug.Log(nextSceneName);
+
+            photonView.RPC("SwitchScene", RpcTarget.All, nextSceneName);
+        }
     }
 
     // æ¿ ¿¸»Ø RPC ∏ﬁº≠µÂ
