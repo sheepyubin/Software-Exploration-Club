@@ -133,7 +133,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         canDash = true;
     }
 
-
+    [PunRPC]
     void SyncMovement(Vector3 position)
     {
         // 다른 플레이어의 위치를 동기화

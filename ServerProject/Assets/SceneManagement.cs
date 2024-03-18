@@ -9,6 +9,7 @@ public class SceneManagement : MonoBehaviour
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme = 3f;
+
     // 씬 전환 함수
     public void Update()
     {

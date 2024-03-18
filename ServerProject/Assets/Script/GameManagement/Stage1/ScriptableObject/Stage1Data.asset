@@ -10,7 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae6d1d630a554af4d9938b0185e87c18, type: 3}
-  m_Name: KeyDataS1
+  m_Name: Stage1Data
   m_EditorClassIdentifier: 
-  Key1: 0
-  Key2: 0
