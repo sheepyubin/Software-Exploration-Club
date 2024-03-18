@@ -6,12 +6,14 @@ public class PlayerData : MonoBehaviourPunCallbacks
 {
     public Player player; // Player 클래스
     public PlayerContainer playerContainer; // PlayerContainer 참조
+    public bool isCreate = false; // 플레이어 객체가 생성 되었는가?
 
     string userID; // 유저 UI
     bool isDead; // 죽었는가?
     int score; // 점수
     Color color; // 색상
     int newScore; // 추가 할 점수
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
         if (photonView.IsMine) // 로컬 플레이어인가?
         {
             player = new Player(userID, isDead, score, color); // 유저 아이디, false, 초기 점수(0), 색상
+            isCreate = true;
 
             Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
         }
@@ -78,5 +81,13 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
             Debug.Log(playerContainer.ReturnPlayerScore(userID));
         }
+    }
+
+    public Player Returnplayer()
+    {
+        if (isCreate)
+            return player;
+        else
+            return null;
     }
 }

@@ -42,6 +42,7 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
                 // 스테이지 클리어
                 data.SetisClear(true);
 
+                Debug.Log(nextStage);
                 Debug.Log("Success");
 
                 End();
@@ -67,8 +68,6 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
         scoreBoard.SetActive(true);
         scoreBoardScrpit.Score();
 
-        // 씬 전환
-        Debug.Log(nextStage);
         StartCoroutine(DelayedFunction(delayTIme));
     }
 

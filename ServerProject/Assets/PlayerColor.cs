@@ -15,8 +15,14 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
         // 초기화
         playerData = GetComponent<PlayerData>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
-        color = playerData.player.Returncolor();
+    private void Update()
+    {
+        if (playerData.Returnplayer() != null)
+            color = playerData.player.Returncolor();
+        else
+            return;
 
         // 로컬 플레이어만 색상을 설정합니다.
         if (photonView.IsMine)
@@ -24,6 +30,7 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
             spriteRenderer.color = color;
         }
     }
+
 
     // 색상 적용 및 동기화 메서드
     [PunRPC]
@@ -53,7 +60,11 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
             float b = (float)stream.ReceiveNext();
             float a = (float)stream.ReceiveNext();
 
-            spriteRenderer.color = new Color(r, g, b, a);
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = new Color(r, g, b, a);
+                Debug.Log("dd");
+            }
         }
     }
 }
