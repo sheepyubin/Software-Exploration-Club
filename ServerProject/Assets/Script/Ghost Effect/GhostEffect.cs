@@ -12,6 +12,7 @@ public class GhostEffect : MonoBehaviourPunCallbacks, IPunObservable
     public bool isFlip;
 
     private SpriteRenderer sp;
+    private Vector3 lastSyncedPosition; // 마지막으로 동기화된 ghost의 위치
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class GhostEffect : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (makeGhost && photonView.IsMine) // 포톤의 IsMine을 사용하여 이 로컬 플레이어가 오브젝트를 컨트롤하는지 확인
+        if (makeGhost && photonView.IsMine)
         {
             if (isFlip)
                 sp.flipX = true;
@@ -34,16 +35,16 @@ public class GhostEffect : MonoBehaviourPunCallbacks, IPunObservable
             }
             else
             {
-                photonView.RPC("CreateGhost", RpcTarget.All); // 모든 플레이어에게 RPC 호출
+                photonView.RPC("CreateGhost", RpcTarget.All, transform.position); // 위치 정보를 함께 전달하여 RPC 호출
                 ghostDelayTime = ghostDelay;
             }
         }
     }
 
     [PunRPC]
-    void CreateGhost()
+    void CreateGhost(Vector3 position)
     {
-        GameObject currentGhost = Instantiate(ghost, transform.position, transform.rotation);
+        GameObject currentGhost = Instantiate(ghost, position, transform.rotation);
         Sprite currentSprite = GetComponent<SpriteRenderer>().sprite;
         currentGhost.transform.localScale = transform.localScale;
         currentGhost.GetComponent<SpriteRenderer>().sprite = currentSprite;
@@ -52,6 +53,13 @@ public class GhostEffect : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-
+        if (stream.IsWriting) // 로컬 플레이어의 데이터를 스트림에 쓰기
+        {
+            stream.SendNext(transform.position); // 현재 위치를 스트림에 전송
+        }
+        else // 다른 플레이어의 데이터를 스트림에서 읽기
+        {
+            lastSyncedPosition = (Vector3)stream.ReceiveNext(); // 다른 플레이어의 위치 정보를 받아옴
+        }
     }
 }

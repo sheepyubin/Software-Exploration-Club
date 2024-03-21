@@ -69,7 +69,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
             isDead = true;
             player.SetisDead(isDead);
 
-            Instantiate(deadBody, transform.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
 
             // 사망 점수(0) 추가
             newScore = 0;
