@@ -253,6 +253,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 4594634228712182780}
   distanceJoint: {fileID: 4594634228712182781}
   targetTag: Grappleable
+  playerData: {fileID: 8363619694602588502}
 --- !u!114 &4594634228712182778
 MonoBehaviour:
   m_ObjectHideFlags: 0

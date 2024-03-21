@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
     private Animator ani; // 애니메이터 컴포넌트
     private Rigidbody2D rb; // 리지드바디 컴포넌트
 
+    bool isFalling;
     void Start()
     {
         ani = GetComponent<Animator>(); // 애니메이터 초기화
@@ -44,28 +45,48 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
                 else if (rb.velocity.y < 0) // y 증가량이  < 0 이라면
                 {
                     ani.SetBool("isFalling", true);
+                    isFalling = true;
                     ani.SetBool("isJumping", false);
                 }
                 else
                 {
                     ani.SetBool("isFalling", false);
+                    isFalling = false;
                     ani.SetBool("isJumping", false);
                 }
             }
             else
+            {
                 ani.SetBool("isFalling", false);
+                isFalling = false;
+            }
 
             if (Input.GetKey(KeyCode.LeftShift) && movement.canDash)
                 ani.SetBool("isDashing", true);
 
             if (!movement.isDashing)
                 ani.SetBool("isDashing", false);
+
+            // 애니메이션 상태를 다른 플레이어에게 동기화합니다.
+            photonView.RPC("SyncAnimationState", RpcTarget.Others, moveInput != 0, Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled, !movement.isGrounded, movement.isClimbing, isFalling, Input.GetKey(KeyCode.LeftShift) && movement.canDash, !movement.isDashing);
         }
+    }
+
+    [PunRPC]
+    void SyncAnimationState(bool isWalking, bool isClimbing, bool isJumping, bool isFalling, bool isDashing, bool isIdle)
+    {
+        // 다른 플레이어의 애니메이션 상태를 동기화합니다.
+        ani.SetBool("isWalk", isWalking);
+        ani.SetBool("isClimbing", isClimbing);
+        ani.SetBool("isJumping", isJumping);
+        ani.SetBool("isFalling", isFalling);
+        ani.SetBool("isDashing", isDashing);
+        ani.SetBool("isIdle", isIdle);
     }
 
     // 네트워크에서 데이터를 수신할 때 호출됩니다.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        // 이 메서드는 스프라이트 동기화와 관련이 없으므로 수정할 필요가 없습니다.
+        // 이 메서드는 애니메이션 동기화와 관련이 없으므로 수정할 필요가 없습니다.
     }
 }

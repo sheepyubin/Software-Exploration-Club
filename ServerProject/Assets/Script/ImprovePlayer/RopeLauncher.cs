@@ -8,6 +8,7 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
     public LineRenderer lineRenderer; // 라인 랜더러
     public DistanceJoint2D distanceJoint; // 디스턴스 조인트 
     public string targetTag = "Grappleable"; // 타겟 태그
+    public PlayerData playerData;
 
     private Camera mainCamera; // 카메라
     private Vector3 playerPosition; // 플레이어의 위치를 저장하기 위한 변수
@@ -21,7 +22,7 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine) // 로컬 플레이어인가?
+        if (photonView != null && photonView.IsMine && !playerData.isDead) // 로컬 플레이어인가?
         {
             playerPosition = transform.position; // 플레이어의 위치를 playerPosition에 저장
 
