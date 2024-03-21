@@ -5,13 +5,19 @@ public class EnemyMoveS3 : MonoBehaviour
     public float minX = -5f; // X 축 최소 값
     public float maxX = 5f; // X 축 최대 값
     public float moveSpeed = 2f; // 이동 속도
+    public GameObject gun;
 
     private int moveDirection = 1; // 이동 방향 (1: R, -1: L)
+    private SpriteRenderer mySp;
+    private SpriteRenderer gunSp;
 
     private void Start()
     {
         // 이동 방향 설정
         SetRandomDirection();
+
+        mySp = GetComponent<SpriteRenderer>();
+        gunSp = gun.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -20,6 +26,17 @@ public class EnemyMoveS3 : MonoBehaviour
         if (transform.position.x <= minX || transform.position.x >= maxX)
         {
             ChangeDirection();
+        }
+
+        if(moveDirection == -1)
+        { 
+            mySp.flipX = true;
+            gunSp.flipX = true;
+        }
+        else
+        {
+            mySp.flipX = false;
+            gunSp.flipX = false;
         }
 
         // 이동

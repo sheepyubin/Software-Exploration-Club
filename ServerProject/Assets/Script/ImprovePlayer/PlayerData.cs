@@ -7,6 +7,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     public Player player; // Player 클래스
     public PlayerContainer playerContainer; // PlayerContainer 참조
     public bool isCreate = false; // 플레이어 객체가 생성 되었는가?
+    public GameObject deadBody;
 
     string userID; // 유저 UI
     public bool isDead; // 죽었는가?
@@ -36,10 +37,13 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
         if (photonView.IsMine) // 로컬 플레이어인가?
         {
-            player = new Player(userID, isDead, score, color); // 유저 아이디, false, 초기 점수(0), 색상
-            isCreate = true;
+            if (!isCreate)
+            {
+                player = new Player(userID, isDead, score, color); // 유저 아이디, false, 초기 점수(0), 색상
+                isCreate = true;    
 
-            Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
+                Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
+            }
         }
     }
 
@@ -64,6 +68,8 @@ public class PlayerData : MonoBehaviourPunCallbacks
             // 사망
             isDead = true;
             player.SetisDead(isDead);
+
+            Instantiate(deadBody, transform.position, Quaternion.identity);
 
             // 사망 점수(0) 추가
             newScore = 0;
