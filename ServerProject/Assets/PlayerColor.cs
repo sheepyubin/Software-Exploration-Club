@@ -63,7 +63,6 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
             if (spriteRenderer != null)
             {
                 spriteRenderer.color = new Color(r, g, b, a);
-                Debug.Log("dd");
             }
         }
     }

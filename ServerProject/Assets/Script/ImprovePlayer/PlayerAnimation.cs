@@ -66,23 +66,6 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
     // 네트워크에서 데이터를 수신할 때 호출됩니다.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            // 로컬 플레이어의 애니메이션 상태를 스트림에 기록합니다.
-            stream.SendNext(ani.GetBool("isWalk"));
-            stream.SendNext(ani.GetBool("isClimbing"));
-            stream.SendNext(ani.GetBool("isJumping"));
-            stream.SendNext(ani.GetBool("isFalling"));
-            stream.SendNext(ani.GetBool("isDashing"));
-        }
-        else
-        {
-            // 원격 플레이어의 애니메이션 상태를 스트림에서 읽어옵니다.
-            ani.SetBool("isWalk", (bool)stream.ReceiveNext());
-            ani.SetBool("isClimbing", (bool)stream.ReceiveNext());
-            ani.SetBool("isJumping", (bool)stream.ReceiveNext());
-            ani.SetBool("isFalling", (bool)stream.ReceiveNext());
-            ani.SetBool("isDashing", (bool)stream.ReceiveNext());
-        }
+        // 이 메서드는 스프라이트 동기화와 관련이 없으므로 수정할 필요가 없습니다.
     }
 }
