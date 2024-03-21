@@ -23,7 +23,7 @@ public class RandemPlatformSpawner : MonoBehaviour
     // 예시로 매 프레임마다 랜덤 프리팹을 생성하는 Update 함수
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // 스페이스 키를 누르면
+        if (Input.GetMouseButton(0)) // 스페이스 키를 누르면
         {
             SpawnRandomPrefab(); // 랜덤 프리팹 생성
         }

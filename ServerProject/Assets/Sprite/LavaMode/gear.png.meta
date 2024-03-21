@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -121,9 +121,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
-        width: 100
-        height: 75
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdd41e4923d351a40a04ce23a1fddb1e
-      internalID: -556538509
+      spriteID: 79b82ede786c16249bf932de4933dc28
+      internalID: 793735765
       vertices: []
       indices: 
       edges: []
@@ -141,10 +141,10 @@ TextureImporter:
       name: gear_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 300
-        width: 100
-        height: 75
+        x: 200
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f92453f95381d67448c0d59cffe8b59f
-      internalID: -1470708451
+      spriteID: 0c73281f27f843a43b590e593ee82e58
+      internalID: -1377525242
       vertices: []
       indices: 
       edges: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: gear_2
       rect:
         serializedVersion: 2
-        x: 200
-        y: 300
-        width: 100
-        height: 75
+        x: 400
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7beb249fb951caa4fa6902a62d411424
-      internalID: 1133908705
+      spriteID: 1ea958c18bf8f734bbb3eb8019c9cdc2
+      internalID: -1831129101
       vertices: []
       indices: 
       edges: []
@@ -183,10 +183,10 @@ TextureImporter:
       name: gear_3
       rect:
         serializedVersion: 2
-        x: 300
-        y: 300
-        width: 100
-        height: 75
+        x: 600
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b456bc75fe249941934593468c56dca
-      internalID: -1995114882
+      spriteID: 526c5e7894d9a4a42931f1749b05a4ed
+      internalID: 776570219
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
       name: gear_4
       rect:
         serializedVersion: 2
-        x: 400
-        y: 300
-        width: 100
-        height: 75
+        x: 800
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 134a24406e6c152429d6fe8835d71a1b
-      internalID: 253305658
+      spriteID: 0d681d6c1e4f1d04b9a1f42b769bfe90
+      internalID: -151863543
       vertices: []
       indices: 
       edges: []
@@ -225,10 +225,10 @@ TextureImporter:
       name: gear_5
       rect:
         serializedVersion: 2
-        x: 500
-        y: 300
-        width: 100
-        height: 75
+        x: 1000
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4481e144a0cb9c541bc267cb8563f388
-      internalID: 692235059
+      spriteID: 508046f35d31bfc48b9b7c9ec903f7c2
+      internalID: 1803681040
       vertices: []
       indices: 
       edges: []
@@ -246,10 +246,10 @@ TextureImporter:
       name: gear_6
       rect:
         serializedVersion: 2
-        x: 600
-        y: 300
-        width: 100
-        height: 75
+        x: 1200
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc729aef3ed375e4f9ce597dc888d464
-      internalID: 128759807
+      spriteID: 4f3d759a4abd4de44814523d8f31d34e
+      internalID: -863520628
       vertices: []
       indices: 
       edges: []
@@ -267,10 +267,10 @@ TextureImporter:
       name: gear_7
       rect:
         serializedVersion: 2
-        x: 700
-        y: 300
-        width: 100
-        height: 75
+        x: 1400
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6743945ba7d3a3a4499619805bb361de
-      internalID: -677610475
+      spriteID: ce146cace8b43e8488d5fb099c9daf8b
+      internalID: -1404530797
       vertices: []
       indices: 
       edges: []
@@ -288,10 +288,10 @@ TextureImporter:
       name: gear_8
       rect:
         serializedVersion: 2
-        x: 800
-        y: 300
-        width: 100
-        height: 75
+        x: 1600
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b931339bf20cdf4796b259a96beca38
-      internalID: -1999838356
+      spriteID: 518d853de03fa364a82a82bb43c2f1fe
+      internalID: -2125074959
       vertices: []
       indices: 
       edges: []
@@ -309,10 +309,10 @@ TextureImporter:
       name: gear_9
       rect:
         serializedVersion: 2
-        x: 900
-        y: 300
-        width: 100
-        height: 75
+        x: 1800
+        y: 1200
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c47ff60324672124392381780fe67a0e
-      internalID: -775628063
+      spriteID: b8c45a35605196a41b1a8597939c8aaf
+      internalID: -323354675
       vertices: []
       indices: 
       edges: []
@@ -330,10 +330,10 @@ TextureImporter:
       name: gear_10
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 300
-        width: 100
-        height: 75
+        x: 0
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0474ad2e49275e848a0cad6db84e2ec0
-      internalID: 1949081591
+      spriteID: 52818e8039d91ee40b1263239afe0332
+      internalID: -181845477
       vertices: []
       indices: 
       edges: []
@@ -351,10 +351,10 @@ TextureImporter:
       name: gear_11
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 300
-        width: 100
-        height: 75
+        x: 200
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b5aa04613a66e843b0c5dbccbe59054
-      internalID: 859902610
+      spriteID: 26936127ee70ee54b815c9b942b041db
+      internalID: -2083443737
       vertices: []
       indices: 
       edges: []
@@ -372,10 +372,10 @@ TextureImporter:
       name: gear_12
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 300
-        width: 100
-        height: 75
+        x: 400
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,8 +383,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12023c3f6ecc49342bd95e3118acc0dd
-      internalID: 189242200
+      spriteID: 56340add12cf78b41ac44ab73a93492d
+      internalID: 1538006414
       vertices: []
       indices: 
       edges: []
@@ -393,10 +393,10 @@ TextureImporter:
       name: gear_13
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 300
-        width: 100
-        height: 75
+        x: 600
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,8 +404,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 908d47ade9f492549a444c3fbb26b944
-      internalID: -1168584395
+      spriteID: 50317f13cf50a37458a61a80c7b7a4be
+      internalID: -278213360
       vertices: []
       indices: 
       edges: []
@@ -414,10 +414,10 @@ TextureImporter:
       name: gear_14
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 300
-        width: 100
-        height: 75
+        x: 800
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,8 +425,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b12e5b5b34e248c4d92c0bd536878393
-      internalID: -777822370
+      spriteID: db33ea1168943554eafaa2825b5c3a5d
+      internalID: 1023165228
       vertices: []
       indices: 
       edges: []
@@ -435,10 +435,10 @@ TextureImporter:
       name: gear_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 225
-        width: 100
-        height: 75
+        x: 1000
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,8 +446,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa041c95c495f9a4e9d4cf9a8ee354a4
-      internalID: 109279744
+      spriteID: 05ceb07b146434b4bad906caacfbb818
+      internalID: 243648116
       vertices: []
       indices: 
       edges: []
@@ -456,10 +456,10 @@ TextureImporter:
       name: gear_16
       rect:
         serializedVersion: 2
-        x: 100
-        y: 225
-        width: 100
-        height: 75
+        x: 1200
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,8 +467,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00a8fd09d8192e64dac96c837e232ea1
-      internalID: -1416995373
+      spriteID: ae37b9463d1a36d4ca4c6c3380414fe8
+      internalID: -1165806443
       vertices: []
       indices: 
       edges: []
@@ -477,10 +477,10 @@ TextureImporter:
       name: gear_17
       rect:
         serializedVersion: 2
-        x: 200
-        y: 225
-        width: 100
-        height: 75
+        x: 1400
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,8 +488,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba34791c85eeec34db4ba5f08f3d9efc
-      internalID: -1031174586
+      spriteID: 2acc76abdeb7aa54898f2c37393bf34c
+      internalID: 365299268
       vertices: []
       indices: 
       edges: []
@@ -498,10 +498,10 @@ TextureImporter:
       name: gear_18
       rect:
         serializedVersion: 2
-        x: 300
-        y: 225
-        width: 100
-        height: 75
+        x: 1600
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,8 +509,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48449735057bdaa4ab815ce8d1252894
-      internalID: 556104011
+      spriteID: af55a74fd44a4c14093f3480c2518739
+      internalID: -1370743509
       vertices: []
       indices: 
       edges: []
@@ -519,10 +519,10 @@ TextureImporter:
       name: gear_19
       rect:
         serializedVersion: 2
-        x: 400
-        y: 225
-        width: 100
-        height: 75
+        x: 1800
+        y: 1050
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,8 +530,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c00c3b84d4e94a34c8896da2cb37564a
-      internalID: 1932675937
+      spriteID: d89d6d8c591bf5f4f8774d936aa584e3
+      internalID: 230663553
       vertices: []
       indices: 
       edges: []
@@ -540,10 +540,10 @@ TextureImporter:
       name: gear_20
       rect:
         serializedVersion: 2
-        x: 500
-        y: 225
-        width: 100
-        height: 75
+        x: 0
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,8 +551,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff434c20f648f642a5faee261bdedf3
-      internalID: 219846124
+      spriteID: 8cf2c01b477a0d945b2ff7c1e0702c37
+      internalID: 633811915
       vertices: []
       indices: 
       edges: []
@@ -561,10 +561,10 @@ TextureImporter:
       name: gear_21
       rect:
         serializedVersion: 2
-        x: 600
-        y: 225
-        width: 100
-        height: 75
+        x: 200
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,8 +572,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a0c5a938a451a43bcfb91159e84c9b
-      internalID: 1390092686
+      spriteID: 6cc9a7599d1adf8408edace103e9768a
+      internalID: 1409264479
       vertices: []
       indices: 
       edges: []
@@ -582,10 +582,10 @@ TextureImporter:
       name: gear_22
       rect:
         serializedVersion: 2
-        x: 700
-        y: 225
-        width: 100
-        height: 75
+        x: 400
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,8 +593,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d5ea5c93ed1ea841a9ee144be9ae0f2
-      internalID: 1614779285
+      spriteID: 7a258df192b652047819439ac3038b74
+      internalID: -1109773579
       vertices: []
       indices: 
       edges: []
@@ -603,10 +603,10 @@ TextureImporter:
       name: gear_23
       rect:
         serializedVersion: 2
-        x: 800
-        y: 225
-        width: 100
-        height: 75
+        x: 600
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,8 +614,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9909cbe278851c4382fac27bea3c029
-      internalID: -1222920404
+      spriteID: 0461d4210257e984b8ecf99fd4eab8f4
+      internalID: -1806447198
       vertices: []
       indices: 
       edges: []
@@ -624,10 +624,10 @@ TextureImporter:
       name: gear_24
       rect:
         serializedVersion: 2
-        x: 900
-        y: 225
-        width: 100
-        height: 75
+        x: 800
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -635,8 +635,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eece3b357400dec489cd4054c3714cb1
-      internalID: -1640788227
+      spriteID: 6e565484c4836ab45b60dc818556ae23
+      internalID: 92379995
       vertices: []
       indices: 
       edges: []
@@ -646,9 +646,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1000
-        y: 225
-        width: 100
-        height: 75
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,8 +656,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8df0640a18d9b11438fc98afe3b78373
-      internalID: 1408534992
+      spriteID: a57fd741669a0b540987c75c43e76cd4
+      internalID: 1874212176
       vertices: []
       indices: 
       edges: []
@@ -666,10 +666,10 @@ TextureImporter:
       name: gear_26
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 225
-        width: 100
-        height: 75
+        x: 1200
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -677,8 +677,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48fe17452d1b5c3419dff5762ceb5ba0
-      internalID: -1670360079
+      spriteID: b6b977259fc74db4eb0c4abd189a4b19
+      internalID: 1434846113
       vertices: []
       indices: 
       edges: []
@@ -687,10 +687,10 @@ TextureImporter:
       name: gear_27
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 225
-        width: 100
-        height: 75
+        x: 1400
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -698,8 +698,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d492a2cfe9489ec4ebf61da5aa6ae812
-      internalID: -1499912677
+      spriteID: 5d3788972c863aa4890049a19faec44e
+      internalID: -2115203366
       vertices: []
       indices: 
       edges: []
@@ -708,10 +708,10 @@ TextureImporter:
       name: gear_28
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 225
-        width: 100
-        height: 75
+        x: 1600
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -719,8 +719,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37d5de267c5b59f4c8c6ddf42a321824
-      internalID: 1712400782
+      spriteID: 171a37b99fd2ed640b0497385a8c08c9
+      internalID: 541486545
       vertices: []
       indices: 
       edges: []
@@ -729,10 +729,10 @@ TextureImporter:
       name: gear_29
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 225
-        width: 100
-        height: 75
+        x: 1800
+        y: 900
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,8 +740,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 071f350c0639e254792c87aecafc0c0d
-      internalID: 1609114743
+      spriteID: cb9feaeec4ea5f14fb8f5d93cf4cebb3
+      internalID: 68379407
       vertices: []
       indices: 
       edges: []
@@ -751,9 +751,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 150
-        width: 100
-        height: 75
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -761,8 +761,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f241e599f293c3438020e6cddcad109
-      internalID: 1843205731
+      spriteID: 720dc9d0d3a28f843a0e49e87b8a8224
+      internalID: 600203134
       vertices: []
       indices: 
       edges: []
@@ -771,10 +771,10 @@ TextureImporter:
       name: gear_31
       rect:
         serializedVersion: 2
-        x: 100
-        y: 150
-        width: 100
-        height: 75
+        x: 200
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -782,8 +782,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccb7ac196871d5644a8c4a83d7d519ff
-      internalID: 1167242563
+      spriteID: 2b7b34ba38e0a604688b6ba3cb749b40
+      internalID: 2037181035
       vertices: []
       indices: 
       edges: []
@@ -792,10 +792,10 @@ TextureImporter:
       name: gear_32
       rect:
         serializedVersion: 2
-        x: 200
-        y: 150
-        width: 100
-        height: 75
+        x: 400
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -803,8 +803,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5bebef50c06f6c4690bc98c1117b7f4
-      internalID: -688927757
+      spriteID: a73a218959400de49a765bd240b30354
+      internalID: -2140234962
       vertices: []
       indices: 
       edges: []
@@ -813,10 +813,10 @@ TextureImporter:
       name: gear_33
       rect:
         serializedVersion: 2
-        x: 300
-        y: 150
-        width: 100
-        height: 75
+        x: 600
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -824,8 +824,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b10639d998807144894be2874db6fb8a
-      internalID: -868562214
+      spriteID: b20c32a728bd7bb40960d48559b4ed80
+      internalID: 1416474000
       vertices: []
       indices: 
       edges: []
@@ -834,10 +834,10 @@ TextureImporter:
       name: gear_34
       rect:
         serializedVersion: 2
-        x: 400
-        y: 150
-        width: 100
-        height: 75
+        x: 800
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -845,8 +845,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e71b4017e862547a669f34f24d4921
-      internalID: 1202754026
+      spriteID: 08376573a95ac7f43ba790cf0aefd62f
+      internalID: -737808307
       vertices: []
       indices: 
       edges: []
@@ -855,10 +855,10 @@ TextureImporter:
       name: gear_35
       rect:
         serializedVersion: 2
-        x: 500
-        y: 150
-        width: 100
-        height: 75
+        x: 1000
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -866,8 +866,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23ed0dac8cf945e468ba2309ecbb2163
-      internalID: 826462690
+      spriteID: 175811312c9c3954ba4d3fe8e57ea05d
+      internalID: 1637467558
       vertices: []
       indices: 
       edges: []
@@ -876,10 +876,10 @@ TextureImporter:
       name: gear_36
       rect:
         serializedVersion: 2
-        x: 600
-        y: 150
-        width: 100
-        height: 75
+        x: 1200
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,8 +887,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77ae1072a904cbb4d8ebf6c7bf2908ba
-      internalID: -512213397
+      spriteID: a50697f7516029e4eafb5f3995d8ed6e
+      internalID: 2068615592
       vertices: []
       indices: 
       edges: []
@@ -897,10 +897,10 @@ TextureImporter:
       name: gear_37
       rect:
         serializedVersion: 2
-        x: 700
-        y: 150
-        width: 100
-        height: 75
+        x: 1400
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -908,8 +908,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a490ded45136c034f880e200350ade3f
-      internalID: 9467591
+      spriteID: 29ff57558d53c6f4f96d0b02f109e590
+      internalID: -883871474
       vertices: []
       indices: 
       edges: []
@@ -918,10 +918,10 @@ TextureImporter:
       name: gear_38
       rect:
         serializedVersion: 2
-        x: 800
-        y: 150
-        width: 100
-        height: 75
+        x: 1600
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -929,8 +929,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 324d1305060b63948809f187cc633f1f
-      internalID: 863582235
+      spriteID: 3793d5ddadf7afb448059733aee87635
+      internalID: -1613790941
       vertices: []
       indices: 
       edges: []
@@ -939,10 +939,10 @@ TextureImporter:
       name: gear_39
       rect:
         serializedVersion: 2
-        x: 900
-        y: 150
-        width: 100
-        height: 75
+        x: 1800
+        y: 750
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -950,8 +950,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2803c2d94f29eae45b3a2412dc8f9bb0
-      internalID: 407933066
+      spriteID: d67c8deb3d83e4e4f8eb537620ae960c
+      internalID: 325220731
       vertices: []
       indices: 
       edges: []
@@ -960,10 +960,10 @@ TextureImporter:
       name: gear_40
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 150
-        width: 100
-        height: 75
+        x: 0
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -971,8 +971,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88531d6e95455b040ba800764a704185
-      internalID: 1949683533
+      spriteID: 922330c2296e30a4ea0167bee8331573
+      internalID: 733691391
       vertices: []
       indices: 
       edges: []
@@ -981,10 +981,10 @@ TextureImporter:
       name: gear_41
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 150
-        width: 100
-        height: 75
+        x: 200
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -992,8 +992,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22cef9715c292a046b5bcc69101042cc
-      internalID: 1276033792
+      spriteID: 6ac883e4da0493e47948909f0935580c
+      internalID: -831313760
       vertices: []
       indices: 
       edges: []
@@ -1002,10 +1002,10 @@ TextureImporter:
       name: gear_42
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 150
-        width: 100
-        height: 75
+        x: 400
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1013,8 +1013,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9df787769e60b3a47bb76ca7bb85254a
-      internalID: 1415063924
+      spriteID: 9ffa7eefcfdb60d4abce5b6e897240f2
+      internalID: 1683427883
       vertices: []
       indices: 
       edges: []
@@ -1023,10 +1023,10 @@ TextureImporter:
       name: gear_43
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 150
-        width: 100
-        height: 75
+        x: 600
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1034,8 +1034,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e9d3bde0d951b94c915425f440edec3
-      internalID: -804054216
+      spriteID: aad241e0994902a49bc6648af4997a3e
+      internalID: -1929288895
       vertices: []
       indices: 
       edges: []
@@ -1044,10 +1044,10 @@ TextureImporter:
       name: gear_44
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 150
-        width: 100
-        height: 75
+        x: 800
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1055,8 +1055,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66741e232db907749939ca29174b62da
-      internalID: 257560224
+      spriteID: 8c901396fbec3dd4fbc40053f5f3b392
+      internalID: -427737125
       vertices: []
       indices: 
       edges: []
@@ -1065,10 +1065,10 @@ TextureImporter:
       name: gear_45
       rect:
         serializedVersion: 2
-        x: 0
-        y: 75
-        width: 100
-        height: 75
+        x: 1000
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1076,8 +1076,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f3fe37c77d0aa47985796ca0585b58
-      internalID: -305494812
+      spriteID: 675bcf56a1af1f54aa1716133986163b
+      internalID: 3139509
       vertices: []
       indices: 
       edges: []
@@ -1086,10 +1086,10 @@ TextureImporter:
       name: gear_46
       rect:
         serializedVersion: 2
-        x: 100
-        y: 75
-        width: 100
-        height: 75
+        x: 1200
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1097,8 +1097,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3257a4dd01a1e64ab451e08ce00e1d8
-      internalID: 476003676
+      spriteID: 3001e837c5340c14193dd623f3432713
+      internalID: -1241210647
       vertices: []
       indices: 
       edges: []
@@ -1107,10 +1107,10 @@ TextureImporter:
       name: gear_47
       rect:
         serializedVersion: 2
-        x: 200
-        y: 75
-        width: 100
-        height: 75
+        x: 1400
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1118,8 +1118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c2561dd82c390d48be3cb976f75be97
-      internalID: 44571785
+      spriteID: ffbcb92c5a97f5144a83702adf185420
+      internalID: -1761485105
       vertices: []
       indices: 
       edges: []
@@ -1128,10 +1128,10 @@ TextureImporter:
       name: gear_48
       rect:
         serializedVersion: 2
-        x: 300
-        y: 75
-        width: 100
-        height: 75
+        x: 1600
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1139,8 +1139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d7352b9f4bb68243a4062f615bf4668
-      internalID: -1389881235
+      spriteID: 5786b475ba27cc749bbfca76a76f6774
+      internalID: -17045163
       vertices: []
       indices: 
       edges: []
@@ -1149,10 +1149,10 @@ TextureImporter:
       name: gear_49
       rect:
         serializedVersion: 2
-        x: 400
-        y: 75
-        width: 100
-        height: 75
+        x: 1800
+        y: 600
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1160,8 +1160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7c312e7c1cfa564bb472c9519dba2ad
-      internalID: -623408471
+      spriteID: 606e299ecd362a245a253990d27903d2
+      internalID: -1863765458
       vertices: []
       indices: 
       edges: []
@@ -1170,10 +1170,10 @@ TextureImporter:
       name: gear_50
       rect:
         serializedVersion: 2
-        x: 500
-        y: 75
-        width: 100
-        height: 75
+        x: 0
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1181,8 +1181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bf85affeed97e0489e517e1b9c1df5e
-      internalID: -456657145
+      spriteID: cdf3b505105978948b36cd2d0036511f
+      internalID: -645264579
       vertices: []
       indices: 
       edges: []
@@ -1191,10 +1191,10 @@ TextureImporter:
       name: gear_51
       rect:
         serializedVersion: 2
-        x: 600
-        y: 75
-        width: 100
-        height: 75
+        x: 200
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1202,8 +1202,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1933800cb487fd945818c56f0796a8b2
-      internalID: 1710826159
+      spriteID: 1d54241dbbb274c4f83fc815ec34f7a7
+      internalID: 1497314083
       vertices: []
       indices: 
       edges: []
@@ -1212,10 +1212,10 @@ TextureImporter:
       name: gear_52
       rect:
         serializedVersion: 2
-        x: 700
-        y: 75
-        width: 100
-        height: 75
+        x: 400
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1223,8 +1223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed20a80db5c314942a49afdf72e11df1
-      internalID: 2019677496
+      spriteID: b4a9cef2d9a7a2c49b3cbcae5be17de8
+      internalID: -2062181950
       vertices: []
       indices: 
       edges: []
@@ -1233,10 +1233,10 @@ TextureImporter:
       name: gear_53
       rect:
         serializedVersion: 2
-        x: 800
-        y: 75
-        width: 100
-        height: 75
+        x: 600
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1244,8 +1244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7df7e381532689b4594e27cf26b3f5f5
-      internalID: 245487829
+      spriteID: bf906b1e270b3804d8a856194c863461
+      internalID: 1842417744
       vertices: []
       indices: 
       edges: []
@@ -1254,10 +1254,10 @@ TextureImporter:
       name: gear_54
       rect:
         serializedVersion: 2
-        x: 900
-        y: 75
-        width: 100
-        height: 75
+        x: 800
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1265,8 +1265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4285098706323d45b2e57ec8491836a
-      internalID: -544863035
+      spriteID: 5c5fa3472829a8342be58102f00957f6
+      internalID: -1486178
       vertices: []
       indices: 
       edges: []
@@ -1276,9 +1276,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1000
-        y: 75
-        width: 100
-        height: 75
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1286,8 +1286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ef4d71d69bbd2e49a135a1981bf29b1
-      internalID: 548781166
+      spriteID: 96b8a8e7b7af66341949e2bced8fbd94
+      internalID: -601952571
       vertices: []
       indices: 
       edges: []
@@ -1296,10 +1296,10 @@ TextureImporter:
       name: gear_56
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 75
-        width: 100
-        height: 75
+        x: 1200
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1307,8 +1307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b41dd332b11024fad88568986a4a57
-      internalID: -1566218718
+      spriteID: 987e3c58abd12924a912b02e8a13a46e
+      internalID: 950034157
       vertices: []
       indices: 
       edges: []
@@ -1317,10 +1317,10 @@ TextureImporter:
       name: gear_57
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 75
-        width: 100
-        height: 75
+        x: 1400
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1328,8 +1328,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c803d141ea09f414aaa44d21cb95f588
-      internalID: 540243612
+      spriteID: 9726172903e7a6c4c8a667f1f9d16afb
+      internalID: -131595546
       vertices: []
       indices: 
       edges: []
@@ -1338,10 +1338,10 @@ TextureImporter:
       name: gear_58
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 75
-        width: 100
-        height: 75
+        x: 1600
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1349,8 +1349,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 178c54a1799f9ff4bb0cd15c7861873d
-      internalID: -1312650942
+      spriteID: 6fbc0d8df7d3af0479323ff932f28ccd
+      internalID: -839184783
       vertices: []
       indices: 
       edges: []
@@ -1359,10 +1359,10 @@ TextureImporter:
       name: gear_59
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 75
-        width: 100
-        height: 75
+        x: 1800
+        y: 450
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1370,8 +1370,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 518b76166bde9d54f909c31fc069f772
-      internalID: -1216377704
+      spriteID: e45c275fb7863cd46a5309708d644b9f
+      internalID: 1626011547
       vertices: []
       indices: 
       edges: []
@@ -1381,9 +1381,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 100
-        height: 75
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1391,8 +1391,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0879368c53d94d448ba9f43f3b1930d
-      internalID: -1984311788
+      spriteID: 85363465a50377745ad9d63af3fefa3a
+      internalID: 174624044
       vertices: []
       indices: 
       edges: []
@@ -1401,10 +1401,10 @@ TextureImporter:
       name: gear_61
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 100
-        height: 75
+        x: 200
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1412,8 +1412,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b2570e56144a6449b576e578042649d
-      internalID: 1592013726
+      spriteID: 8dce30fe929e42541b646a415651a6e6
+      internalID: 1671718617
       vertices: []
       indices: 
       edges: []
@@ -1422,10 +1422,10 @@ TextureImporter:
       name: gear_62
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 100
-        height: 75
+        x: 400
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1433,8 +1433,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc670cc1fb1408b4c832ce9e7ca9b867
-      internalID: 596377803
+      spriteID: a94d6c097c8312b46bd12a61c1ea8779
+      internalID: -467189401
       vertices: []
       indices: 
       edges: []
@@ -1443,10 +1443,10 @@ TextureImporter:
       name: gear_63
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 100
-        height: 75
+        x: 600
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1454,8 +1454,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb3297cf8333f864c8145789dc5da9cb
-      internalID: 337041510
+      spriteID: a846f2d28de9e954880d539b5d7f5474
+      internalID: 1581280007
       vertices: []
       indices: 
       edges: []
@@ -1464,10 +1464,10 @@ TextureImporter:
       name: gear_64
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 100
-        height: 75
+        x: 800
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1475,8 +1475,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0656cd05a7465694c91f64671c7902aa
-      internalID: 338246967
+      spriteID: c51e97f17e7b2804fa196062805a8f9c
+      internalID: -736064152
       vertices: []
       indices: 
       edges: []
@@ -1485,10 +1485,10 @@ TextureImporter:
       name: gear_65
       rect:
         serializedVersion: 2
-        x: 500
-        y: 0
-        width: 100
-        height: 75
+        x: 1000
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1496,8 +1496,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4e51b0dac805e143ab908bea7c3e211
-      internalID: -1070877927
+      spriteID: 8db4fbb8ff3f05347a82e8f3460a7542
+      internalID: 1803028520
       vertices: []
       indices: 
       edges: []
@@ -1506,10 +1506,10 @@ TextureImporter:
       name: gear_66
       rect:
         serializedVersion: 2
-        x: 600
-        y: 0
-        width: 100
-        height: 75
+        x: 1200
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1517,8 +1517,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc7e3e26504a0bc45afad2d420627289
-      internalID: -884972435
+      spriteID: 6c7d1e250f9a9c6429c7e250261cb2d7
+      internalID: -669975930
       vertices: []
       indices: 
       edges: []
@@ -1527,10 +1527,10 @@ TextureImporter:
       name: gear_67
       rect:
         serializedVersion: 2
-        x: 700
-        y: 0
-        width: 100
-        height: 75
+        x: 1400
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1538,8 +1538,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc02b8eb2993d9a49a03401b73ac1dae
-      internalID: -1731471831
+      spriteID: 670288cc3a0397343b3f8d64caa0867f
+      internalID: 1874408878
       vertices: []
       indices: 
       edges: []
@@ -1548,10 +1548,10 @@ TextureImporter:
       name: gear_68
       rect:
         serializedVersion: 2
-        x: 800
-        y: 0
-        width: 100
-        height: 75
+        x: 1600
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1559,8 +1559,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c210378d01d7ba340b1140cd563571c2
-      internalID: 1658742137
+      spriteID: c8548ecb3506abc469cc6d11218663ca
+      internalID: -668030845
       vertices: []
       indices: 
       edges: []
@@ -1569,10 +1569,10 @@ TextureImporter:
       name: gear_69
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 100
-        height: 75
+        x: 1800
+        y: 300
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1580,8 +1580,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 398fe7e0d63ef3e42ad46474d97b89e3
-      internalID: 507489069
+      spriteID: 2c4691df400f69341a34d80c9e3467bc
+      internalID: -1860946222
       vertices: []
       indices: 
       edges: []
@@ -1590,10 +1590,10 @@ TextureImporter:
       name: gear_70
       rect:
         serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 100
-        height: 75
+        x: 0
+        y: 150
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1601,8 +1601,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73b05ddb95f363e4bb2495d4ce9d1847
-      internalID: 1428376689
+      spriteID: 8900181357e2f6b4ea9e0d6574d857eb
+      internalID: 1915147356
       vertices: []
       indices: 
       edges: []
@@ -1611,10 +1611,10 @@ TextureImporter:
       name: gear_71
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 0
-        width: 100
-        height: 75
+        x: 200
+        y: 150
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1622,8 +1622,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 229d2448b4a88fd46bda5b0bf7481889
-      internalID: -759711120
+      spriteID: b05af6f30f27af149b77bd678e565b3d
+      internalID: 2132140202
       vertices: []
       indices: 
       edges: []
@@ -1632,10 +1632,10 @@ TextureImporter:
       name: gear_72
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 100
-        height: 75
+        x: 400
+        y: 150
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1643,8 +1643,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77e30e499e1067a4f8875f9ae54fe99c
-      internalID: 599485231
+      spriteID: 12cbb12898130024c89da7ab092abb59
+      internalID: -442337944
       vertices: []
       indices: 
       edges: []
@@ -1653,10 +1653,10 @@ TextureImporter:
       name: gear_73
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 0
-        width: 100
-        height: 75
+        x: 600
+        y: 150
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1664,8 +1664,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32dadcee971e4e549bb6d0efeac526b5
-      internalID: 973751101
+      spriteID: 5ed1f26294a97ec41ab92a63c4129d5e
+      internalID: -921687015
       vertices: []
       indices: 
       edges: []
@@ -1674,10 +1674,10 @@ TextureImporter:
       name: gear_74
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 0
-        width: 100
-        height: 75
+        x: 800
+        y: 150
+        width: 200
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1685,8 +1685,260 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b825fb2fd26e4c47937c8e0f08d53a4
-      internalID: 1471196920
+      spriteID: d288b74ef0c0dfd438528dc83ad52355
+      internalID: -786659830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_75
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 150
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29604db667728b84091415a3213e0dc4
+      internalID: -1303686434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_76
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 150
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 284cbacf1efe38a40b05904217d19dbd
+      internalID: 1183740466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_77
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 150
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3618a782cf84b4db9e3cb828a20441
+      internalID: -1687859299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_78
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 150
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad684d4e2571444b908a238228b8740
+      internalID: 12800747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_79
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 150
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c50729e58581a4583460802c93b310
+      internalID: -2147461493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5cc27b09b68a684aa001025d50069b7
+      internalID: -636458340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_81
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2dda0a9d3ac034428b3da39ab75f3e7
+      internalID: 1411082343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_82
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a35963c3615054a8c1f64de9374bec
+      internalID: 1597726370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_83
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d907dbd24a2570c4eac1ccdcb63ef5a1
+      internalID: 386500032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_84
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f698f0f11f40a499c71f12c632749a
+      internalID: 854614751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_85
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc6efe20d8960143931194cb4b02117
+      internalID: -505700300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gear_86
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf3aa841391b274faa75b55b22089df
+      internalID: -236613844
       vertices: []
       indices: 
       edges: []
@@ -1702,81 +1954,93 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gear_0: -556538509
-      gear_1: -1470708451
-      gear_10: 1949081591
-      gear_11: 859902610
-      gear_12: 189242200
-      gear_13: -1168584395
-      gear_14: -777822370
-      gear_15: 109279744
-      gear_16: -1416995373
-      gear_17: -1031174586
-      gear_18: 556104011
-      gear_19: 1932675937
-      gear_2: 1133908705
-      gear_20: 219846124
-      gear_21: 1390092686
-      gear_22: 1614779285
-      gear_23: -1222920404
-      gear_24: -1640788227
-      gear_25: 1408534992
-      gear_26: -1670360079
-      gear_27: -1499912677
-      gear_28: 1712400782
-      gear_29: 1609114743
-      gear_3: -1995114882
-      gear_30: 1843205731
-      gear_31: 1167242563
-      gear_32: -688927757
-      gear_33: -868562214
-      gear_34: 1202754026
-      gear_35: 826462690
-      gear_36: -512213397
-      gear_37: 9467591
-      gear_38: 863582235
-      gear_39: 407933066
-      gear_4: 253305658
-      gear_40: 1949683533
-      gear_41: 1276033792
-      gear_42: 1415063924
-      gear_43: -804054216
-      gear_44: 257560224
-      gear_45: -305494812
-      gear_46: 476003676
-      gear_47: 44571785
-      gear_48: -1389881235
-      gear_49: -623408471
-      gear_5: 692235059
-      gear_50: -456657145
-      gear_51: 1710826159
-      gear_52: 2019677496
-      gear_53: 245487829
-      gear_54: -544863035
-      gear_55: 548781166
-      gear_56: -1566218718
-      gear_57: 540243612
-      gear_58: -1312650942
-      gear_59: -1216377704
-      gear_6: 128759807
-      gear_60: -1984311788
-      gear_61: 1592013726
-      gear_62: 596377803
-      gear_63: 337041510
-      gear_64: 338246967
-      gear_65: -1070877927
-      gear_66: -884972435
-      gear_67: -1731471831
-      gear_68: 1658742137
-      gear_69: 507489069
-      gear_7: -677610475
-      gear_70: 1428376689
-      gear_71: -759711120
-      gear_72: 599485231
-      gear_73: 973751101
-      gear_74: 1471196920
-      gear_8: -1999838356
-      gear_9: -775628063
+      gear_0: 793735765
+      gear_1: -1377525242
+      gear_10: -181845477
+      gear_11: -2083443737
+      gear_12: 1538006414
+      gear_13: -278213360
+      gear_14: 1023165228
+      gear_15: 243648116
+      gear_16: -1165806443
+      gear_17: 365299268
+      gear_18: -1370743509
+      gear_19: 230663553
+      gear_2: -1831129101
+      gear_20: 633811915
+      gear_21: 1409264479
+      gear_22: -1109773579
+      gear_23: -1806447198
+      gear_24: 92379995
+      gear_25: 1874212176
+      gear_26: 1434846113
+      gear_27: -2115203366
+      gear_28: 541486545
+      gear_29: 68379407
+      gear_3: 776570219
+      gear_30: 600203134
+      gear_31: 2037181035
+      gear_32: -2140234962
+      gear_33: 1416474000
+      gear_34: -737808307
+      gear_35: 1637467558
+      gear_36: 2068615592
+      gear_37: -883871474
+      gear_38: -1613790941
+      gear_39: 325220731
+      gear_4: -151863543
+      gear_40: 733691391
+      gear_41: -831313760
+      gear_42: 1683427883
+      gear_43: -1929288895
+      gear_44: -427737125
+      gear_45: 3139509
+      gear_46: -1241210647
+      gear_47: -1761485105
+      gear_48: -17045163
+      gear_49: -1863765458
+      gear_5: 1803681040
+      gear_50: -645264579
+      gear_51: 1497314083
+      gear_52: -2062181950
+      gear_53: 1842417744
+      gear_54: -1486178
+      gear_55: -601952571
+      gear_56: 950034157
+      gear_57: -131595546
+      gear_58: -839184783
+      gear_59: 1626011547
+      gear_6: -863520628
+      gear_60: 174624044
+      gear_61: 1671718617
+      gear_62: -467189401
+      gear_63: 1581280007
+      gear_64: -736064152
+      gear_65: 1803028520
+      gear_66: -669975930
+      gear_67: 1874408878
+      gear_68: -668030845
+      gear_69: -1860946222
+      gear_7: -1404530797
+      gear_70: 1915147356
+      gear_71: 2132140202
+      gear_72: -442337944
+      gear_73: -921687015
+      gear_74: -786659830
+      gear_75: -1303686434
+      gear_76: 1183740466
+      gear_77: -1687859299
+      gear_78: 12800747
+      gear_79: -2147461493
+      gear_8: -2125074959
+      gear_80: -636458340
+      gear_81: 1411082343
+      gear_82: 1597726370
+      gear_83: 386500032
+      gear_84: 854614751
+      gear_85: -505700300
+      gear_86: -236613844
+      gear_9: -323354675
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
