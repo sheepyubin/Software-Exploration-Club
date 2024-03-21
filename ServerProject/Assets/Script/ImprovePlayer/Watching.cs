@@ -5,24 +5,21 @@ using UnityEngine;
 
 public class Watching : MonoBehaviourPunCallbacks
 {
-    public PlayerContainer PlayerContainer;
-    //public Follow follow;
+    public PlayerData playerData;
+
+    private Player player;
     private Rigidbody2D rb;
-    private string playerID;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        playerID = PhotonNetwork.LocalPlayer.UserId;
+        player = playerData.Returnplayer();
     }
 
     private void Update()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && player.ReturnisDead())
         {
-            //follow.isDead = true;
-
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 

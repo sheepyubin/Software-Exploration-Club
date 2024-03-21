@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 1913194559630917595}
   - component: {fileID: 8363619694602588502}
   - component: {fileID: 5222009895502270889}
+  - component: {fileID: 7433027793739419131}
   m_Layer: 9
   m_Name: user
   m_TagString: Player
@@ -271,6 +272,7 @@ MonoBehaviour:
   moveTowardsSpeed: 15
   ropeLauncher: {fileID: 4594634228712182782}
   ghost: {fileID: 8123200311880743574}
+  playerData: {fileID: 8363619694602588502}
   canDash: 1
   isDashing: 0
   isGrounded: 0
@@ -411,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
   isCreate: 0
+  isDead: 0
 --- !u!114 &5222009895502270889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +424,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8144625ed945f0e4cb734e875f866852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 8363619694602588502}
+--- !u!114 &7433027793739419131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594634228712182773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcc39cda97588849bb694fcead8068d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 8363619694602588502}

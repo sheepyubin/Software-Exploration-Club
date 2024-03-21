@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     public bool isCreate = false; // 플레이어 객체가 생성 되었는가?
 
     string userID; // 유저 UI
-    bool isDead; // 죽었는가?
+    public bool isDead; // 죽었는가?
     int score; // 점수
     Color color; // 색상
     int newScore; // 추가 할 점수

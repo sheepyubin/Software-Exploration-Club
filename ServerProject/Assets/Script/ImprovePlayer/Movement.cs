@@ -12,6 +12,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     public float moveTowardsSpeed = 5f;
     public RopeLauncher ropeLauncher;
     public GhostEffect ghost;
+    public PlayerData playerData;
 
     public bool canDash = true;
     public bool isDashing;
@@ -36,7 +37,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine)
+        if (photonView != null && photonView.IsMine && !playerData.isDead)
         {
             if (isDashing)
             {
@@ -88,7 +89,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine)
+        if (photonView != null && photonView.IsMine && !playerData.isDead)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {

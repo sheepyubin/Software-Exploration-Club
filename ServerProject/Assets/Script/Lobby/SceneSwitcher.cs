@@ -18,14 +18,14 @@ public class SceneSwitcher : MonoBehaviourPunCallbacks
             if (button != null)
             {
                 button.onClick.AddListener(OnButtonClick);
-                button.enabled = true;
+                button.gameObject.SetActive(true);
                 gameMode.SetActive(true);
             }
         }
         else
         {
             button.enabled = false;
-            gameMode.SetActive(false);
+            button.gameObject.SetActive(false);
         }
     }
 
