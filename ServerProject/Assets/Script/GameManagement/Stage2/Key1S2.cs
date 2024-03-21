@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Key1S2 : MonoBehaviour
 {
-    public KeyDataS2 keyData;  // 스테이지 1의 KeyData 스크립터블 오브젝트
+    public Stage2Data data;  // 스테이지 1의 KeyData 스크립터블 오브젝트
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +12,7 @@ public class Key1S2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Get Key #1");
-            keyData.Key1 = true; // 키 획득
+            data.Setkey1(true); // 키 획득
             Destroy(gameObject);
         }
     }
