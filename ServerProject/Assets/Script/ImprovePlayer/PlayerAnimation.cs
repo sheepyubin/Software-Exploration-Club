@@ -9,18 +9,28 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
     public RopeLauncher ropeLauncher; // 로프런처 스크립트
     private Animator ani; // 애니메이터 컴포넌트
     private Rigidbody2D rb; // 리지드바디 컴포넌트
+    private SpriteRenderer sp;
 
     bool isFalling;
+    bool flipx;
+
     void Start()
     {
         ani = GetComponent<Animator>(); // 애니메이터 초기화
         rb = GetComponent<Rigidbody2D>(); // 리지드바디 초기화
+        sp = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         if (photonView != null && photonView.IsMine)
         {
+
+            if (rb.velocity.x < 0)
+                flipx = true;
+            else
+                flipx = false;
+
             // 이 코드는 로컬 플레이어에게만 적용됩니다.
             float moveInput = Input.GetAxis("Horizontal"); // 가로 입력값
 
@@ -41,7 +51,6 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (rb.velocity.y > 0) // y 증가량이 > 0 이라면 
                     ani.SetBool("isJumping", true);
-
                 else if (rb.velocity.y < 0) // y 증가량이  < 0 이라면
                 {
                     ani.SetBool("isFalling", true);
@@ -68,12 +77,18 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
                 ani.SetBool("isDashing", false);
 
             // 애니메이션 상태를 다른 플레이어에게 동기화합니다.
-            photonView.RPC("SyncAnimationState", RpcTarget.Others, moveInput != 0, Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled, !movement.isGrounded, movement.isClimbing, isFalling, Input.GetKey(KeyCode.LeftShift) && movement.canDash, !movement.isDashing);
+            photonView.RPC("SyncAnimationState", RpcTarget.Others,
+                           moveInput != 0,
+                           Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled,
+                           !movement.isGrounded,
+                           isFalling,
+                           Input.GetKey(KeyCode.LeftShift) && movement.canDash,
+                           flipx);
         }
     }
 
     [PunRPC]
-    void SyncAnimationState(bool isWalking, bool isClimbing, bool isJumping, bool isFalling, bool isDashing, bool isIdle)
+    void SyncAnimationState(bool isWalking, bool isClimbing, bool isJumping , bool isFalling, bool isDashing, bool flipx)
     {
         // 다른 플레이어의 애니메이션 상태를 동기화합니다.
         ani.SetBool("isWalk", isWalking);
@@ -81,8 +96,9 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
         ani.SetBool("isJumping", isJumping);
         ani.SetBool("isFalling", isFalling);
         ani.SetBool("isDashing", isDashing);
-        ani.SetBool("isIdle", isIdle);
+        sp.flipX = flipx;
     }
+
 
     // 네트워크에서 데이터를 수신할 때 호출됩니다.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

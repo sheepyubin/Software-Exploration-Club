@@ -18,6 +18,8 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
         // 변수 초기화
         distanceJoint.enabled = false;
         mainCamera = Camera.main;
+        lineRenderer.startColor = Color.white;
+        lineRenderer.endColor = Color.white;
     }
 
     void Update()
