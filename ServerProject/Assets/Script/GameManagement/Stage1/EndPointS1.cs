@@ -65,7 +65,6 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
 
     public void End()
     {
-        scoreBoard.SetActive(true);
         scoreBoardScrpit.Score();
 
         StartCoroutine(DelayedFunction(delayTIme));

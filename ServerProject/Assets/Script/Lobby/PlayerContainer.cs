@@ -38,6 +38,27 @@ public class PlayerContainer : ScriptableObject
         }
     }
 
+    public Color ReturnPlayerColorArray(int i)
+    {
+        Color[] scoresArray = new Color[playerColor.Count];
+        int index = 0;
+
+        foreach (var color in playerColor.Values)
+        {
+            scoresArray[index] = color;
+            index++;
+        }
+
+        if (i >= 0 && i < scoresArray.Length)
+        {
+            return scoresArray[i];
+        }
+        else
+        {
+            return Color.white;
+        }
+    }
+
     public void AddPlayerScore(string playerID, int score)
     {
         playerScore[playerID] = score;
@@ -52,6 +73,27 @@ public class PlayerContainer : ScriptableObject
         else
         {
             return -1;
+        }
+    }
+
+    public int ReturnPlayerScoreArray(int i)
+    {
+        int[] scoresArray = new int[playerScore.Count];
+        int index = 0;
+
+        foreach (var score in playerScore.Values)
+        {
+            scoresArray[index] = score;
+            index++;
+        }
+
+        if (i >= 0 && i < scoresArray.Length)
+        {
+            return scoresArray[i];
+        }
+        else
+        {
+            return 0;
         }
     }
 }
