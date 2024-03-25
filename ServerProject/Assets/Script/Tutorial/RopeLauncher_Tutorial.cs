@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RopeLauncher_Tutorial : MonoBehaviour
 {
@@ -55,6 +56,9 @@ public class RopeLauncher_Tutorial : MonoBehaviour
             if(temp>=2)
             step4 = true; // 튜토리얼 4단계 완료
         }
+
+        if (distanceJoint.enabled)
+            lineRenderer.SetPosition(1, transform.position);
     }
 
     void LaunchRope(Vector2 mousePos)
