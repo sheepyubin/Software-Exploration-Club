@@ -26,6 +26,7 @@ public class SceneSwitcher : MonoBehaviourPunCallbacks
         {
             button.enabled = false;
             button.gameObject.SetActive(false);
+            gameMode.SetActive(false);
         }
     }
 
