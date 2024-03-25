@@ -7,12 +7,16 @@ using UnityEngine.UIElements;
 public class DestroyPlatform : MonoBehaviour
 {
     [SerializeField]
-    GameObject platform;
+    float speed = 0.5f;
     [SerializeField]
-    float lifeTime = 3f;
-    void Start()
+    float destroyPos = -10.0f;
+    void Update()
     {
-        Destroy(platform, lifeTime);
+        transform.Translate(0, -this.speed, 0);
+        if (transform.position.y < destroyPos)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

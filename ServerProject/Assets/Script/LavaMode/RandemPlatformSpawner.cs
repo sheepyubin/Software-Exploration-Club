@@ -7,7 +7,8 @@ public class RandemPlatformSpawner : MonoBehaviour
     public GameObject prefab; // 생성할 프리팹
     public Vector2 minPosition; // 최소 위치
     public Vector2 maxPosition; // 최대 위치
-
+    float delta = 0.0f;
+    public float span = 1.0f;
     // 랜덤 좌표 생성 및 프리팹 생성 함수
     private void SpawnRandomPrefab()
     {
@@ -23,8 +24,10 @@ public class RandemPlatformSpawner : MonoBehaviour
     // 예시로 매 프레임마다 랜덤 프리팹을 생성하는 Update 함수
     void Update()
     {
-        if (Input.GetMouseButton(0)) // 스페이스 키를 누르면
+        this.delta += Time.deltaTime;
+        if (delta > span)
         {
+            delta = 0.0f;
             SpawnRandomPrefab(); // 랜덤 프리팹 생성
         }
     }
