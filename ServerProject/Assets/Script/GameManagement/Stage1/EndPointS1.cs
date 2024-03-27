@@ -12,6 +12,7 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme= 3f;
+    public PlayerContainer playerContainer;
 
     private void Start()
     {
@@ -28,9 +29,10 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
             Key2.SetActive(true);
 
         if (data.ReturnisClear())
-        {
             End();
-        }
+
+        if(playerContainer.ReturnPlayerisDeadAll())
+            End();
     }
     void OnTriggerEnter2D(Collider2D other)
     {

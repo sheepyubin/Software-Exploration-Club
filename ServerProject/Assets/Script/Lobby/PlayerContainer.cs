@@ -10,6 +10,7 @@ public class PlayerContainer : ScriptableObject
     public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>(); // 키(ID), 플레이어 프리팹
     public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // 키(ID), 색
     public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // 키(ID), 점수
+    public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>(); // 키(ID), 죽었는가?
 
     public void AddPlayerData(string playerID, GameObject player)
     {
@@ -95,5 +96,27 @@ public class PlayerContainer : ScriptableObject
         {
             return 0;
         }
+    }
+
+    public void AddPlayerisDead(string playerID, bool isDead)
+    {
+        playerisDead[playerID] = isDead;
+    }
+
+    public bool ReturnPlayerisDead(string playerID)
+    {
+        return playerisDead[playerID];
+    }
+
+    public bool ReturnPlayerisDeadAll()
+    {
+        foreach (var kvp in playerisDead)
+        {
+            if (!kvp.Value)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
