@@ -15,10 +15,12 @@ public class RandemPlatformSpawner : MonoBehaviour
         // 랜덤한 좌표 생성
         float randomX = Random.Range(minPosition.x, maxPosition.x);
         float randomY = Random.Range(minPosition.y, maxPosition.y);
-        Vector2 randomPosition = new Vector2(randomX, randomY);
+        Vector2 randomPosition = new Vector3(randomX, randomY, 0);
 
         // 프리팹 생성
-        Instantiate(prefab, randomPosition, Quaternion.identity);
+        GameObject gear = Instantiate(prefab);
+        gear.transform.position = new UnityEngine.Vector3(transform.position.x + randomX, transform.position.y + randomY, -1);
+        gear.transform.rotation = Quaternion.identity;
     }
 
     // 예시로 매 프레임마다 랜덤 프리팹을 생성하는 Update 함수

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 676393480029387083}
   - component: {fileID: 4399449312297182675}
   - component: {fileID: -2544946722345038645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Grappleable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098dfac4e54c8fd4cae70d308cf9eb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 0.01
   destroyPos: -10
 --- !u!61 &-2544946722345038645
 BoxCollider2D:
