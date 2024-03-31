@@ -81028,6 +81028,7 @@ MonoBehaviour:
   scoreBoard: {fileID: 727776151}
   scoreBoardScrpit: {fileID: 727776153}
   delayTIme: 3
+  playerContainer: {fileID: 0}
 --- !u!114 &1656987798
 MonoBehaviour:
   m_ObjectHideFlags: 0

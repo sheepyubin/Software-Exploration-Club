@@ -37,7 +37,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void FixedUpdate()
     {
-        if (photonView != null && photonView.IsMine && !playerData.isDead)
+        if (photonView != null && photonView.IsMine && !playerData.isDead && !playerData.isClear)
         {
             if (isDashing)
             {
@@ -89,7 +89,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine && !playerData.isDead)
+        if (photonView != null && photonView.IsMine && !playerData.isDead && !playerData.isClear)
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {

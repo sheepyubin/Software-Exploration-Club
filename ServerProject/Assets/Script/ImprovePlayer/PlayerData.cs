@@ -11,6 +11,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
     string userID; // 유저 UI
     public bool isDead; // 죽었는가?
+    public bool isClear; // 스테이지를 클리어 했는가?
     int score; // 점수
     Color color; // 색상
     int newScore; // 추가 할 점수
@@ -21,6 +22,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
         // 변수 초기화
         userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
+        isClear = false;
 
         if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScore에 아무 값도 없는가?
             score = 0;
