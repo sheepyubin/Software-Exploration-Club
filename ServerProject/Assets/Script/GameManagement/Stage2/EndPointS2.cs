@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EndPointS2 : MonoBehaviourPunCallbacks
 {
-    public Stage2Data data; //Stage2Data ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®
+    public Stage2Data data; //Stage2Data ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public string nextStage;
     public GameObject Key1;
     public GameObject Key2;
@@ -38,32 +38,32 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Player"))
         {
-            // Å°¸¦ ¸ðµÎ °¡Áö°í ÀÖ´Ù¸é
+            // Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
             if (data != null && data.Returnkey1() && data.Returnkey2())
             {
                 data.SetisClear(true);
 
-                // ½ºÅ×ÀÌÁö Å¬¸®¾î
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
                 Debug.Log("Success");
 
-                // ¾À ÀüÈ¯
+                // ï¿½ï¿½ ï¿½ï¿½È¯
                 Debug.Log(nextStage);
 
                 End();
             }
             else
             {
-                // ½ÇÆÐ
+                // ï¿½ï¿½ï¿½ï¿½
                 Debug.Log("Fail");
             }
         }
     }
 
-    // ¾À ÀüÈ¯ RPC ¸Þ¼­µå
+    // ï¿½ï¿½ ï¿½ï¿½È¯ RPC ï¿½Þ¼ï¿½ï¿½ï¿½
     [PunRPC]
     void SwitchScene(string sceneName)
     {
-        // ´ÙÀ½ ¾ÀÀ¸·Î ÀüÈ¯
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
         PhotonNetwork.LoadLevel(sceneName);
     }
 
