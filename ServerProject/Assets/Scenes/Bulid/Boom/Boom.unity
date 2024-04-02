@@ -498,37 +498,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &218000892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 218000893}
-  m_Layer: 0
-  m_Name: test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &218000893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218000892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6884673, y: -9.607841, z: -20.961784}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237555922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,8 +1143,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522771532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.0398, y: 28.6217, z: 0.9784782}
-  m_LocalScale: {x: 84.58328, y: 89.96042, z: 1}
+  m_LocalPosition: {x: 61.0398, y: 28.4912, z: 0.9784782}
+  m_LocalScale: {x: 84.58328, y: 90.21248, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 671128624}
@@ -2405,8 +2374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155973853}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.2197, y: -15.8992, z: 0.9784782}
-  m_LocalScale: {x: 21.055422, y: 0.9134, z: 1}
+  m_LocalPosition: {x: 9.2197, y: -16.0309, z: 0.9784782}
+  m_LocalScale: {x: 21.055422, y: 1.1764776, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 671128624}
@@ -4112,7 +4081,7 @@ GameObject:
   - component: {fileID: 1869831136}
   - component: {fileID: 1869831135}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4391,8 +4360,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984422559}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.3086, y: 28.5778, z: 0.9784782}
-  m_LocalScale: {x: 67.99454, y: 89.86681, z: 1}
+  m_LocalPosition: {x: -34.3086, y: 28.4444, z: 0.9784782}
+  m_LocalScale: {x: 67.99454, y: 90.12745, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 671128624}
@@ -4407,7 +4376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005979543}
-  - component: {fileID: 2005979542}
+  - component: {fileID: 2005979544}
   m_Layer: 0
   m_Name: manager
   m_TagString: Untagged
@@ -4415,25 +4384,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2005979542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005979541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3080fe5cff186614fb65cb92c19f4596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalMine: 5
-  fakeMine: 4
-  realMine: 1
-  mine_distance: -8
-  realmineCount: 0
-  unexploded_mine: {fileID: 0}
-  real_mine: {fileID: 0}
 --- !u!4 &2005979543
 Transform:
   m_ObjectHideFlags: 0
@@ -4447,8 +4397,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2005979544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005979541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bac4ba222747147b57e59983d897c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerContainer: {fileID: 0}
 --- !u!1 &2106148048
 GameObject:
   m_ObjectHideFlags: 0

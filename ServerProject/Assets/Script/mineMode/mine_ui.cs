@@ -15,4 +15,9 @@ public class mine_ui : MonoBehaviour
     {
         
     }
+
+    void started()
+    {
+
+    }
 }
