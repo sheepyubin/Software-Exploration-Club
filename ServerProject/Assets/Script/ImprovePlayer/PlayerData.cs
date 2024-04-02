@@ -42,6 +42,8 @@ public class PlayerData : MonoBehaviourPunCallbacks
             if (!isCreate)
             {
                 player = new Player(userID, isDead, score, color); // 유저 아이디, false, 초기 점수(0), 색상
+
+                playerContainer.AddPlayerisDead(userID, isDead);
                 isCreate = true;    
 
                 Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
@@ -71,6 +73,8 @@ public class PlayerData : MonoBehaviourPunCallbacks
             isDead = true;
             player.SetisDead(isDead);
 
+            playerContainer.AddPlayerisDead(userID, isDead);
+
             PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
 
             // 사망 점수(0) 추가
@@ -88,6 +92,20 @@ public class PlayerData : MonoBehaviourPunCallbacks
             playerContainer.AddPlayerScore(userID,player.Returnscore());
 
             Debug.Log(playerContainer.ReturnPlayerScore(userID));
+        }
+        if (other.CompareTag("SafeMine"))
+        {
+            int temp = 0;
+
+            newScore = 100;
+
+            if (temp == 0)
+            {
+                player.SetScore(newScore);
+                playerContainer.AddPlayerScore(userID,player.Returnscore());
+                temp++;
+                Debug.Log(playerContainer.ReturnPlayerScore(userID));
+            }
         }
     }
 

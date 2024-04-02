@@ -12,6 +12,7 @@ TagManager:
   - flag
   - test
   - Dead
+  - SafeMine
   layers:
   - Default
   - TransparentFX

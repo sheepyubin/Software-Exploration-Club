@@ -419,6 +419,7 @@ MonoBehaviour:
   isCreate: 0
   deadBody: {fileID: 5678453254372105444, guid: d8f1c3fb0769e1f41bfa88ab5efd69ac, type: 3}
   isDead: 0
+  isClear: 0
 --- !u!114 &5222009895502270889
 MonoBehaviour:
   m_ObjectHideFlags: 0
