@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 public class mine_spwaner : MonoBehaviour
 {
+    public mineModeManager mineModeManager;
     public int totalMine = 5;
 
     public int fakeMine = 4;
@@ -18,7 +20,8 @@ public class mine_spwaner : MonoBehaviour
     public GameObject real_mine;
     private void Start()
     {
-
+        realMine = mineModeManager.RealMineReturn();
+        Debug.Log("진짜 지뢰 " + realMine +"개");
         for (int i = 0; i < realMine; ++i)
         {
             realmineCount = Random.Range(1, 6);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class mineModeManager : MonoBehaviourPun
@@ -11,8 +12,12 @@ public class mineModeManager : MonoBehaviourPun
     public PlayerData playerData;
     string playerId;
 
+    public int round = 1;
+
+    public float time = 5;
+
     public string player1;
-    public string player2;    
+    public string player2;
     public string player3;
     public string player4;
 
@@ -39,6 +44,17 @@ public class mineModeManager : MonoBehaviourPun
         {
             Debug.Log("ÀüºÎ »ç¸Á");
             playerData.Returnplayer();
+            while(true)
+            {
+                if (time == 5)
+                {
+                    break;
+                }
+                time += Time.deltaTime;
+            }
+            round++;
+            SceneManager.LoadScene("Boom");
+            
         }
         else
         {
@@ -46,5 +62,10 @@ public class mineModeManager : MonoBehaviourPun
             playerContainer.ReturnPlayerisDead(player1);
         }
     }
+
+    public int RealMineReturn()
+    {
+        return round;
+    } 
 
 }
