@@ -4,7 +4,6 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class mineModeManager : MonoBehaviourPun
 {
     public PlayerContainer playerContainer;
@@ -16,10 +15,13 @@ public class mineModeManager : MonoBehaviourPun
 
     public float time = 5;
 
+    bool allDead = false;
     public string player1;
     public string player2;
     public string player3;
     public string player4;
+
+    bool isReloadingScene = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -30,42 +32,42 @@ public class mineModeManager : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (playerContainer.ReturnPlayerisDead(playerId))
-        {
-
-        }
+        CheckAlive();
     }
 
     public void CheckAlive()
     {
-        bool allDead = false;
-        allDead = playerContainer.ReturnPlayerisDeadAll();
-        if (allDead == true)
+        if (!isReloadingScene)
         {
-            Debug.Log("전부 사망");
-            playerData.Returnplayer();
-            while(true)
+            allDead = playerContainer.ReturnPlayerisDeadAll();
+            if (allDead == true)
             {
-                if (time == 5)
-                {
-                    break;
-                }
-                time += Time.deltaTime;
+                Debug.Log("전부 사망");
+                playerData.Returnplayer();
+                StartCoroutine(WaitForSecondsCoroutine(5f));
+                round++;
+                isReloadingScene = true;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            round++;
-            SceneManager.LoadScene("Boom");
-            
-        }
-        else
-        {
-            Debug.Log("아직 누가 살음");
-            playerContainer.ReturnPlayerisDead(player1);
+            else
+            {
+                Debug.Log("아직 누가 살음");
+                playerContainer.ReturnPlayerisDead(player1);
+            }
         }
     }
 
     public int RealMineReturn()
     {
         return round;
-    } 
+    }
 
+    IEnumerator WaitForSecondsCoroutine(float waitTime)
+    {
+        Debug.Log(waitTime + " 초 기다림...");
+
+        yield return new WaitForSeconds(waitTime);
+
+        Debug.Log("끼얏호우!");
+    }
 }

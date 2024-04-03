@@ -3342,6 +3342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3080fe5cff186614fb65cb92c19f4596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mineModeManager: {fileID: 2005979544}
   totalMine: 5
   fakeMine: 4
   realMine: 1
@@ -5378,6 +5379,7 @@ MonoBehaviour:
   playerSpawner: {fileID: 0}
   playerData: {fileID: 0}
   round: 0
+  time: 5
   player1: 
   player2: 
   player3: 
