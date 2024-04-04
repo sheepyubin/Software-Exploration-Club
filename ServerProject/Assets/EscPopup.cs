@@ -3,18 +3,22 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class EscPopup : MonoBehaviourPunCallbacks
+public class EscPopup : MonoBehaviourPun
 {
     public GameObject popupObject; // 활성화할 게임 오브젝트 변수
     public Slider volumeSlider; // 슬라이더를 가리키는 레퍼런스
     public Image volumeImageLow; // 볼륨이 낮을 때
     public Image volumeImageHigh; // 볼륨이 높을 때
+    public PlayerContainer playerContainer; 
 
 
     private int count = 0;
+    private string playerID;
 
     private void Start()
     {
+        playerID = PhotonNetwork.LocalPlayer.UserId;
+
         popupObject.SetActive(false);
 
         volumeSlider.value = 0.5f;
@@ -57,8 +61,11 @@ public class EscPopup : MonoBehaviourPunCallbacks
     {
         popupObject.SetActive(false);
     }
+
     public void ToLobby()
     {
+        playerContainer.ResetContainer(playerID);
+        
         PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("Lobby");
     }

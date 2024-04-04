@@ -14,8 +14,12 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme = 3f;
 
+    private string playerID;
+
     private void Start()
     {
+        playerID = PhotonNetwork.LocalPlayer.UserId;
+
         Key1.SetActive(false);
         Key1.SetActive(false);
 
@@ -59,6 +63,8 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     void SwitchScene(string sceneName)
     {
         PhotonNetwork.Disconnect();
+
+        container.ResetContainer(playerID);
 
         // 다음 씬으로 전환
         PhotonNetwork.LoadLevel(sceneName);

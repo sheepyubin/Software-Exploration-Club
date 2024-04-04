@@ -122,11 +122,19 @@ public class PlayerContainer : ScriptableObject
     }
     
     // 컨테이너 리셋 매서드
-    public void ResetContainer()
+    public void ResetContainer(string playerID)
     {
-        playerObject.Clear();
-        playerColor.Clear();
-        playerScore.Clear();
-        playerisDead.Clear();
+        // playerObject 에서 playerID 해당 값 제거
+        if (playerObject.ContainsKey(playerID))
+            playerObject.Remove(playerID);
+        // playerColor 에서 playerID 해당 값 제거
+        if (playerColor.ContainsKey(playerID))
+            playerColor.Remove(playerID);
+        // playerScore 에서 playerID 해당 값 제거
+        if (playerScore.ContainsKey(playerID))
+            playerScore.Remove(playerID);
+        // playerisDead 에서 playerID 해당 값 제거
+        if (playerisDead.ContainsKey(playerID))
+            playerisDead.Remove(playerID);
     }
 }
