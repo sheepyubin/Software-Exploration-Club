@@ -3,7 +3,9 @@ using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
-public class mineModeManager : MonoBehaviourPun
+
+
+public class mineModeManager : MonoBehaviour
 {
     public PlayerContainer playerContainer;
     public PlayerSpawner playerSpawner;
@@ -21,47 +23,36 @@ public class mineModeManager : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         playerId = PhotonNetwork.LocalPlayer.UserId;
+        if (round < 1)
+        {
+            round = 1;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckAlive();
+        
     }
 
     public void CheckAlive()
     {
-        if (!isReloadingScene)
+        if (!isReloadingScene && playerContainer.ReturnPlayerisDeadAll())
         {
-            allDead = playerContainer.ReturnPlayerisDeadAll();
-            if (allDead)
-            {
-                StartCoroutine(WaitForReload());
-            }
-            else
-            {
-                Debug.Log("아직 누가 살음");
-                playerContainer.ReturnPlayerisDead(player1);
-            }
+            isReloadingScene = true;
+            StartCoroutine(WaitForReload());
         }
     }
 
     IEnumerator WaitForReload()
     {
-        if (!isReloadingScene)
-        {
-            isReloadingScene = true;
-            Debug.Log("전부 사망");
-            yield return new WaitForSeconds(time);
-            round++;
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-            isReloadingScene = false;
-        }
+        Debug.Log("전부 사망");
+        yield return new WaitForSeconds(time);
+        round++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public int RealMineReturn()

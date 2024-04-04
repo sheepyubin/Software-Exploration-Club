@@ -1,43 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class mine_spwaner : MonoBehaviour
 {
     public mineModeManager mineModeManager;
     public int totalMine = 5;
-    public int fakeMine = 4;
-    public int realMine = 1;
-    private int now_mine = 1;
-    public int mine_distance = -8;
-    public int realmineCount;
+    private int realMine;
 
     public GameObject unexploded_mine;
     public GameObject real_mine;
 
     private void Start()
     {
-        mine_distance = -8;
         realMine = mineModeManager.RealMineReturn();
         Debug.Log("ÁøÂ¥ Áö·Ú " + realMine + "°³");
 
-        realmineCount = Random.Range(1, totalMine + 1);
+        List<GameObject> minePrefabs = new List<GameObject>();
 
-        for (int i = 0; i < totalMine; ++i)
+        for (int i = 0; i < realMine; i++)
         {
-            if (now_mine != realmineCount)
-            {
-                Instantiate(unexploded_mine, new Vector2(mine_distance, -31), Quaternion.identity);
-                mine_distance += 4;
-                now_mine++;
-            }
-            else
-            {
-                Instantiate(real_mine, new Vector2(mine_distance, -31), Quaternion.identity);
-                mine_distance += 4;
-                now_mine++;
-            }
+            minePrefabs.Add(real_mine);
+        }
+
+        for (int i = realMine; i < totalMine; i++)
+        {
+            minePrefabs.Add(unexploded_mine);
+        }
+
+        Shuffle(minePrefabs);
+
+        int mine_distance = -8;
+        foreach (GameObject prefab in minePrefabs)
+        {
+            Instantiate(prefab, new Vector2(mine_distance, -31), Quaternion.identity);
+            mine_distance += 4;
+        }
+    }
+
+    private void Shuffle(List<GameObject> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            GameObject temp = list[i];
+            int randomIndex = Random.Range(i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
         }
     }
 }
