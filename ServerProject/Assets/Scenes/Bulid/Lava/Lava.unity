@@ -1178,8 +1178,8 @@ MonoBehaviour:
   platformPrefab: {fileID: 8941053228917483967, guid: 58d520125931edc4087e7dd95315f107, type: 3}
   gearObject: {fileID: 1941292021}
   animator: {fileID: 1941292022}
-  minPosition: {x: -15, y: 30}
-  maxPosition: {x: 15, y: 30}
+  minPosition: {x: -15, y: 40}
+  maxPosition: {x: 15, y: 40}
   span: 2
   speed: 2
 --- !u!61 &5301537111592912575
