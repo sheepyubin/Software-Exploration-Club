@@ -525,6 +525,7 @@ MonoBehaviour:
   volumeSlider: {fileID: 6254731090649176128}
   volumeImageLow: {fileID: 4748460002582069476}
   volumeImageHigh: {fileID: 4748460002084974606}
+  playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
 --- !u!1 &6254731090277184732
 GameObject:
   m_ObjectHideFlags: 0

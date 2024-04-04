@@ -13,6 +13,8 @@ public class mine_spwaner : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WaitForReload());
+
         realMine = mineModeManager.RealMineReturn();
         Debug.Log("ÁøÂ¥ Áö·Ú " + realMine + "°³");
 
@@ -33,7 +35,7 @@ public class mine_spwaner : MonoBehaviour
         int mine_distance = -8;
         foreach (GameObject prefab in minePrefabs)
         {
-            Instantiate(prefab, new Vector2(mine_distance, -31), Quaternion.identity);
+            Instantiate(prefab, new Vector2(mine_distance, -29), Quaternion.identity);
             mine_distance += 4;
         }
     }
@@ -47,5 +49,10 @@ public class mine_spwaner : MonoBehaviour
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+    }
+
+    IEnumerator WaitForReload()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }

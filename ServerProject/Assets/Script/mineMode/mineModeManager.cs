@@ -8,10 +8,11 @@ using UnityEngine;
 public class mineModeManager : MonoBehaviour
 {
     public PlayerContainer playerContainer;
+    public RoundData roundData;
     public PlayerSpawner playerSpawner;
     string playerId;
 
-    public int round = 1;
+    private int round;
     public float time = 5;
     bool allDead = false;
     public string player1;
@@ -21,14 +22,12 @@ public class mineModeManager : MonoBehaviour
     bool isReloadingScene = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        round = roundData.ReturnRound();
+        Debug.Log(round);
+
         playerId = PhotonNetwork.LocalPlayer.UserId;
-        if (round < 1)
-        {
-            round = 1;
-        }
     }
 
     // Update is called once per frame
@@ -52,11 +51,14 @@ public class mineModeManager : MonoBehaviour
         Debug.Log("ÀüºÎ »ç¸Á");
         yield return new WaitForSeconds(time);
         round++;
+        roundData.AddRound(round);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public int RealMineReturn()
     {
+        Debug.Log(round);
         return round;
     }
+
 }
