@@ -17,7 +17,9 @@ public class GameDirector : MonoBehaviour
     
     float delta = 0.0f;
     public float span = 2.0f;
+    float originalTime;
     public float speed = 2.0f;
+    float returnSpeed = 20.0f;
 
     string userID;
     bool isDead;
@@ -26,6 +28,8 @@ public class GameDirector : MonoBehaviour
         userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
         playerContainer.AddPlayerisDead(userID, isDead);
+
+        originalTime = span;
     }
 
     // ·£´ý ÁÂÇ¥ »ý¼º ¹× ÇÁ¸®ÆÕ »ý¼º ÇÔ¼ö
@@ -54,7 +58,13 @@ public class GameDirector : MonoBehaviour
         gearObject.transform.Translate(0, this.speed * Time.deltaTime, 0);
         animator.SetFloat("isRotationSpeed", this.speed / 2);
 
-        this.speed += Time.deltaTime / 5;
+        this.speed += Time.deltaTime / 10;
+        if (speed > returnSpeed)
+        {
+            span -= 0.1f;
+            returnSpeed += 10.0f;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

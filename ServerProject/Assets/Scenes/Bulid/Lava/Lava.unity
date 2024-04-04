@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254731090236187049, guid: 7fb483f226c96d642a6f789f299013f9, type: 3}
+      propertyPath: playerContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
     - target: {fileID: 6254731090236187055, guid: 7fb483f226c96d642a6f789f299013f9, type: 3}
       propertyPath: m_Name
       value: EscPopup
