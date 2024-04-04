@@ -1,27 +1,22 @@
+using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class mineModeManager : MonoBehaviourPun
 {
     public PlayerContainer playerContainer;
     public PlayerSpawner playerSpawner;
-    public PlayerData playerData;
     string playerId;
 
     public int round = 1;
-
     public float time = 5;
-
     bool allDead = false;
     public string player1;
     public string player2;
     public string player3;
     public string player4;
-
-    bool isReloadingScene = false; 
+    bool isReloadingScene = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +35,9 @@ public class mineModeManager : MonoBehaviourPun
         if (!isReloadingScene)
         {
             allDead = playerContainer.ReturnPlayerisDeadAll();
-            if (allDead == true)
+            if (allDead)
             {
-                Debug.Log("ÀüºÎ »ç¸Á");
-                playerData.Returnplayer();
-                StartCoroutine(WaitForSecondsCoroutine(5f));
-                round++;
-                isReloadingScene = true;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                StartCoroutine(WaitForReload());
             }
             else
             {
@@ -57,17 +47,25 @@ public class mineModeManager : MonoBehaviourPun
         }
     }
 
+    IEnumerator WaitForReload()
+    {
+        if (!isReloadingScene)
+        {
+            isReloadingScene = true;
+            Debug.Log("ÀüºÎ »ç¸Á");
+            yield return new WaitForSeconds(time);
+            round++;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            isReloadingScene = false;
+        }
+    }
+
     public int RealMineReturn()
     {
         return round;
-    }
-
-    IEnumerator WaitForSecondsCoroutine(float waitTime)
-    {
-        Debug.Log(waitTime + " ÃÊ ±â´Ù¸²...");
-
-        yield return new WaitForSeconds(waitTime);
-
-        Debug.Log("³¢¾æÈ£¿ì!");
     }
 }
