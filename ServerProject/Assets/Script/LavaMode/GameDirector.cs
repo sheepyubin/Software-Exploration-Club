@@ -16,11 +16,16 @@ public class GameDirector : MonoBehaviour
     public Vector2 maxPosition; // 최대 위치
     
     float delta = 0.0f;
-    public float span = 1.0f;
-    public float speed = 1.0f;
+    public float span = 2.0f;
+    public float speed = 2.0f;
 
+    string userID;
+    bool isDead;
     private void Start()
     {
+        userID = PhotonNetwork.LocalPlayer.UserId;
+        isDead = false;
+        playerContainer.AddPlayerisDead(userID, isDead);
     }
 
     // 랜덤 좌표 생성 및 프리팹 생성 함수
@@ -39,7 +44,6 @@ public class GameDirector : MonoBehaviour
     void Update()
     {
         this.delta += Time.deltaTime;
-        this.speed += Time.deltaTime / 2;
         if (delta > span)
         {
             delta = 0.0f;
@@ -49,12 +53,16 @@ public class GameDirector : MonoBehaviour
 
         gearObject.transform.Translate(0, this.speed * Time.deltaTime, 0);
         animator.SetFloat("isRotationSpeed", this.speed / 2);
+
+        this.speed += Time.deltaTime / 5;
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            playerContainer.AddPlayerisDead(PhotonNetwork.LocalPlayer.UserId, true);
+            Debug.Log("dead");
+            playerContainer.AddPlayerisDead(userID, isDead);
+            playerContainer.ReturnPlayerisDead(userID);
         }
     }
 }

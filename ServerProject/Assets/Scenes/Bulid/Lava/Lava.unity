@@ -765,6 +765,10 @@ GameObject:
   - component: {fileID: 1941292024}
   - component: {fileID: 1941292023}
   - component: {fileID: 1941292022}
+  - component: {fileID: 1941292028}
+  - component: {fileID: 1941292027}
+  - component: {fileID: 1941292026}
+  - component: {fileID: 1941292025}
   m_Layer: 0
   m_Name: gear
   m_TagString: Untagged
@@ -862,6 +866,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1941292025
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941292021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.74, y: 0.25}
+  serializedVersion: 2
+  m_Radius: 0.12
+--- !u!58 &1941292026
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941292021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.36, y: 0.31}
+  serializedVersion: 2
+  m_Radius: 0.18
+--- !u!58 &1941292027
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941292021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.36, y: -0.22}
+  serializedVersion: 2
+  m_Radius: 0.28
+--- !u!58 &1941292028
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941292021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.38, y: 0.06}
+  serializedVersion: 2
+  m_Radius: 0.44
 --- !u!1 &2042429189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1089,7 @@ GameObject:
   - component: {fileID: 5301537111592912575}
   m_Layer: 8
   m_Name: lava
-  m_TagString: Untagged
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1112,7 +1180,7 @@ MonoBehaviour:
   animator: {fileID: 1941292022}
   minPosition: {x: -15, y: 30}
   maxPosition: {x: 15, y: 30}
-  span: 1
+  span: 2
   speed: 2
 --- !u!61 &5301537111592912575
 BoxCollider2D:
@@ -1124,7 +1192,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
