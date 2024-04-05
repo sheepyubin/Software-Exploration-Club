@@ -7,108 +7,108 @@ using System.Reflection;
 
 public class PlayerContainer : ScriptableObject
 {
-    public GameObject playerPrefab; // 플레이어 프리팹(원본)
-    public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>(); // playerID, 플레이어 프리팹
-    public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // playerID, 색
-    public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // playerID, 점수
-    public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>(); // playerID, 죽었는가?
+    public GameObject playerPrefab; // ?÷???? ??????(????)
+    public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>(); // playerID, ?÷???? ??????
+    public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // playerID, ??
+
+    public ScoreData scoreData; // scoreData 스크립터블 오브젝트 참조
+    public Dictionary<string, int> scoreIndex = new Dictionary<string, int>(); // playerID, scoreData 인덱스
+    private List<int> indexList = new List<int>();
+
+    public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>(); // playerID, ????°??
 
 
-    // 플레이어 데이터 추가 매서드
-    public void AddPlayerData(string playerID, GameObject player) // (playerID, 플레이어 프리팹)
+    // ?÷???? ?????? ??? ?????
+    public void AddPlayerData(string playerID, GameObject player) // (playerID, ?÷???? ??????)
     {
         playerObject[playerID] = player;
     }
 
-    // 플레이어 데이터 반환 매서드
+    // ?÷???? ?????? ??? ?????
     public GameObject ReturnPlayerData(string playerID) // (playerID)
     {
         return playerObject[playerID];
     }
 
-    // 플레이어 색상 추가 매서드
-    public void AddPlayerColor(string playerID, Color color) // (playerID, 플레이어 색상)
+    // ?÷???? ???? ??? ?????
+    public void AddPlayerColor(string playerID, Color color) // (playerID, ?÷???? ????)
     {
         playerColor[playerID] = color;
     }
 
-    // 플레이어 색상 반환 매서드
+    // ?÷???? ???? ??? ?????
     public Color ReturnPlayerColor(string playerID) // (playerID)
     {
-        if (playerColor.ContainsKey(playerID)) // playerColor 딕셔너리에 playerID를 키로 가진 값이 있다면
+        if (playerColor.ContainsKey(playerID)) // playerColor ??????? playerID?? ??? ???? ???? ????
             return playerColor[playerID];
-        else // playerColor 딕셔너리에 playerID를 키로 가진 값이 없다면
+        else // playerColor ??????? playerID?? ??? ???? ???? ?????
             return Color.white;
     }
 
-    // 플레이어 색상 배열 반환 매서드
-    public Color ReturnPlayerColorArray(int i) // index
+    // ?÷???? ???? ?迭 ??? ?????
+    public Color[] ReturnPlayerColorArray() // index
     {
-        Color[] scoresArray = new Color[playerColor.Count];
+        Color[] colorsArray = new Color[playerColor.Count];
         int index = 0;
 
         foreach (var color in playerColor.Values)
         {
-            scoresArray[index] = color;
+            colorsArray[index] = color;
             index++;
         }
 
-        if (i >= 0 && i < scoresArray.Length)
-            return scoresArray[i];
-        else
-            return Color.white;
+        return colorsArray;
     }
 
-    // 플레이어 점수 추가 매서드
-    public void AddPlayerScore(string playerID, int score) // (playerID, 점수)
+    public void AllIndex(string playerID)
     {
-        playerScore[playerID] = score;
+        indexList.Add(scoreIndex[playerID]);
+
     }
 
-    // 플레이어 점수 반환 매서드
+    public void MergeIndex()
+    {
+        scoreData.SortIndex(indexList);
+    }
+
+    public void SetScoreIndex(string playerID)
+    {
+        int index = scoreData.Getindex();
+
+        scoreIndex[playerID] = index;
+
+        Debug.Log(scoreIndex[playerID]);
+    }
+
+    // ?÷???? ???? ??? ?????
+    public void AddPlayerScore(string playerID, int score) // (playerID, ????)
+    {
+        int index = scoreIndex[playerID];
+
+        scoreData.AddScore(index, score);
+
+        Debug.Log(ReturnPlayerScore(playerID));
+    }
+
+    //?÷???? ???? ??? ?????
     public int ReturnPlayerScore(string playerID) // (playerID)
     {
-        if (playerScore.ContainsKey(playerID)) // playerScore 딕셔너리에 playerID를 키로 가진 값이 있다면
-            return playerScore[playerID];
-        else // playerScore 딕셔너리에 playerID를 키로 가진 값이 없다면
-            return -1;
+        return scoreData.GetScoreAtIndex(scoreIndex[playerID]);
     }
 
-    // 플레이어 점수 배열 반환 매서드
-    public int ReturnPlayerScoreArray(int i) // index
-    {
-        int[] scoresArray = new int[playerScore.Count];
-        int index = 0;
-
-        foreach (var score in playerScore.Values)
-        {
-            scoresArray[index] = score;
-            index++;
-        }
-
-        if (i >= 0 && i < scoresArray.Length)
-        {
-            return scoresArray[i];
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    // 플레이어 사망 추가 매서드
-    public void AddPlayerisDead(string playerID, bool isDead) // (playerID, 사망)
+    // ?÷???? ??? ??? ?????
+    public void AddPlayerisDead(string playerID, bool isDead) // (playerID, ???)
     {
         playerisDead[playerID] = isDead;
     }
 
-    // 플레이어 사망 반환 매서드
+    // ?÷???? ??? ??? ?????
     public bool ReturnPlayerisDead(string playerID) // (playerID)
     {
         return playerisDead[playerID];
     }
 
-    // 플레이어 사망 반환 매서드 (모두)
+    // ?÷???? ??? ??? ????? (???)
     public bool ReturnPlayerisDeadAll()
     {
         foreach (var kvp in playerisDead)
@@ -121,20 +121,25 @@ public class PlayerContainer : ScriptableObject
         return true;
     }
     
-    // 컨테이너 리셋 매서드
+    // ??????? ???? ?????
     public void ResetContainer(string playerID)
     {
-        // playerObject 에서 playerID 해당 값 제거
+        // playerObject ???? playerID ??? ?? ????
         if (playerObject.ContainsKey(playerID))
             playerObject.Remove(playerID);
-        // playerColor 에서 playerID 해당 값 제거
+        // playerColor ???? playerID ??? ?? ????
         if (playerColor.ContainsKey(playerID))
             playerColor.Remove(playerID);
-        // playerScore 에서 playerID 해당 값 제거
-        if (playerScore.ContainsKey(playerID))
-            playerScore.Remove(playerID);
-        // playerisDead 에서 playerID 해당 값 제거
+        // playerScore ???? playerID ??? ?? ????
+        if (scoreIndex.ContainsKey(playerID))
+             scoreIndex.Remove(playerID);
+        // playerisDead ???? playerID ??? ?? ????
         if (playerisDead.ContainsKey(playerID))
             playerisDead.Remove(playerID);
+    }
+
+    public void ClearIndexList()
+    {
+        indexList.Clear();
     }
 }

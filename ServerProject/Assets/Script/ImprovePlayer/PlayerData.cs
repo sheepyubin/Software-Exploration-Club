@@ -4,44 +4,46 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviourPunCallbacks
 {
-    public Player player; // Player Å¬·¡½º
-    public PlayerContainer playerContainer; // PlayerContainer ÂüÁ¶
-    public bool isCreate = false; // ÇÃ·¹ÀÌ¾î °´Ã¼°¡ »ý¼º µÇ¾ú´Â°¡?
+    //private Player player; // Player Å¬ï¿½ï¿½ï¿½ï¿½
+    public PlayerContainer playerContainer; // PlayerContainer ï¿½ï¿½ï¿½ï¿½
+    public bool isCreate = false; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Â°ï¿½?
     public GameObject deadBody;
 
-    string userID; // À¯Àú UI
-    public bool isDead; // Á×¾ú´Â°¡?
-    public bool isClear; // ½ºÅ×ÀÌÁö¸¦ Å¬¸®¾î Çß´Â°¡?
-    int score; // Á¡¼ö
-    Color color; // »ö»ó
-    int newScore; // Ãß°¡ ÇÒ Á¡¼ö
+    string userID; // ï¿½ï¿½ï¿½ï¿½ UI
+    public bool isDead; // ï¿½×¾ï¿½ï¿½Â°ï¿½?
+    public bool isClear; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ß´Â°ï¿½?
+    int score; // ï¿½ï¿½ï¿½ï¿½
+    Color color; // ï¿½ï¿½ï¿½ï¿½
+    int newScore; // ï¿½ß°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
-    private void Start()
+    private void Awake()
     {
-        // º¯¼ö ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
         isClear = false;
 
-        if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScore¿¡ ¾Æ¹« °ªµµ ¾ø´Â°¡?
+        if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScoreï¿½ï¿½ ï¿½Æ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â°ï¿½?
             score = 0;
-        else // °ªÀÌ ÀÌ¹Ì ÀÖ´Â°¡?
+        else // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´Â°ï¿½?
             score = playerContainer.ReturnPlayerScore(userID);
 
-        if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColor¿¡ ¾Æ¹« »öµµ ¾ø´Â°¡?
+        if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColorï¿½ï¿½ ï¿½Æ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â°ï¿½?
         {
-            color = SetRandomColor(); // ·£´ý »ö»ó »ý¼º
-            playerContainer.AddPlayerColor(userID, color); // »ö Ãß°¡
+            color = SetRandomColor(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            playerContainer.AddPlayerColor(userID, color); // ï¿½ï¿½ ï¿½ß°ï¿½
         }
-        else // »öÀÌ ÀÌ¹Ì ÀÖ´Â°¡?
-            color = playerContainer.ReturnPlayerColor(userID); // ¿ø·¡ ÀÖ´ø »ö Àû¿ë
+        else // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´Â°ï¿½?
+            color = playerContainer.ReturnPlayerColor(userID); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        if (photonView.IsMine) // ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÎ°¡?
+        if (photonView.IsMine) // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½Î°ï¿½?
         {
+            Color tempColor = playerContainer.ReturnPlayerColor(userID);
+
             if (!isCreate)
             {
-                player = new Player(userID, isDead, score, color); // À¯Àú ¾ÆÀÌµð, false, ÃÊ±â Á¡¼ö(0), »ö»ó
+                //player = new Player(userID, isDead, score, color); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½, false, ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½(0), ï¿½ï¿½ï¿½ï¿½
 
                 playerContainer.AddPlayerisDead(userID, isDead);
                 isCreate = true;    
@@ -51,10 +53,10 @@ public class PlayerData : MonoBehaviourPunCallbacks
         }
     }
 
-    // ·£´ý »ö»ó °ªÀ» ¹ÝÈ¯ÇÏ´Â ¸Å¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Å¼ï¿½ï¿½ï¿½
     Color SetRandomColor()
     {
-        // ·£´ý RGB °ª »ý¼º
+        // ï¿½ï¿½ï¿½ï¿½ RGB ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float r = Random.Range(0f, 1f);
         float g = Random.Range(0f, 1f);
         float b = Random.Range(0f, 1f);
@@ -67,31 +69,34 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Dead")) // Dead ÅÂ±×¿¡ ´ê¾Ò´Â°¡?
+        if (other.CompareTag("Dead")) // Dead ï¿½Â±×¿ï¿½ ï¿½ï¿½Ò´Â°ï¿½?
         {
-            // »ç¸Á
+            // ï¿½ï¿½ï¿½
             isDead = true;
-            player.SetisDead(isDead);
 
             playerContainer.AddPlayerisDead(userID, isDead);
 
             PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
 
-            // »ç¸Á Á¡¼ö(0) Ãß°¡
+            // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(0) ï¿½ß°ï¿½
             newScore = 0;
-            player.SetScore(newScore);
 
-            Debug.Log(player.Returnscore().ToString());
+            playerContainer.AddPlayerScore(userID,newScore);
+
+            playerContainer.AllIndex(userID);
+            //player.SetScore(newScore);
         }
-        if (other.CompareTag("EndPoint")) // EndPoint ÅÂ±×¿¡ ´ê¾Ò´Â°¡?
+        if (other.CompareTag("EndPoint") && !isClear) // EndPoint ï¿½Â±×¿ï¿½ ï¿½ï¿½Ò´Â°ï¿½?
         {
-            // ¼º°ø Á¡¼ö(100) Ãß°¡
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(100) ï¿½ß°ï¿½
             newScore = 100;
-            player.SetScore(newScore);
+            //player.SetScore(newScore);
 
-            playerContainer.AddPlayerScore(userID,player.Returnscore());
+            playerContainer.AddPlayerScore(userID,newScore);
 
-            Debug.Log(playerContainer.ReturnPlayerScore(userID));
+            playerContainer.AllIndex(userID);       
+
+            isClear = true;     
         }
         if (other.CompareTag("SafeMine"))
         {
@@ -101,19 +106,19 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
             if (temp == 0)
             {
-                player.SetScore(newScore);
-                playerContainer.AddPlayerScore(userID,player.Returnscore());
+                //player.SetScore(newScore);
+                playerContainer.AddPlayerScore(userID,newScore);
                 temp++;
                 Debug.Log(playerContainer.ReturnPlayerScore(userID));
             }
         }
     }
 
-    public Player Returnplayer()
-    {
-        if (isCreate)
-            return player;
-        else
-            return null;
-    }
+    // public Player Returnplayer()
+    // {
+    //     if (isCreate)
+    //         return player;
+    //     else
+    //         return null;
+    // }
 }

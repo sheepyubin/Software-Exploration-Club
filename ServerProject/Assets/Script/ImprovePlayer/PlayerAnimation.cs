@@ -5,19 +5,19 @@ using Photon.Pun;
 
 public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public Movement movement; // ÇÃ·¹ÀÌ¾î ÀÌµ¿ ½ºÅ©¸³Æ®
-    public RopeLauncher ropeLauncher; // ·ÎÇÁ·±Ã³ ½ºÅ©¸³Æ®
-    private Animator ani; // ¾Ö´Ï¸ÞÀÌÅÍ ÄÄÆ÷³ÍÆ®
-    private Rigidbody2D rb; // ¸®Áöµå¹Ùµð ÄÄÆ÷³ÍÆ®
+    public Movement movement; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®
+    public RopeLauncher ropeLauncher; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ ï¿½ï¿½Å©ï¿½ï¿½Æ®
+    private Animator ani; // ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    private Rigidbody2D rb; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     private SpriteRenderer sp;
 
     bool isFalling;
     bool flipx;
 
-    void Start()
+    void Awake()
     {
-        ani = GetComponent<Animator>(); // ¾Ö´Ï¸ÞÀÌÅÍ ÃÊ±âÈ­
-        rb = GetComponent<Rigidbody2D>(); // ¸®Áöµå¹Ùµð ÃÊ±âÈ­
+        ani = GetComponent<Animator>(); // ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+        rb = GetComponent<Rigidbody2D>(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½Ê±ï¿½È­
         sp = GetComponent<SpriteRenderer>();
     }
 
@@ -31,15 +31,15 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
             else
                 flipx = false;
 
-            // ÀÌ ÄÚµå´Â ·ÎÄÃ ÇÃ·¹ÀÌ¾î¿¡°Ô¸¸ Àû¿ëµË´Ï´Ù.
-            float moveInput = Input.GetAxis("Horizontal"); // °¡·Î ÀÔ·Â°ª
+            // ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½Ô¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ë´Ï´ï¿½.
+            float moveInput = Input.GetAxis("Horizontal"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â°ï¿½
 
-            if (moveInput != 0) // 0 = Á¦ÀÚ¸®, 0 != ÀÌµ¿Áß
+            if (moveInput != 0) // 0 = ï¿½ï¿½ï¿½Ú¸ï¿½, 0 != ï¿½Ìµï¿½ï¿½ï¿½
                 ani.SetBool("isWalk", true);
             else
                 ani.SetBool("isWalk", false);
 
-            if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled) // ·ÎÇÁ¸¦ ¹ÚÀº »óÅÂ·Î ½ºÆäÀÌ½º¸¦ ´­·¶À» ¶§
+            if (Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
                 ani.SetBool("isClimbing", true);
             else
                 ani.SetBool("isClimbing", false);
@@ -47,11 +47,11 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
             if (movement.isGrounded)
                 ani.SetBool("isJumping", false);
 
-            if (!movement.isGrounded && !movement.isClimbing) // ¶¥¿¡ ´ê¾ÆÀÖÁö ¾Ê°í Climbing »óÅÂ°¡ ¾Æ´Ò ¶§
+            if (!movement.isGrounded && !movement.isClimbing) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ Climbing ï¿½ï¿½ï¿½Â°ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½
             {
-                if (rb.velocity.y > 0) // y Áõ°¡·®ÀÌ > 0 ÀÌ¶ó¸é 
+                if (rb.velocity.y > 0) // y ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ > 0 ï¿½Ì¶ï¿½ï¿½ 
                     ani.SetBool("isJumping", true);
-                else if (rb.velocity.y < 0) // y Áõ°¡·®ÀÌ  < 0 ÀÌ¶ó¸é
+                else if (rb.velocity.y < 0) // y ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  < 0 ï¿½Ì¶ï¿½ï¿½
                 {
                     ani.SetBool("isFalling", true);
                     isFalling = true;
@@ -76,7 +76,7 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
             if (!movement.isDashing)
                 ani.SetBool("isDashing", false);
 
-            // ¾Ö´Ï¸ÞÀÌ¼Ç »óÅÂ¸¦ ´Ù¸¥ ÇÃ·¹ÀÌ¾î¿¡°Ô µ¿±âÈ­ÇÕ´Ï´Ù.
+            // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ù¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½Õ´Ï´ï¿½.
             photonView.RPC("SyncAnimationState", RpcTarget.Others,
                            moveInput != 0,
                            Input.GetKey(KeyCode.Space) && ropeLauncher.distanceJoint.enabled,
@@ -90,19 +90,25 @@ public class PlayerAnimation : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void SyncAnimationState(bool isWalking, bool isClimbing, bool isJumping , bool isFalling, bool isDashing, bool flipx)
     {
-        // ´Ù¸¥ ÇÃ·¹ÀÌ¾îÀÇ ¾Ö´Ï¸ÞÀÌ¼Ç »óÅÂ¸¦ µ¿±âÈ­ÇÕ´Ï´Ù.
+        if(ani == null)
+            Debug.LogError("ani is null!");
+        // ï¿½Ù¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½Õ´Ï´ï¿½.
         ani.SetBool("isWalk", isWalking);
         ani.SetBool("isClimbing", isClimbing);
         ani.SetBool("isJumping", isJumping);
         ani.SetBool("isFalling", isFalling);
         ani.SetBool("isDashing", isDashing);
-        sp.flipX = flipx;
+        
+        if(sp != null)
+            sp.flipX = flipx;
+        else
+            Debug.LogError("SpriteRenderer is null!");
     }
 
 
-    // ³×Æ®¿öÅ©¿¡¼­ µ¥ÀÌÅÍ¸¦ ¼ö½ÅÇÒ ¶§ È£ÃâµË´Ï´Ù.
+    // ï¿½ï¿½Æ®ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½Ë´Ï´ï¿½.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        // ÀÌ ¸Þ¼­µå´Â ¾Ö´Ï¸ÞÀÌ¼Ç µ¿±âÈ­¿Í °ü·ÃÀÌ ¾øÀ¸¹Ç·Î ¼öÁ¤ÇÒ ÇÊ¿ä°¡ ¾ø½À´Ï´Ù.
+        // ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
     }
 }

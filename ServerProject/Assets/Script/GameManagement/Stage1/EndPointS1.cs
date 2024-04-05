@@ -14,14 +14,20 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
     public float delayTIme= 3f;
     public PlayerContainer playerContainer;
 
-    private void Start()
+    bool isMethodCalled;
+
+    private void Awake()
     {
+        isMethodCalled = false;
+
         Key1.SetActive(false);
         Key1.SetActive(false);
     }
 
     private void Update()
     {
+        int temp = 0;
+
         if (data.Returnkey1())
             Key1.SetActive(true);
         
@@ -31,9 +37,9 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
         if (data.ReturnisClear())
             End();
 
-        if(playerContainer.ReturnPlayerisDeadAll())
+        if(playerContainer.ReturnPlayerisDeadAll() && temp==0)
         {
-            Debug.Log("dd");
+            temp++;
             End();
         }
     }
@@ -44,11 +50,11 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
             // Ű�� ��� ������ �ִٸ�
             if (data.Returnkey1() && data.Returnkey2())
             {
+
                 // �������� Ŭ����
                 data.SetisClear(true);
 
                 Debug.Log(nextStage);
-                Debug.Log("Success");
 
                 End();
             }
@@ -64,8 +70,10 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
     [PunRPC]
     void SwitchScene(string sceneName)
     {
-        // ���� ������ ��ȯ
+        if(!isMethodCalled)
         PhotonNetwork.LoadLevel(sceneName);
+
+        isMethodCalled = true;
     }
 
     public void End()

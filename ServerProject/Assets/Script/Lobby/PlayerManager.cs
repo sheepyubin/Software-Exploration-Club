@@ -3,21 +3,27 @@ using Photon.Pun;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
-    public PlayerContainer container; // PlayerContainer ÂüÁ¶
-    public Vector3 spawnPoint; // ½ºÆù À§Ä¡ º¤ÅÍ °ª
+    public PlayerContainer container; // PlayerContainer ï¿½ï¿½ï¿½ï¿½
+    public ScoreData scoreData;
+    public Vector3 spawnPoint; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
     private string playerID;
     private void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady && photonView != null)
         {
-            playerID = PhotonNetwork.LocalPlayer.UserId; // ÇÃ·¹ÀÌ¾î ID ¼³Á¤
+            playerID = PhotonNetwork.LocalPlayer.UserId; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ID ï¿½ï¿½ï¿½ï¿½
 
-            GameObject prefab = container.playerPrefab; // ÄÁÅ×ÀÌ³ÊÀÇ ÇÃ·¹ÀÌ¾î ÇÁ¸®ÆÕ
+            container.ResetContainer(playerID);
+            container.ClearIndexList();
+            container.SetScoreIndex(playerID);
+            scoreData.ResetData();
 
-            container.AddPlayerData(playerID, prefab); // ÄÁÅ×ÀÌ³ÊÀÇ playerData¿¡ ÀúÀå
+            GameObject prefab = container.playerPrefab; // ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-            PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // ÇÃ·¹ÀÌ¾î »ý¼º
+            container.AddPlayerData(playerID, prefab); // ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ playerDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+            PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

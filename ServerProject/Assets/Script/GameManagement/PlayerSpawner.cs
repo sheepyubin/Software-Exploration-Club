@@ -5,16 +5,17 @@ using System.ComponentModel;
 
 public class PlayerSpawner : MonoBehaviourPunCallbacks
 {
-    public PlayerContainer playerContainer; // PlayerContainer ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ® ÂüÁ¶
-    public Vector3 spawnPoint; // ½ºÆù À§Ä¡ º¤ÅÍ °ª
+    public PlayerContainer playerContainer; // PlayerContainer ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    public Vector3 spawnPoint; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
     private string playerId;
+
     private void Start()
     {
         playerId = PhotonNetwork.LocalPlayer.UserId;
 
-        GameObject prefab = playerContainer.ReturnPlayerData(playerId); // prefab¿¡ ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÇ ÇÁ¸®ÆÕÀ» ÀúÀå
+        GameObject prefab = playerContainer.ReturnPlayerData(playerId); // prefabï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // »ý¼º
+        PhotonNetwork.Instantiate(prefab.name, spawnPoint, Quaternion.identity); // ï¿½ï¿½ï¿½ï¿½
     }
 }

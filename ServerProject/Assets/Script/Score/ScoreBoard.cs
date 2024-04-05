@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreBoard : MonoBehaviour
+public class ScoreBoard : MonoBehaviourPun
 {
     public float delayTIme = 3f;
 
@@ -22,23 +23,7 @@ public class ScoreBoard : MonoBehaviour
 
     public void Score()
     {
-        for (int i = 0; i < userScore.Length; i++) // userScore에 플레이어의 점수를 저장
-        {
-            int score = playerContainer.ReturnPlayerScoreArray(i);
-
-            if (score == 0)
-                userScore[i].text = "0";
-            else
-                userScore[i].text = score.ToString();
-        }
-
-        for (int i = 0; i < userColor.Length; i++) // userColor에 플레이어의 색상을 저장
-        {
-            Color color = playerContainer.ReturnPlayerColorArray(i);
-
-            if (color != Color.white)
-                userColor[i].color = color;
-        }
+        playerContainer.MergeIndex();
 
         gameObject.SetActive(true);
 

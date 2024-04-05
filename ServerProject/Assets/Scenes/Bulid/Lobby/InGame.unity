@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
+  scoreData: {fileID: 11400000, guid: 52cac54e747ac4e4cac05fe7d1c5be95, type: 2}
   spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1091230140
 Transform:

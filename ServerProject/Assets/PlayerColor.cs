@@ -5,26 +5,30 @@ using UnityEngine;
 
 public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public PlayerData playerData; // PlayerData ½ºÅ©¸³Æ® ÂüÁ¶
+    //public PlayerData playerData; // PlayerData ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    public PlayerContainer playerContainer;
 
+    private string userID; // ï¿½ï¿½ï¿½ï¿½ UI
     private SpriteRenderer spriteRenderer;
     private Color color;
 
     private void Start()
     {
-        // ÃÊ±âÈ­
-        playerData = GetComponent<PlayerData>();
+        userID = PhotonNetwork.LocalPlayer.UserId;
+        // ï¿½Ê±ï¿½È­
+        //playerData = GetComponent<PlayerData>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (playerData.Returnplayer() != null)
-            color = playerData.player.Returncolor();
-        else
-            return;
+        // if (playerData.Returnplayer() != null)
+        //     color = playerData.player.Returncolor();
+        // else
+        //     return;
 
-        // ·ÎÄÃ ÇÃ·¹ÀÌ¾î¸¸ »ö»óÀ» ¼³Á¤ÇÕ´Ï´Ù.
+        color = playerContainer.ReturnPlayerColor(userID);
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         if (photonView.IsMine)
         {
             spriteRenderer.color = color;
@@ -32,7 +36,7 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
     }
 
 
-    // »ö»ó Àû¿ë ¹× µ¿±âÈ­ ¸Þ¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½Þ¼ï¿½ï¿½ï¿½
     [PunRPC]
     void ApplyColor(float r, float g, float b, float a)
     {
@@ -43,18 +47,18 @@ public class PlayerColor : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            if (photonView.IsMine) // ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÎ°¡?
+            if (photonView.IsMine) // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½Î°ï¿½?
             { 
-                // »ö»ó Á¤º¸ Àü¼Û
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 stream.SendNext(spriteRenderer.color.r);
                 stream.SendNext(spriteRenderer.color.g);
                 stream.SendNext(spriteRenderer.color.b);
                 stream.SendNext(spriteRenderer.color.a);
             }
         }
-        else // ´Ù¸¥ ÇÃ·¹ÀÌ¾îÀÎ°¡?
+        else // ï¿½Ù¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½Î°ï¿½?
         {
-            // »ö»ó Á¤º¸ ¼ö½Å
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float r = (float)stream.ReceiveNext();
             float g = (float)stream.ReceiveNext();
             float b = (float)stream.ReceiveNext();
