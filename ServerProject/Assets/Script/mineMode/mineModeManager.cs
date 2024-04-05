@@ -24,8 +24,14 @@ public class mineModeManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+
         round = roundData.ReturnRound();
         Debug.Log(round);
+        if (round > 5)
+        {
+
+            SceneManager.LoadScene("Lobby");
+        }
 
         playerId = PhotonNetwork.LocalPlayer.UserId;
     }
@@ -33,6 +39,7 @@ public class mineModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         CheckAlive();
         
     }

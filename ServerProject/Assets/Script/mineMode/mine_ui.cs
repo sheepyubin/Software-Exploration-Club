@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class mine_ui : MonoBehaviour
 {
+    public Sprite[] ImgAsset;
+    private Image NowImage;
+    public RoundData roundData;
+
     float time;
     public float _fadeTime = 5f;
     private SpriteRenderer spriteRenderer;
@@ -9,6 +14,11 @@ public class mine_ui : MonoBehaviour
 
     void Start()
     {
+        int img = roundData.ReturnRound() - 1;
+        NowImage = GetComponent<Image>();
+
+        NowImage.sprite = ImgAsset[img];
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
     }
