@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 58187374489927760}
   - component: {fileID: 47497576955107207}
   - component: {fileID: 7474506915066538807}
+  - component: {fileID: -7504747875858379297}
   m_Layer: 10
   m_Name: Enemy (Rifle)
   m_TagString: Untagged
@@ -248,7 +249,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -7504747875858379297}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -316,3 +318,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ac2844336940745aa4e4dca4194be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7504747875858379297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566360699403030468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effb2856c58ad1549a7214a2311bcd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMove: {fileID: 4566360699403030473}

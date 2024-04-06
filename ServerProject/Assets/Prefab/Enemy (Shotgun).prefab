@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2265790964858733979}
   - component: {fileID: 7324563169987176834}
   - component: {fileID: 6237830944652870834}
+  - component: {fileID: -8486356912981270718}
   m_Layer: 10
   m_Name: Enemy (Shotgun)
   m_TagString: Untagged
@@ -164,7 +165,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -8486356912981270718}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -232,6 +234,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ac2844336940745aa4e4dca4194be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8486356912981270718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888100525901758373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effb2856c58ad1549a7214a2311bcd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMove: {fileID: 3888100525901758374}
 --- !u!1 &8594936197582359985
 GameObject:
   m_ObjectHideFlags: 0
