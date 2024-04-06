@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class BulletMoveS3 : MonoBehaviour
 {
-    public float speed = 10f; // Åº¼Ó
+    public float speed = 10f; // Åºï¿½ï¿½
 
-    private Vector3 moveDirection; // ÀÌµ¿ ¹æÇâ
+    private Vector3 moveDirection; // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void Update()
     {
-        // ÀÌµ¿
+        // ï¿½Ìµï¿½
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
     }
 
-    // ¿ÀºêÁ§Æ® ÆÄ±«
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ä±ï¿½
     void Destroy()
     {
         gameObject.SetActive(false);
     }
 
-    // Ãæµ¹ Ã³¸®
+    // ï¿½æµ¹ Ã³ï¿½ï¿½
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -35,12 +35,12 @@ public class BulletMoveS3 : MonoBehaviour
         Invoke("Destroy", 3f);
     }
 
-    // ¹æÇâ ÃÊ±âÈ­
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
     void SetDirection()
     {
-        moveDirection = transform.right; // »ý¼ºµÈ ¹æÇâ ±×´ë·Î
+        moveDirection = transform.right; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½
     }
-    // ÇÃ·¹ÀÌ¾î ÇÇ°Ý
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ç°ï¿½
     void Damage()
     {
         Destroy();

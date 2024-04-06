@@ -1,28 +1,25 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyRifleS3 : MonoBehaviourPun
 {
-    public float detectionRadius = 8f; // ÇÃ·¹ÀÌ¾î °¨Áö ¹üÀ§
-    public GameObject bulletPrefab; // ÃÑ¾Ë ÇÁ¸®ÆÕ
-    public float fireRate = 1f; // ¹ß»ç ¼Óµµ
-    public float bulletSpeed = 10f; // ÃÑ¾Ë ¼Óµµ
+    public float detectionRadius = 8f; // í”Œë ˆì´ì–´ ê°ì§€ ë°˜ê²½
+    public GameObject bulletPrefab; // ì´ì•Œ í”„ë¦¬íŒ¹
+    public float fireRate = 1f; // ë°œì‚¬ ì†ë„
+    public float bulletSpeed = 10f; // ì´ì•Œ ì†ë„
 
-    private float nextFireTime; // ´ÙÀ½ ¹ß»ç ½Ã°£
+    private float nextFireTime; // ë‹¤ìŒ ë°œì‚¬ ì‹œê°„
 
     void Start()
     {
         nextFireTime = Time.time + fireRate;
-
-        // ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡¼­ ÀÌ ¿ÀºêÁ§Æ®¸¦ º¼ ¼ö ÀÖµµ·Ï ¼³Á¤
-        photonView.OwnershipTransfer = OwnershipOption.Takeover;
+        photonView.OwnershipTransfer = OwnershipOption.Takeover; // ì†Œìœ ê¶Œ ì„¤ì •
     }
 
     void Update()
     {
-        // Å¸°Ù Ã£±â
+        // í”Œë ˆì´ì–´ ê°ì§€
         GameObject closestPlayer = FindClosestPlayer();
 
         if (closestPlayer != null)
@@ -34,14 +31,13 @@ public class EnemyRifleS3 : MonoBehaviourPun
                 {
                     Shoot(SetBulletDirection(closestPlayer.transform));
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Rifle);
-                    nextFireTime = Time.time + fireRate; // ´ÙÀ½ ¹ß»ç±îÁöÀÇ ½Ã°£ ¼³Á¤
-                    
+                    nextFireTime = Time.time + fireRate; // ë‹¤ìŒ ë°œì‚¬ê¹Œì§€ ì‹œê°„ ì—…ë°ì´íŠ¸
                 }
             }
         }
     }
 
-    // °¡Àå °¡±î¿î ÇÃ·¹ÀÌ¾î Ã£±â
+    // ê°€ì¥ ê°€ê¹Œìš´ í”Œë ˆì´ì–´ ì°¾ê¸°
     GameObject FindClosestPlayer()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -59,17 +55,17 @@ public class EnemyRifleS3 : MonoBehaviourPun
         return closestPlayer;
     }
 
+    // ë°œì‚¬ ë¡œì§
     void Shoot(Vector3 bulletDirection)
     {
-        // Å¸°ÙÀ» ÇâÇÏ´Â È¸ÀüÀ» ±¸ÇÏ°í -90µµ¸¦ Ãß°¡ÇÏ¿© ÃÑ¾ËÀÌ Å¸°ÙÀ» ¹Ù¶óº¸µµ·Ï ¼³Á¤ÇÕ´Ï´Ù.
+        // ë°©í–¥ ì„¤ì •
         Quaternion rotationToTarget = Quaternion.LookRotation(Vector3.forward, bulletDirection) * Quaternion.Euler(0f, 0f, 90f);
 
-        // ÃÑ¾Ë »ı¼º ¹× ¹ß»ç
-
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, rotationToTarget);
-
+        // ë„¤íŠ¸ì›Œí¬ë¥¼ í†µí•´ ì´ì•Œ ìƒì„±
+        PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, rotationToTarget);
     }
 
+    // ì´ì•Œ ë°©í–¥ ì„¤ì •
     Vector3 SetBulletDirection(Transform target)
     {
         Vector3 direction;
@@ -79,15 +75,16 @@ public class EnemyRifleS3 : MonoBehaviourPun
         }
         else
         {
-            // Å¸°ÙÀÌ ¾øÀ¸¸é Á¤¸é ¹æÇâÀ¸·Î ¼³Á¤
+            // í”Œë ˆì´ì–´ê°€ ì—†ìœ¼ë©´ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ë°œì‚¬
             direction = transform.right;
         }
         return direction;
     }
 
+    // ë””ë²„ê¹…ì„ ìœ„í•œ ê°€ì‹œí™”
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius); // °¨Áö ¹İ°æÀ» ±âÁî¸ğ·Î Ç¥½Ã
+        Gizmos.DrawWireSphere(transform.position, detectionRadius); // ê°ì§€ ë°˜ê²½ í‘œì‹œ
     }
 }
