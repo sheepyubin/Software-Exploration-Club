@@ -60,6 +60,11 @@ public class ScoreData : ScriptableObject
 
     }
 
+    public int[] ReturnScoreArray()
+    {
+        return scoreArray;
+    }
+
     // 점수 반환
     public int GetScoreAtIndex(int index)
     {

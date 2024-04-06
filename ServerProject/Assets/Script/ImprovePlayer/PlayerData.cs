@@ -69,47 +69,50 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Dead")) // Dead �±׿� ��Ҵ°�?
+        if(!isClear)
         {
-            // ���
-            isDead = true;
-
-            playerContainer.AddPlayerisDead(userID, isDead);
-
-            PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
-
-            // ��� ����(0) �߰�
-            newScore = 0;
-
-            playerContainer.AddPlayerScore(userID,newScore);
-
-            playerContainer.AllIndex(userID);
-            //player.SetScore(newScore);
-        }
-        if (other.CompareTag("EndPoint") && !isClear) // EndPoint �±׿� ��Ҵ°�?
-        {
-            // ���� ����(100) �߰�
-            newScore = 100;
-            //player.SetScore(newScore);
-
-            playerContainer.AddPlayerScore(userID,newScore);
-
-            playerContainer.AllIndex(userID);       
-
-            isClear = true;     
-        }
-        if (other.CompareTag("SafeMine"))
-        {
-            int temp = 0;
-
-            newScore = 100;
-
-            if (temp == 0)
+            if (other.CompareTag("Dead")) // Dead �±׿� ��Ҵ°�?
             {
-                //player.SetScore(newScore);
+                // ���
+                isDead = true;
+
+                playerContainer.AddPlayerisDead(userID, isDead);
+
+                PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
+
+                // ��� ����(0) �߰�
+                newScore = 0;
+
                 playerContainer.AddPlayerScore(userID,newScore);
-                temp++;
-                Debug.Log(playerContainer.ReturnPlayerScore(userID));
+
+                playerContainer.AllIndex(userID);
+                //player.SetScore(newScore);
+            }
+            if (other.CompareTag("EndPoint")) // EndPoint �±׿� ��Ҵ°�?
+            {
+                // ���� ����(100) �߰�
+                newScore = 100;
+                //player.SetScore(newScore);
+
+                playerContainer.AddPlayerScore(userID,newScore);
+
+                playerContainer.AllIndex(userID);       
+
+                isClear = true;     
+            }
+            if (other.CompareTag("SafeMine"))
+            {
+                int temp = 0;
+
+                newScore = 100;
+
+                if (temp == 0)
+                {
+                    //player.SetScore(newScore);
+                    playerContainer.AddPlayerScore(userID,newScore);
+                    temp++;
+                    Debug.Log(playerContainer.ReturnPlayerScore(userID));
+                }
             }
         }
     }
