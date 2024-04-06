@@ -1,17 +1,18 @@
-using Photon.Pun;
 using UnityEngine;
+using Photon.Pun;
+using System.Collections.Generic;
 
 public class EnemyShotgunS3 : MonoBehaviourPun
 {
 
     AudioSource audioSource;
-    public float detectionRadius = 8f; // ÇÃ·¹ÀÌ¾î °¨Áö ¹üÀ§
-    public GameObject bulletPrefab; // ÃÑ¾Ë ÇÁ¸®ÆÕ
-    public float fireRate = 2f; // ¹ß»ç ¼Óµµ
-    public int ammo = 5; // ÃÑ¾Ë °¹¼ö
+    public float detectionRadius = 8f; // í”Œë ˆì´ì–´ ê°ì§€ ë°˜ê²½
+    public GameObject bulletPrefab; // ì´ì•Œ í”„ë¦¬íŒ¹
+    public float fireRate = 2f; // ë°œì‚¬ ì†ë„
+    public int ammo = 5; // ì´ì•Œ ê°œìˆ˜
 
-    private Transform player; // ÇÃ·¹ÀÌ¾î À§Ä¡
-    private float nextFireTime; // ´ÙÀ½ ¹ß»ç ½Ã°£
+    private Transform player; // í”Œë ˆì´ì–´ ìœ„ì¹˜
+    private float nextFireTime; // ë‹¤ìŒ ë°œì‚¬ ì‹œê°„
 
     void Start()
     {
@@ -20,25 +21,22 @@ public class EnemyShotgunS3 : MonoBehaviourPun
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.mute = false;
 
-        // ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡¼­ ÀÌ ¿ÀºêÁ§Æ®¸¦ º¼ ¼ö ÀÖµµ·Ï ¼³Á¤
-        photonView.OwnershipTransfer = OwnershipOption.Takeover;
+        photonView.OwnershipTransfer = OwnershipOption.Takeover; // ì†Œìœ ê¶Œ ì„¤ì •
     }
 
     void Update()
     {
-        // Å¸°Ù Ã£±â
         player = FindClosestPlayer().transform;
-
 
         if (bulletPrefab != null)
         {
             if (Time.time >= nextFireTime)
             {
-                // ÇÃ·¹ÀÌ¾î °¨Áö ÈÄ ÃÑ¾Ë ¹ß»ç
+                // í”Œë ˆì´ì–´ê°€ ê°ì§€ ë²”ìœ„ ë‚´ì— ìˆì„ ë•Œë§Œ ë°œì‚¬
                 if (Vector3.Distance(transform.position, player.position) <= detectionRadius)
                 {
-                    Shoot(); // ÃÑ¾Ë ¹ß»ç
-                    nextFireTime = Time.time + fireRate; // ´ÙÀ½ ¹ß»ç±îÁöÀÇ ½Ã°£ ¼³Á¤
+                    photonView.RPC("ShootRPC", RpcTarget.All); // RPC í˜¸ì¶œ
+                    nextFireTime = Time.time + fireRate; // ë‹¤ìŒ ë°œì‚¬ ì‹œê°„ ì„¤ì •
                 }
             }
         }
@@ -48,7 +46,7 @@ public class EnemyShotgunS3 : MonoBehaviourPun
         }
     }
 
-    // °¡Àå °¡±î¿î ÇÃ·¹ÀÌ¾î Ã£±â
+    // ê°€ì¥ ê°€ê¹Œìš´ í”Œë ˆì´ì–´ ì°¾ê¸°
     GameObject FindClosestPlayer()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -66,7 +64,8 @@ public class EnemyShotgunS3 : MonoBehaviourPun
         return closestPlayer;
     }
 
-    void Shoot()
+    [PunRPC] // RPC ë©”ì„œë“œ
+    void ShootRPC()
     {
         if (AudioManager.instance != null)
         {
@@ -74,34 +73,27 @@ public class EnemyShotgunS3 : MonoBehaviourPun
 
             if (player != null)
             {
-                Vector3 targetDirection = player.position - transform.position; // ¹æÇâ º¤ÅÍ °è»ê
-                float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // °¢µµ °è»ê (¶óµğ¾È -> °¢µµ) 
+                Vector3 targetDirection = player.position - transform.position; // í”Œë ˆì´ì–´ ë°©í–¥
+                float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // í”Œë ˆì´ì–´ì™€ì˜ ê°ë„ (ë¼ë””ì•ˆ -> ê°ë„)
 
-                // ÃÑ¾Ë ÇÁ¸®ÆÕ 5°³ »ı¼º
+                // ì´ì•Œì„ 5ë²ˆ ë°œì‚¬
                 for (int i = 0; i < ammo; i++)
                 {
-                    // °¢µµ °è»ê
+                    // ì´ì•Œì˜ ê°ë„ ì„¤ì •
                     float bulletAngle = angle - 30f + i * 15f;
 
-                    // °¢µµ ¼³Á¤
+                    // ì´ì•Œì˜ íšŒì „ê°’
                     Quaternion rotation = Quaternion.Euler(0f, 0f, bulletAngle);
 
-                    if (bulletPrefab != null)
+                    // ë„¤íŠ¸ì›Œí¬ë¥¼ í†µí•´ ì´ì•Œ ìƒì„±
+                    GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, rotation);
+                    if (bullet != null)
                     {
-                        GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
-
-                        if (bullet != null)
-                        {
-                            bullet.SetActive(true); // È°¼ºÈ­
-                        }
-                        else
-                        {
-                            Debug.LogError("Failed to instantiate bullet prefab.");
-                        }
+                        bullet.SetActive(true); // í™œì„±í™”
                     }
                     else
                     {
-                        Debug.LogError("Bullet prefab is not assigned.");
+                        Debug.LogError("Failed to instantiate bullet prefab.");
                     }
                 }
             }
@@ -116,10 +108,10 @@ public class EnemyShotgunS3 : MonoBehaviourPun
         }
     }
 
-
+    // ë””ë²„ê¹…ì„ ìœ„í•œ ê°€ì‹œí™”
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius); // °¨Áö ¹İ°æÀ» ±âÁî¸ğ·Î Ç¥½Ã
+        Gizmos.DrawWireSphere(transform.position, detectionRadius); // ê°ì§€ ë°˜ê²½ í‘œì‹œ
     }
 }
