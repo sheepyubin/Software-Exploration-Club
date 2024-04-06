@@ -25,9 +25,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     private SpriteRenderer sp;
     public bool isClimbing;
 
-    public PlayerContainer container;
-
-    public bool isDead = false; // ÇÃ·¹ÀÌ¾îÀÇ »ýÁ¸ ¿©ºÎ
+    public bool isDead = false; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void Start()
     {
@@ -80,7 +78,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isClimbing = false;
             }
-            // À§Ä¡ µ¿±âÈ­
+            // ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½È­
             photonView.RPC("SyncMovement", RpcTarget.Others, transform.position);
         }
         else
@@ -137,7 +135,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void SyncMovement(Vector3 position)
     {
-        // ´Ù¸¥ ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ µ¿±âÈ­
+        // ï¿½Ù¸ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­
         transform.position = position;
     }
 

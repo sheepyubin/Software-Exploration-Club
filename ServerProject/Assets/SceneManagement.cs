@@ -3,14 +3,13 @@ using Photon.Pun;
 using System.Collections;
 public class SceneManagement : MonoBehaviour
 {
-    public PlayerContainer container;
     public string nextSceneName;
 
     public GameObject scoreBoard;
     public ScoreBoard scoreBoardScrpit;
     public float delayTIme = 3f;
 
-    // ¾À ÀüÈ¯ ÇÔ¼ö
+    // ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ô¼ï¿½
     public void Update()
     {
 

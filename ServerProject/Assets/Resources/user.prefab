@@ -280,7 +280,6 @@ MonoBehaviour:
   isDashing: 0
   isGrounded: 0
   isClimbing: 0
-  container: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
   isDead: 0
 --- !u!114 &1486822778303770000
 MonoBehaviour:
@@ -418,6 +417,7 @@ MonoBehaviour:
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
   isCreate: 0
   deadBody: {fileID: 5678453254372105444, guid: d8f1c3fb0769e1f41bfa88ab5efd69ac, type: 3}
+  userID: 
   isDead: 0
   isClear: 0
 --- !u!114 &5222009895502270889

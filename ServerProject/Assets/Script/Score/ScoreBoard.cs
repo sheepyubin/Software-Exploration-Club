@@ -15,7 +15,7 @@ public class ScoreBoard : MonoBehaviourPun
     public TextMeshProUGUI[] userScore;
 
     public PlayerContainer playerContainer;
-    public ScoreData scoreData;
+
 
     private void Start()
     {
@@ -24,15 +24,8 @@ public class ScoreBoard : MonoBehaviourPun
 
     public void Score()
     {
-        playerContainer.MergeIndex();
-
-        int[] scoreArray = scoreData.ReturnScoreArray();
-
-        for(int i=0; i<scoreArray.Length; i++)
-        {
-            userScore[i].text = scoreArray[i].ToString();
-        }
-
+        playerContainer.PrintPlayerData();
+        
         gameObject.SetActive(true);
 
         StartCoroutine(DelayedFunction(delayTIme));

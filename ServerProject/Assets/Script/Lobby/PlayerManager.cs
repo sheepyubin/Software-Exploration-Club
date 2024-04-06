@@ -4,7 +4,6 @@ using Photon.Pun;
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public PlayerContainer container; // PlayerContainer ����
-    public ScoreData scoreData;
     public Vector3 spawnPoint; // ���� ��ġ ���� ��
 
     private string playerID;
@@ -15,9 +14,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             playerID = PhotonNetwork.LocalPlayer.UserId; // �÷��̾� ID ����
 
             container.ResetContainer(playerID);
-            container.ClearIndexList();
-            container.SetScoreIndex(playerID);
-            scoreData.ResetData();
 
             GameObject prefab = container.playerPrefab; // �����̳��� �÷��̾� ������
 

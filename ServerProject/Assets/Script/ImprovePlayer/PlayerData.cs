@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     public bool isCreate = false; // �÷��̾� ��ü�� ���� �Ǿ��°�?
     public GameObject deadBody;
 
-    string userID; // ���� UI
+    public string userID; // ���� UI
     public bool isDead; // �׾��°�?
     public bool isClear; // ���������� Ŭ���� �ߴ°�?
     int score; // ����
@@ -85,7 +85,6 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
                 playerContainer.AddPlayerScore(userID,newScore);
 
-                playerContainer.AllIndex(userID);
                 //player.SetScore(newScore);
             }
             if (other.CompareTag("EndPoint")) // EndPoint �±׿� ��Ҵ°�?
@@ -96,7 +95,6 @@ public class PlayerData : MonoBehaviourPunCallbacks
 
                 playerContainer.AddPlayerScore(userID,newScore);
 
-                playerContainer.AllIndex(userID);       
 
                 isClear = true;     
             }
@@ -116,12 +114,4 @@ public class PlayerData : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    // public Player Returnplayer()
-    // {
-    //     if (isCreate)
-    //         return player;
-    //     else
-    //         return null;
-    // }
 }
