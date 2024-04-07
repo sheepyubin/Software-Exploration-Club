@@ -148,7 +148,7 @@ public class PlayerContainer : ScriptableObject
             bool isDead = playerisDead.ContainsKey(playerID) ? playerisDead[playerID] : false;
             Color color = playerColor.ContainsKey(playerID) ? playerColor[playerID] : Color.white;
 
-            Debug.Log(playerID + ": Score " + score + " isDead " + isDead + " Color " + color + "\n");
+            Debug.Log("UserID: " + playerID + ": Score " + score + " isDead " + isDead + " Color " + color + "\n");
         }
     }
 }

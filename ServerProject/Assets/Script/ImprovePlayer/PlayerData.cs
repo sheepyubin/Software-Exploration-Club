@@ -43,9 +43,9 @@ public class PlayerData : MonoBehaviourPunCallbacks
             if (!isCreate)
             {
                 //player = new Player(userID, isDead, score, color); // ���� ���̵�, false, �ʱ� ����(0), ����
-                playerContainer.AddPlayerScore(userID,score);
-                playerContainer.AddPlayerisDead(userID, isDead);
-                playerContainer.AddPlayerColor(userID, color); // �� �߰�
+                photonView.RPC("SyncPlayerColor", RpcTarget.AllBuffered, userID, color.r, color.g, color.b);
+                photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
+                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, score);
                 isCreate = true;    
 
                 Debug.Log("userID: " + userID + " " + "isDead: " + playerContainer.ReturnPlayerisDead(userID) + " " + "score: " + playerContainer.ReturnPlayerScore(userID).ToString());
@@ -76,14 +76,14 @@ public class PlayerData : MonoBehaviourPunCallbacks
                 // ���
                 isDead = true;
 
-                playerContainer.AddPlayerisDead(userID, isDead);
+                photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
 
                 PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
 
                 // ��� ����(0) �߰�
                 newScore = 0;
 
-                playerContainer.AddPlayerScore(userID,newScore);
+                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
 
                 //player.SetScore(newScore);
             }
@@ -93,7 +93,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
                 newScore = 100;
                 //player.SetScore(newScore);
 
-                playerContainer.AddPlayerScore(userID,newScore);
+                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
 
 
                 isClear = true;     
@@ -107,9 +107,8 @@ public class PlayerData : MonoBehaviourPunCallbacks
                 if (temp == 0)
                 {
                     //player.SetScore(newScore);
-                    playerContainer.AddPlayerScore(userID,newScore);
+                    photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
                     temp++;
-                    Debug.Log(playerContainer.ReturnPlayerScore(userID));
                 }
             }
         }
