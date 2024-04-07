@@ -6,24 +6,29 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
-    public PlayerContainer playerContainer;
-    public GameObject platformPrefab; // 생성할 프리팹
+    [Header("PlayerContainer:")]
+    [SerializeField] private PlayerContainer playerContainer;
 
-    public GameObject gearObject;
-    public Animator animator;
+    [Header("GameObject:")]
+    [SerializeField] private GameObject platformPrefab; // 생성할 프리팹
+    [SerializeField] private GameObject gearObject;
+    [SerializeField] private Animator animator;
 
-    public Vector2 minPosition; // 최소 위치
-    public Vector2 maxPosition; // 최대 위치
+    [Header("RandomPosition:")]
+    [SerializeField] private Vector2 minPosition; // 최소 위치
+    [SerializeField] private Vector2 maxPosition; // 최대 위치
 
-    float delta = 0.0f;
-    public float span = 2.0f;
-    public float speed = 3.0f;
-
-    bool moveMode;
+    [Header("Timer:")]
+    [SerializeField] private float span = 2.0f;
     public float modeChangeTime = 3.0f;
 
-    string userID;
-    bool isDead;
+    [Header("Speed:")]
+    [SerializeField] private float speed = 3.0f;
+
+    private float delta = 0.0f;
+    bool moveMode;
+    private string userID;
+    private bool isDead;
     private void Start()
     {
         userID = PhotonNetwork.LocalPlayer.UserId;
