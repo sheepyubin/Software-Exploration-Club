@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     public bool isCreate = false; // �÷��̾� ��ü�� ���� �Ǿ��°�?
     public GameObject deadBody;
 
-    public string userID; // ���� UI
+    private string userID; // ���� UI
     public bool isDead; // �׾��°�?
     public bool isClear; // ���������� Ŭ���� �ߴ°�?
     int score; // ����

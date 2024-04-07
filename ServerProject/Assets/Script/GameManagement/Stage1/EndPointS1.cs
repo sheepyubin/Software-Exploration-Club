@@ -39,6 +39,7 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
 
         if(playerContainer.ReturnPlayerisDeadAll() && temp==0)
         {
+            Debug.Log(playerContainer.ReturnPlayerisDeadAll());
             temp++;
             End();
         }

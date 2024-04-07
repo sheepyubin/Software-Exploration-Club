@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             playerID = PhotonNetwork.LocalPlayer.UserId; // �÷��̾� ID ����
 
+            Debug.Log(playerID);
+
             container.ResetContainer(playerID);
 
             GameObject prefab = container.playerPrefab; // �����̳��� �÷��̾� ������
