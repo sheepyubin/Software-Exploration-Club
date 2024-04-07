@@ -1,5 +1,6 @@
 using Photon.Pun;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviourPunCallbacks
@@ -9,20 +10,25 @@ public class PlayerData : MonoBehaviourPunCallbacks
     private bool isCreate = false; // �÷��̾� ��ü�� ���� �Ǿ��°�?
     public GameObject deadBody;
 
-    private string userID; // ���� UI
+    string userID; // ���� UI
     public bool isDead; // �׾��°�?
     public bool isClear; // ���������� Ŭ���� �ߴ°�?
+    public int tmepScore;
     int score; // ����
     Color color; // ����
     int newScore; // �߰� �� ����
 
 
+    void Update()
+    {
+        tmepScore = playerContainer.ReturnPlayerScore( PhotonNetwork.LocalPlayer.UserId);
+    }
     private void Start()
     {
         if (photonView.IsMine) // ���� �÷��̾��ΰ�?
         {
             userID = PhotonNetwork.LocalPlayer.UserId;
-            
+
             if (!playerContainer.ReturnisCreated(userID))
             {
                 // ���� �ʱ�ȭ
