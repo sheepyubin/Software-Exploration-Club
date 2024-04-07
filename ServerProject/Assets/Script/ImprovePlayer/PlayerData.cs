@@ -1,63 +1,49 @@
 using Photon.Pun;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviourPunCallbacks
 {
     //private Player player; // Player Ŭ����
     public PlayerContainer playerContainer; // PlayerContainer ����
-    private bool isCreate = false; // �÷��̾� ��ü�� ���� �Ǿ��°�?
     public GameObject deadBody;
 
     public string userID; // ���� UI
     public bool isDead; // �׾��°�?
     public bool isClear; // ���������� Ŭ���� �ߴ°�?
-    public int tmepScore;
     int score; // ����
     Color color; // ����
     int newScore; // �߰� �� ����
 
+    private void Awake()
+    {
+        // ���� �ʱ�ȭ
+        userID = PhotonNetwork.LocalPlayer.UserId;
+        isDead = false;
+        isClear = false;
 
-    void Update()
-    {
-        tmepScore = playerContainer.ReturnPlayerScore( PhotonNetwork.LocalPlayer.UserId);
-    }
-    private void Start()
-    {
+        if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScore�� �ƹ� ���� ���°�?
+            score = 0;
+        else // ���� �̹� �ִ°�?
+            score = playerContainer.ReturnPlayerScore(userID);
+
+        if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColor�� �ƹ� ���� ���°�?
+        {
+            color = SetRandomColor(); // ���� ���� ����
+        }
+        else // ���� �̹� �ִ°�?
+            color = playerContainer.ReturnPlayerColor(userID); // ���� �ִ� �� ����
+
         if (photonView.IsMine) // ���� �÷��̾��ΰ�?
         {
-            userID = PhotonNetwork.LocalPlayer.UserId;
-
-            if (!playerContainer.ReturnisCreated(userID))
-            {
-                // ���� �ʱ�ȭ
-                isDead = false;
-                isClear = false;
-
-                if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScore�� �ƹ� ���� ���°�?
-                    score = 0;
-                else // ���� �̹� �ִ°�?
-                    score = playerContainer.ReturnPlayerScore(userID);
-
-                if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColor�� �ƹ� ���� ���°�?
-                {
-                    color = SetRandomColor(); // ���� ���� ����
-                }
-                else // ���� �̹� �ִ°�?
-                    color = playerContainer.ReturnPlayerColor(userID); // ���� �ִ� �� ����
+            Color tempColor = playerContainer.ReturnPlayerColor(userID);
 
                 //player = new Player(userID, isDead, score, color); // ���� ���̵�, false, �ʱ� ����(0), ����
                 photonView.RPC("SyncPlayerColor", RpcTarget.AllBuffered, userID, color.r, color.g, color.b);
                 photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
                 photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, score);
 
-                playerContainer.SetisCreated(userID,true);
-
-                isCreate = true;    
-
                 Debug.Log("userID: " + userID + " " + "isDead: " + playerContainer.ReturnPlayerisDead(userID) + " " + "score: " + playerContainer.ReturnPlayerScore(userID).ToString());
-            }
         }
     }
 

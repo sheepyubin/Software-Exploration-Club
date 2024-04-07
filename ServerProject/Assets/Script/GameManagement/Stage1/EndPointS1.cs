@@ -79,8 +79,6 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
 
     public void End()
     {
-        playerContainer.ResetisCreated(PhotonNetwork.LocalPlayer.UserId);
-        
         scoreBoardScrpit.Score();
 
         StartCoroutine(DelayedFunction(delayTIme));
