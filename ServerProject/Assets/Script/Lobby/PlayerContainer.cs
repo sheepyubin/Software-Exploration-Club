@@ -13,6 +13,7 @@ public class PlayerContainer : ScriptableObject
     public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // playerID, ??
     public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // playerID, ??
     public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>(); // playerID, ????��??
+    public Dictionary<string, bool> isCreated = new Dictionary<string, bool>();
 
 
     // ?��???? ?????? ??? ?????
@@ -150,5 +151,24 @@ public class PlayerContainer : ScriptableObject
 
             Debug.Log("UserID: " + playerID + ": Score " + score + " isDead " + isDead + " Color " + color + "\n");
         }
+    }
+
+    public void SetisCreated(string PlauyerID, bool set)
+    {
+        isCreated[PlauyerID] = set;
+    }
+
+    public bool ReturnisCreated(string PlayerID)
+    {
+        if (isCreated.ContainsKey(PlayerID))
+            return true;
+        else
+            return false;
+    }
+
+
+    public void ResetisCreated(string PlayerID)
+    {
+        isCreated[PlayerID] = false;
     }
 }
