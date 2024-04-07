@@ -32,7 +32,6 @@ public class PlayerData : MonoBehaviourPunCallbacks
         if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColor�� �ƹ� ���� ���°�?
         {
             color = SetRandomColor(); // ���� ���� ����
-            playerContainer.AddPlayerColor(userID, color); // �� �߰�
         }
         else // ���� �̹� �ִ°�?
             color = playerContainer.ReturnPlayerColor(userID); // ���� �ִ� �� ����
@@ -44,11 +43,12 @@ public class PlayerData : MonoBehaviourPunCallbacks
             if (!isCreate)
             {
                 //player = new Player(userID, isDead, score, color); // ���� ���̵�, false, �ʱ� ����(0), ����
-
+                playerContainer.AddPlayerScore(userID,score);
                 playerContainer.AddPlayerisDead(userID, isDead);
+                playerContainer.AddPlayerColor(userID, color); // �� �߰�
                 isCreate = true;    
 
-                Debug.Log("userID: " + userID + " " + "isDead: " + isDead + " " + "score: " + score.ToString());
+                Debug.Log("userID: " + userID + " " + "isDead: " + playerContainer.ReturnPlayerisDead(userID) + " " + "score: " + playerContainer.ReturnPlayerScore(userID).ToString());
             }
         }
     }

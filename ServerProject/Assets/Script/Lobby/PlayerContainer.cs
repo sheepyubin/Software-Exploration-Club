@@ -85,7 +85,7 @@ public class PlayerContainer : ScriptableObject
         else
             playerScore[playerID] = score;
 
-        Debug.Log(playerID + " " + playerScore[playerID]);
+        Debug.Log(playerID + ": " + playerScore[playerID]);
     }
 
     //?��???? ???? ??? ?????
