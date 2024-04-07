@@ -29,8 +29,7 @@ public class mineModeManager : MonoBehaviour
         Debug.Log(round);
         if (round > 5)
         {
-
-            SceneManager.LoadScene("Lobby");
+            PhotonNetwork.LoadLevel("Lobby");
         }
 
         playerId = PhotonNetwork.LocalPlayer.UserId;
