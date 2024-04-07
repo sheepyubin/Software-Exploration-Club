@@ -10,9 +10,11 @@ public class SceneSwitcher : MonoBehaviourPunCallbacks
     public Button button;
     public GameObject gameMode;
     public GameModeSelect gameModeSelect;
+    public bool isStart;
 
     void Start()
     {
+        isStart = false;
         if (PhotonNetwork.IsMasterClient)
         {
             if (button != null)
@@ -37,16 +39,18 @@ public class SceneSwitcher : MonoBehaviourPunCallbacks
 
     void OnButtonClick()
     {
-        // ¾À ÀüÈ¯
+        // ï¿½ï¿½ ï¿½ï¿½È¯
         if (nextSceneName != null)
         {
+            isStart = true;
+            
             Debug.Log(nextSceneName);
 
             photonView.RPC("SwitchScene", RpcTarget.All, nextSceneName);
         }
     }
 
-    // ¾À ÀüÈ¯ RPC ¸Þ¼­µå
+    // ï¿½ï¿½ ï¿½ï¿½È¯ RPC ï¿½Þ¼ï¿½ï¿½ï¿½
     [PunRPC]
     void SwitchScene(string sceneName)
     {

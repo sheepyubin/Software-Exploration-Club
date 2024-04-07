@@ -416,6 +416,7 @@ MonoBehaviour:
   button: {fileID: 295230267}
   gameMode: {fileID: 1543794814}
   gameModeSelect: {fileID: 1543794816}
+  isStart: 0
 --- !u!114 &295230271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2766,6 +2767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -349954106871013771, guid: a4c36fd9d7df64a44bdd9e8dac8cc179, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1369087333290907684, guid: a4c36fd9d7df64a44bdd9e8dac8cc179, type: 3}
       propertyPath: m_RootOrder
       value: 8
