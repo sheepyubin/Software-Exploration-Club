@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stage1Data", menuName = "ScriptableObjects/Stage1Data", order = 1)]
 public class Stage1Data : ScriptableObject
 {
-    private bool key1 = false; // 1¹ø Å°¸¦ ¾ò¾ú´Â°¡?
-    private bool key2 = false; // 2¹ø Å°¸¦ ¾ò¾ú´Â°¡?
-    private bool isClear = false; // ½ºÅ×ÀÌÁö¸¦ Å¬¸®¾î Çß´Â°¡?
+    private bool key1 = false; // 1ï¿½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â°ï¿½?
+    private bool key2 = false; // 2ï¿½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â°ï¿½?
+    private bool isClear = false; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ß´Â°ï¿½?
     
     public void Setkey1(bool set)
     {

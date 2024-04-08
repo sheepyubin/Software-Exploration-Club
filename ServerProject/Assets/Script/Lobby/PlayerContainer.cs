@@ -3,46 +3,45 @@ using System.Collections.Generic;
 using Photon.Pun;
 using System;
 using System.Reflection;
+using Unity.VisualScripting;
 
 [CreateAssetMenu(fileName = "PlayerContainer", menuName = "ScriptableObjects/PlayerContainer", order = 1)]
 
 public class PlayerContainer : ScriptableObject
 {
-    public GameObject playerPrefab; // ?��???? ??????(????)
-    public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>(); // playerID, ?��???? ??????
-    public Dictionary<string, Color> playerColor = new Dictionary<string, Color>(); // playerID, ??
-    public Dictionary<string, int> playerScore = new Dictionary<string, int>(); // playerID, ??
-    public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>(); // playerID, ????��??
+    public GameObject playerPrefab;
+    public Dictionary<string, GameObject> playerObject = new Dictionary<string, GameObject>();
+    public Dictionary<string, Color> playerColor = new Dictionary<string, Color>();
+    public Dictionary<string, bool> playerisDead = new Dictionary<string, bool>();
 
-    // ?��???? ?????? ??? ?????
-    public void AddPlayerData(string playerID, GameObject player) // (playerID, ?��???? ??????)
+    public ScoreContainer scoreContainer;
+    public isDeadContainer isDeadContainer;
+
+    public void AddPlayerData(string playerID, GameObject player)
     {
         playerObject[playerID] = player;
     }
 
-    // ?��???? ?????? ??? ?????
-    public GameObject ReturnPlayerData(string playerID) // (playerID)
+    public GameObject ReturnPlayerData(string playerID)
     {
         return playerObject[playerID];
     }
 
-    // ?��???? ???? ??? ?????
-    public void AddPlayerColor(string playerID, Color color) // (playerID, ?��???? ????)
+    public void AddPlayerColor(string playerID, Color color)
     {
         playerColor[playerID] = color;
     }
 
-    // ?��???? ???? ??? ?????
-    public Color ReturnPlayerColor(string playerID) // (playerID)
+    public Color ReturnPlayerColor(string playerID)
     {
-        if (playerColor.ContainsKey(playerID)) // playerColor ??????? playerID?? ??? ???? ???? ????
+        if (playerColor.ContainsKey(playerID))
             return playerColor[playerID];
-        else // playerColor ??????? playerID?? ??? ???? ???? ?????
+        else
             return Color.white;
     }
 
-    // ?��???? ???? ?�� ??? ?????
-    public Color[] ReturnPlayerColorArray() // index
+
+    public Color[] ReturnPlayerColorArray()
     {
         Color[] colorsArray = new Color[playerColor.Count];
         int index = 0;
@@ -56,59 +55,38 @@ public class PlayerContainer : ScriptableObject
         return colorsArray;
     }
 
-    // public void AllIndex(string playerID)
-    // {
-    //     indexList.Add(scoreIndex[playerID]);
-
-    // }
-
-    // public void MergeIndex()
-    // {
-    //     scoreData.SortIndex(indexList);
-    // }
-
-    // public void SetScoreIndex(string playerID)
-    // {
-    //     int index = scoreData.Getindex();
-
-    //     scoreIndex[playerID] = index;
-
-    //     Debug.Log(scoreIndex[playerID]);
-    // }
-
-    // ?��???? ???? ??? ?????
-    public void AddPlayerScore(string playerID, int score) // (playerID, ????)
+    public void AddScore(int score)
     {
-        if (playerScore.ContainsKey(playerID))
-            playerScore[playerID] += score;
-        else
-            playerScore[playerID] = score;
+        scoreContainer.AddScore(score);
 
-        Debug.Log(playerID + ": " + playerScore[playerID]);
+        Debug.Log("Score: " + scoreContainer.ReturnScore().ToString());
     }
 
-    //?��???? ???? ??? ?????
-    public int ReturnPlayerScore(string playerID) // (playerID)
+    public int ReturnScore()
     {
-        if (playerScore.ContainsKey(playerID)) // playerScore ��ųʸ��� playerID�� Ű�� ���� ���� �ִٸ�
-            return playerScore[playerID];
-        else // playerScore ��ųʸ��� playerID�� Ű�� ���� ���� ���ٸ�
-            return -1;
+        return scoreContainer.ReturnScore();
     }
 
-    // ?��???? ??? ??? ?????
-    public void AddPlayerisDead(string playerID, bool isDead) // (playerID, ???)
+    public void ResetScore()
+    {
+        scoreContainer.ResetScore();
+    }
+    
+    public void AddPlayerisDead(string playerID, bool isDead)
     {
         playerisDead[playerID] = isDead;
     }
 
-    // ?��???? ??? ??? ?????
-    public bool ReturnPlayerisDead(string playerID) // (playerID)
+    public bool ReturnPlayerisDead(string playerID)
     {
         return playerisDead[playerID];
     }
 
-    // ?��???? ??? ??? ????? (???)
+    public void ResetisDead(int PlayerCount)
+    {
+        isDeadContainer.ResetContainer(PlayerCount);
+    }
+
     public bool ReturnPlayerisDeadAll()
     {
         foreach (var kvp in playerisDead)
@@ -121,33 +99,28 @@ public class PlayerContainer : ScriptableObject
         return true;
     }
     
-    // ??????? ???? ?????
     public void ResetContainer(string playerID)
     {
-        // playerObject ???? playerID ??? ?? ????
         if (playerObject.ContainsKey(playerID))
             playerObject.Remove(playerID);
-        // playerColor ???? playerID ??? ?? ????
         if (playerColor.ContainsKey(playerID))
             playerColor.Remove(playerID);
-        // playerScore ???? playerID ??? ?? ????
-         if (playerScore.ContainsKey(playerID))
-              playerScore.Remove(playerID);
-        // playerisDead ???? playerID ??? ?? ????
+        //  if (playerScore.ContainsKey(playerID))
+        //       playerScore.Remove(playerID);
         if (playerisDead.ContainsKey(playerID))
             playerisDead.Remove(playerID);
     }
 
-    public void PrintPlayerData()
-    {
-        foreach (var kvp in playerObject)
-        {
-            string playerID = kvp.Key;
-            int score = playerScore.ContainsKey(playerID) ? playerScore[playerID] : 0;
-            bool isDead = playerisDead.ContainsKey(playerID) ? playerisDead[playerID] : false;
-            Color color = playerColor.ContainsKey(playerID) ? playerColor[playerID] : Color.white;
+    // public void PrintPlayerData()
+    // {
+    //     foreach (var kvp in playerObject)
+    //     {
+    //         string playerID = kvp.Key;
+    //         int score = playerScore.ContainsKey(playerID) ? playerScore[playerID] : 0;
+    //         bool isDead = playerisDead.ContainsKey(playerID) ? playerisDead[playerID] : false;
+    //         Color color = playerColor.ContainsKey(playerID) ? playerColor[playerID] : Color.white;
 
-            Debug.Log("UserID: " + playerID + ": Score " + score + " isDead " + isDead + " Color " + color + "\n");
-        }
-    }
+    //         Debug.Log("UserID: " + playerID + ": Score " + score + " isDead " + isDead + " Color " + color + "\n");
+    //     }
+    // }
 }

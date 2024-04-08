@@ -4,94 +4,77 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviourPunCallbacks
 {
-    //private Player player; // Player Ŭ����
-    public PlayerContainer playerContainer; // PlayerContainer ����
+    public PlayerContainer playerContainer;
+    public isDeadContainer isDeadContainer;
     public GameObject deadBody;
 
-    public string userID; // ���� UI
-    public bool isDead; // �׾��°�?
-    public bool isClear; // ���������� Ŭ���� �ߴ°�?
-    int score; // ����
-    Color color; // ����
-    int newScore; // �߰� �� ����
+    public string userID;
+    public bool isDead;
+    public bool isClear;
+
+    Color color;
+    int newScore;
 
     private void Awake()
     {
-        // ���� �ʱ�ȭ
+        playerContainer.ResetScore();
+        playerContainer.ResetisDead(PhotonNetwork.CurrentRoom.PlayerCount);
+
         userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
         isClear = false;
 
-        if (playerContainer.ReturnPlayerScore(userID) == -1) // playerScore�� �ƹ� ���� ���°�?
-            score = 0;
-        else // ���� �̹� �ִ°�?
-            score = playerContainer.ReturnPlayerScore(userID);
+        if (playerContainer.ReturnPlayerColor(userID) == Color.white )
+            color = SetRandomColor();
+        else
+            color = playerContainer.ReturnPlayerColor(userID);
 
-        if (playerContainer.ReturnPlayerColor(userID) == Color.white ) // playerColor�� �ƹ� ���� ���°�?
+
+        if (photonView.IsMine)
         {
-            color = SetRandomColor(); // ���� ���� ����
-        }
-        else // ���� �̹� �ִ°�?
-            color = playerContainer.ReturnPlayerColor(userID); // ���� �ִ� �� ����
-
-        if (photonView.IsMine) // ���� �÷��̾��ΰ�?
-        {
-            Color tempColor = playerContainer.ReturnPlayerColor(userID);
-
-                //player = new Player(userID, isDead, score, color); // ���� ���̵�, false, �ʱ� ����(0), ����
-                photonView.RPC("SyncPlayerColor", RpcTarget.AllBuffered, userID, color.r, color.g, color.b);
-                photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
-                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, score);
-
-                Debug.Log("userID: " + userID + " " + "isDead: " + playerContainer.ReturnPlayerisDead(userID) + " " + "score: " + playerContainer.ReturnPlayerScore(userID).ToString());
+            photonView.RPC("SyncPlayerColor", RpcTarget.AllBuffered, userID, color.r, color.g, color.b);
+            photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
         }
     }
 
-    // ���� ���� ���� ��ȯ�ϴ� �ż���
-    Color SetRandomColor()
-    {
-        // ���� RGB �� ����
-        float r = Random.Range(0f, 1f);
-        float g = Random.Range(0f, 1f);
-        float b = Random.Range(0f, 1f);
-        float a = 1f; // Alpha
-
-        Color color = new Color(r, g, b, a);
-
-        return color;
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(!isClear)
-        {
-            if (other.CompareTag("Dead")) // Dead �±׿� ��Ҵ°�?
+            if (other.CompareTag("Dead"))
             {
-                // ���
                 isDead = true;
 
+                isDeadContainer.AddisDead();
+                
                 photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
 
                 PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
-
-                // ��� ����(0) �߰�
-                newScore = 0;
-
-                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
-
-                //player.SetScore(newScore);
             }
-            if (other.CompareTag("EndPoint")) // EndPoint �±׿� ��Ҵ°�?
+
+            if (other.CompareTag("EndPoint") && !isClear)
             {
-                // ���� ����(100) �߰�
                 newScore = 100;
-                //player.SetScore(newScore);
 
-                photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
-
+                playerContainer.AddScore(newScore);
 
                 isClear = true;     
             }
+
+            if (other.CompareTag("Coin"))
+            {
+                newScore = 10;
+
+                playerContainer.AddScore(newScore);  
+            }
+
+            
+            if (other.CompareTag("Key"))
+            {
+                newScore = 50;
+
+                playerContainer.AddScore(newScore);  
+            }
+
             if (other.CompareTag("SafeMine"))
             {
                 int temp = 0;
@@ -105,6 +88,17 @@ public class PlayerData : MonoBehaviourPunCallbacks
                     temp++;
                 }
             }
-        }
+    }
+    
+    Color SetRandomColor()
+    {
+        float r = Random.Range(0f, 1f);
+        float g = Random.Range(0f, 1f);
+        float b = Random.Range(0f, 1f);
+        float a = 1f; // Alpha
+
+        Color color = new Color(r, g, b, a);
+
+        return color;
     }
 }

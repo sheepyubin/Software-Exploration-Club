@@ -26,7 +26,6 @@ public class Spectate : MonoBehaviour
         {
             sp.enabled = false;
             co.enabled = false;
-
             rb.gravityScale = 0f;
 
             float horizontalInput = Input.GetAxis("Horizontal");

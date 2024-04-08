@@ -13,6 +13,8 @@ TagManager:
   - test
   - Dead
   - SafeMine
+  - Coin
+  - Key
   layers:
   - Default
   - TransparentFX

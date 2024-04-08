@@ -23,9 +23,7 @@ public class ScoreBoard : MonoBehaviourPun
     }
 
     public void Score()
-    {
-        playerContainer.PrintPlayerData();
-        
+    {        
         gameObject.SetActive(true);
 
         StartCoroutine(DelayedFunction(delayTIme));

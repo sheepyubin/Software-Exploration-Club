@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
+  isDeadContainer: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
   deadBody: {fileID: 5678453254372105444, guid: d8f1c3fb0769e1f41bfa88ab5efd69ac, type: 3}
   userID: 
   isDead: 0

@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class EndPointS2 : MonoBehaviourPunCallbacks
 {
-    public Stage2Data data; //Stage2Data ��ũ���ͺ� ������Ʈ
+    public Stage2Data data; // Stage1Data ��ũ���ͺ� ������Ʈ
     public string nextStage;
     public GameObject Key1;
     public GameObject Key2;
-    public GameObject scoreBoard;
-    public ScoreBoard scoreBoardScrpit;
-    public float delayTIme = 3f;
+    public float delayTIme= 3f;
     public PlayerContainer playerContainer;
+    public isDeadContainer isDeadContainer;
+    public int targetScore = 0;
 
-    private void Start()
+    private bool isClear = false;
+
+    private void Awake()
     {
         Key1.SetActive(false);
         Key1.SetActive(false);
@@ -24,61 +26,64 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     {
         if (data.Returnkey1())
             Key1.SetActive(true);
-
+        
         if (data.Returnkey2())
             Key2.SetActive(true);
 
         if (data.ReturnisClear())
-            End();
-
-        if (playerContainer.ReturnPlayerisDeadAll())
-            End();
+            End(nextStage);
+            
+        if(isDeadContainer.ReturnisAllDead())
+            End("Lobby");
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // Ű�� ��� ������ �ִٸ�
-            if (data != null && data.Returnkey1() && data.Returnkey2())
-            {
-                data.SetisClear(true);
+            // �������� Ŭ����
+            data.SetisClear(true);
 
-                // �������� Ŭ����
-                Debug.Log("Success");
-
-                // �� ��ȯ
-                Debug.Log(nextStage);
-
-                End();
-            }
-            else
-            {
-                // ����
-                Debug.Log("Fail");
-            }
+            Debug.Log(nextStage);
         }
     }
 
     // �� ��ȯ RPC �޼���
     [PunRPC]
-    void SwitchScene(string sceneName)
+    void SwitchScene(string nextStage)
     {
-        // ���� ������ ��ȯ
-        PhotonNetwork.LoadLevel(sceneName);
+        if(nextStage == "Lobby")
+            PhotonNetwork.Disconnect();
+
+        PhotonNetwork.LoadLevel(nextStage);
     }
 
-    public void End()
+    public void AllDead()
     {
-        scoreBoard.SetActive(true);
-        scoreBoardScrpit.Score();
-
-        StartCoroutine(DelayedFunction(delayTIme));
+        Debug.Log("실패(전멸)");
+        StartCoroutine(DelayedFunction(delayTIme, "Lobby"));
     }
 
-    IEnumerator DelayedFunction(float delayTime)
+    public void End(string next)
+    {
+        if(playerContainer.ReturnScore() < targetScore)
+        {
+            Debug.Log("실패");
+            StartCoroutine(DelayedFunction(delayTIme, "Lobby"));
+        }
+        else
+        {
+            Debug.Log("성공");
+            StartCoroutine(DelayedFunction(delayTIme, next));
+        }
+    }
+
+    IEnumerator DelayedFunction(float delayTime, string nextStage)
     {
         yield return new WaitForSeconds(delayTime);
 
+        if(!isClear)
         photonView.RPC("SwitchScene", RpcTarget.All, nextStage);
+
+        isClear = true;
     }
 }

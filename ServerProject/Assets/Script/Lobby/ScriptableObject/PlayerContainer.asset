@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerContainer
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4594634228712182773, guid: 9d4c0cff76e5c224d9320eece64c23fe, type: 3}
-  scoreData: {fileID: 11400000, guid: 52cac54e747ac4e4cac05fe7d1c5be95, type: 2}
+  scoreContainer: {fileID: 11400000, guid: 855ba69046612414182035c4a387eab4, type: 2}
+  isDeadContainer: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
