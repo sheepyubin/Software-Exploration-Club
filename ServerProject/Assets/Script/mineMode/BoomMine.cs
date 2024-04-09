@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mine : MonoBehaviour
+public class BoomMine : MonoBehaviour
 {
     public GameObject bommEffect;
 
@@ -23,6 +23,5 @@ public class Mine : MonoBehaviour
     void Boom()
     {
         Instantiate(bommEffect, transform.position, Quaternion.identity);
-        gameObject.SetActive(false);
     }
 }

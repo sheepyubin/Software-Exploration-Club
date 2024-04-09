@@ -29,7 +29,6 @@ public class PlayerData : MonoBehaviourPunCallbacks
         else
             color = playerContainer.ReturnPlayerColor(userID);
 
-
         if (photonView.IsMine)
         {
             photonView.RPC("SyncPlayerColor", RpcTarget.AllBuffered, userID, color.r, color.g, color.b);
@@ -75,19 +74,16 @@ public class PlayerData : MonoBehaviourPunCallbacks
                 playerContainer.AddScore(newScore);  
             }
 
-            if (other.CompareTag("SafeMine"))
-            {
-                int temp = 0;
+            //if (other.CompareTag("SafeMine"))
+            //{
+            //    int temp = 0;
 
-                newScore = 100;
+            //    newScore = 100;
+            //    playerContainer.AddScore(newScore);
 
-                if (temp == 0)
-                {
-                    //player.SetScore(newScore);
-                    photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
-                    temp++;
-                }
-            }
+            ////player.SetScore(newScore);
+            //photonView.RPC("SyncPlayerScore", RpcTarget.AllBuffered, userID, newScore);
+            //}
     }
     
     Color SetRandomColor()

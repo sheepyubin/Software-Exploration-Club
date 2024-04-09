@@ -79,7 +79,13 @@ public class PlayerContainer : ScriptableObject
 
     public bool ReturnPlayerisDead(string playerID)
     {
-        return playerisDead[playerID];
+        if(playerisDead.ContainsKey(playerID))
+            return playerisDead[playerID];
+        else
+        {
+            AddPlayerisDead(playerID, false);
+            return false;
+        }
     }
 
     public void ResetisDead(int PlayerCount)
