@@ -26,7 +26,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private float speed = 3.0f;
 
     private float delta = 0.0f;
-    bool moveMode;
+    public bool moveMode;
     private string userID;
     private bool isDead;
     private void Start()

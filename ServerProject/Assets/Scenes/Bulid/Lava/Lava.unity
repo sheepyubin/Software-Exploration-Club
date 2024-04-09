@@ -63550,11 +63550,12 @@ MonoBehaviour:
   platformPrefab: {fileID: 8941053228917483967, guid: 58d520125931edc4087e7dd95315f107, type: 3}
   gearObject: {fileID: 1941292021}
   animator: {fileID: 1941292022}
-  minPosition: {x: -25, y: 40}
+  minPosition: {x: -25, y: 30}
   maxPosition: {x: 25, y: 40}
   span: 1
   modeChangeTime: 5
   speed: 2
+  moveMode: 0
 --- !u!61 &5301537111592912575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63593,5 +63594,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5ce9e85e918e3439b79f3d1d29ce18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDirector: {fileID: 5301537111592912574}
   timerText: {fileID: 973505269}
-  totalTime: 10
