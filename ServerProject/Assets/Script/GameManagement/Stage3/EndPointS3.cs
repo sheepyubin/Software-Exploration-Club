@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class EndPointS3 : MonoBehaviourPunCallbacks
 {
-    public PlayerContainer container; // ÇÃ·¹ÀÌ¾î ÄÁÅ×ÀÌ³Ê ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®
-    public KeyDataS3 keyData; // ½ºÅ×ÀÌÁö 1ÀÇ KeyData ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®
+    public PlayerContainer container; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public KeyDataS3 keyData; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ KeyData ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public string nextStage;
     public GameObject Key1;
     public GameObject Key2;
@@ -39,26 +39,26 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
     {
         if (other.CompareTag("Player"))
         {
-            // Å°¸¦ ¸ðµÎ °¡Áö°í ÀÖ´Ù¸é
+            // Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
             if (keyData != null && keyData.Key1 && keyData.Key2)
             {
-                // ½ºÅ×ÀÌÁö Å¬¸®¾î
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
                 Debug.Log("Success");
 
-                // ¾À ÀüÈ¯
+                // ï¿½ï¿½ ï¿½ï¿½È¯
                 Debug.Log(nextStage);
 
                 End();
             }
             else
             {
-                // ½ÇÆÐ
+                // ï¿½ï¿½ï¿½ï¿½
                 Debug.Log("Fail");
             }
         }
     }
 
-    // ¾À ÀüÈ¯ RPC ¸Þ¼­µå
+    // ï¿½ï¿½ ï¿½ï¿½È¯ RPC ï¿½Þ¼ï¿½ï¿½ï¿½
     [PunRPC]
     void SwitchScene(string sceneName)
     {
@@ -66,7 +66,7 @@ public class EndPointS3 : MonoBehaviourPunCallbacks
 
         container.ResetContainer(playerID);
 
-        // ´ÙÀ½ ¾ÀÀ¸·Î ÀüÈ¯
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
         PhotonNetwork.LoadLevel(sceneName);
     }
 

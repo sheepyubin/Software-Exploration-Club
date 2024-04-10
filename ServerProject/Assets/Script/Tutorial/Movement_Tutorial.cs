@@ -18,7 +18,7 @@ public class Movement_Tutorial : MonoBehaviour
     private float dashTime = 0.2f;
     private float dashCool = 1;
 
-    // Æ©Åä¸®¾ó
+    // Æ©ï¿½ä¸®ï¿½ï¿½
     public bool step1 = false;
     public bool step2 = false;
     public bool step3= false;
@@ -54,7 +54,7 @@ public class Movement_Tutorial : MonoBehaviour
 
         if (moveInput != 0)
         {
-            step1 = true; // Æ©Åä¸®¾ó 1´Ü°è ¿Ï·á
+            step1 = true; // Æ©ï¿½ä¸®ï¿½ï¿½ 1ï¿½Ü°ï¿½ ï¿½Ï·ï¿½
             ani.SetBool("isWalk", true);
         }
         else
@@ -87,7 +87,7 @@ public class Movement_Tutorial : MonoBehaviour
             ani.SetBool("isDashing", true);
 
             StartCoroutine(Dash());
-            step2 = true; // Æ©Åä¸®¾ó 2´Ü°è ¿Ï·á
+            step2 = true; // Æ©ï¿½ä¸®ï¿½ï¿½ 2ï¿½Ü°ï¿½ ï¿½Ï·ï¿½
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && step2)
@@ -95,7 +95,7 @@ public class Movement_Tutorial : MonoBehaviour
             temp++;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             if(temp >= 2)
-            step3 = true; // Æ©Åä¸®¾ó 3´Ü°è ¿Ï·á
+            step3 = true; // Æ©ï¿½ä¸®ï¿½ï¿½ 3ï¿½Ü°ï¿½ ï¿½Ï·ï¿½
         }
 
 
@@ -155,17 +155,17 @@ public class Movement_Tutorial : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // EndPoint¿¡ Ãæµ¹
+        // EndPointï¿½ï¿½ ï¿½æµ¹
         if (collision.gameObject.CompareTag("EndPoint"))
         {
             if(step5)
             Debug.Log("Tutorial Clear");
         }
 
-        // Boundary¿¡ Ãæµ¹
+        // Boundaryï¿½ï¿½ ï¿½æµ¹
         if (collision.gameObject.CompareTag("Boundary") || collision.gameObject.CompareTag("Bullet"))
         {
-            transform.position = new Vector2(-15, -1);
+            transform.position = new Vector2(-15, -2);
         }
     }
 
