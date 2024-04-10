@@ -26,11 +26,7 @@ public class mineModeManager : MonoBehaviour
     {
 
         round = roundData.ReturnRound();
-        Debug.Log(round);
-        if (round > 5)
-        {
-            PhotonNetwork.LoadLevel("Lobby");
-        }
+        Debug.Log("현재 " + round + "라운드 진행중");
 
         playerId = PhotonNetwork.LocalPlayer.UserId;
     }
@@ -38,9 +34,12 @@ public class mineModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (roundData.ReturnRound() == 5 && Input.GetMouseButtonDown(0))
+        {
+            PhotonNetwork.LoadLevel("Lobby");
+        }
         CheckAlive();
-        
+
     }
 
     public void CheckAlive()
@@ -48,13 +47,30 @@ public class mineModeManager : MonoBehaviour
         if (!isReloadingScene && playerContainer.ReturnPlayerisDeadAll())
         {
             isReloadingScene = true;
-            StartCoroutine(WaitForReload());
+            StartCoroutine(ifAllDead());
+        }
+        else if (!isReloadingScene && (roundData.ReturnDead() + roundData.ReturnLive() == 0))
+        {
+            isReloadingScene = true;
+            StartCoroutine(ifClearLevel());
         }
     }
 
-    IEnumerator WaitForReload()
+    IEnumerator ifAllDead()
     {
-        Debug.Log("전부 사망");
+        if (roundData.ReturnRound() == 5)
+        {
+            yield return new WaitForSeconds(200);
+            PhotonNetwork.LoadLevel("Lobby");
+        }
+        Debug.Log("전부 사망, 현재 레벨 재시작");
+        yield return new WaitForSeconds(time);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    IEnumerator ifClearLevel()
+    {
+        Debug.Log("다음 레벨 로딩");
         yield return new WaitForSeconds(time);
         round++;
         roundData.AddRound(round);

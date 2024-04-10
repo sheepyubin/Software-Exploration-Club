@@ -5,6 +5,8 @@ using UnityEngine;
 public class BoomMine : MonoBehaviour
 {
     public GameObject bommEffect;
+    public RoundData roundData;
+    private int deadman;
 
     void Start()
     {
@@ -16,6 +18,8 @@ public class BoomMine : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Boom();
+            deadman++;
+            roundData.AddDead(deadman);
             AudioManager.instance.PlaySfx(AudioManager.Sfx.MineExplosion);
         }
     }
