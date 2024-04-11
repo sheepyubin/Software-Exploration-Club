@@ -7,7 +7,8 @@ using UnityEngine;
 public class RoundData : ScriptableObject
 {
     private int round = 1;
-    private float time = 0.00f;
+    private float time ;
+    private bool clear = false; 
 
     public void AddRound(int round)
     {
@@ -30,5 +31,13 @@ public class RoundData : ScriptableObject
         return time;
     }
 
+    public void AddClear(bool clear)
+    {
+        this.clear = clear; 
+    }
+    public bool ReturnClear()
+    {
+        return clear;
+    }
 
 }

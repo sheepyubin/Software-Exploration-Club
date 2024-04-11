@@ -12,13 +12,11 @@ public class CountDown : MonoBehaviour
 
     private float countdownTime = 0f;
 
-    void Start()
+    void Awake()
     {
         countdownTime = roundData.ReturnTime();
-        if(countdownTime < 0f)
-        {
-            countdownTime = 0f;
-        }
+        countdownTime = roundData.ReturnTime();
+        countdownTime = roundData.ReturnTime();
         StartCoroutine(StartCountdown());
     }
 
@@ -26,10 +24,11 @@ public class CountDown : MonoBehaviour
     {
         while (countdownTime > -1f)
         {
-            if (playerContainer.ReturnPlayerisDeadAll())
+            if (playerContainer.ReturnPlayerisDeadAll() == true || roundData.ReturnClear() == true)
             {
                 roundData.AddTime(countdownTime);
             }
+
             int seconds = Mathf.FloorToInt(countdownTime);
             int milliseconds = Mathf.FloorToInt((countdownTime - seconds) * 100);
             countdownText.text = string.Format("{0}.{1:D2}", seconds, milliseconds);
