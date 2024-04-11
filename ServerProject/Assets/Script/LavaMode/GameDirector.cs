@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameDirector : MonoBehaviour
+public class GameDirector : MonoBehaviourPunCallbacks
 {
     [Header("PlayerContainer:")]
     [SerializeField] private isDeadContainer isdeadContainer;
@@ -39,6 +39,16 @@ public class GameDirector : MonoBehaviour
         maxPosition.y = minPosition.y + 10;
         isdeadContainer.AddisDead();
         StartCoroutine(SwichingMode());
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("SetMoveModeRPC", RpcTarget.AllBuffered, moveMode);
+        }
+    }
+    [PunRPC]
+    private void SetMoveModeRPC(bool mode)
+    {
+        moveMode = mode;
+        MoveMode(moveMode);
     }
     IEnumerator SwichingMode()
     {
