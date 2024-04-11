@@ -41,7 +41,7 @@ public class Missile : MonoBehaviourPun, IPunObservable
     void RPC_DestroyMissile()
     {
         // 미사일 파괴
-        PhotonNetwork.Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     // PhotonView의 IPunObservable 인터페이스 구현
