@@ -82,12 +82,17 @@ public class LavaTimerUI : MonoBehaviour
         if (player == 0)
         {
             IsStop();
-            if (Input.GetMouseButton(0))
-            {
-                PhotonNetwork.Disconnect();
-                SceneManager.LoadScene("Lobby");
-            }
+            StartCoroutine(WaitBeforeDisconnectAndLoadScene());
         }
+    }
+    IEnumerator WaitBeforeDisconnectAndLoadScene()
+    {
+        // 1초 동안 대기
+        yield return new WaitForSeconds(1.0f);
+
+        // 대기 후에 PhotonNetwork 연결 해제 및 씬 이동
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Lobby");
     }
     private void LavaMoveMode()
     {
