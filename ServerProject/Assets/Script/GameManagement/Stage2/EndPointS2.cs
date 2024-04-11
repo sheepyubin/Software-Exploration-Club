@@ -13,6 +13,8 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     public PlayerContainer playerContainer;
     public isDeadContainer isDeadContainer;
     public int targetScore = 0;
+    public GameObject success;
+    public GameObject fail;
 
     private bool isClear = false;
 
@@ -20,6 +22,9 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     {
         Key1.SetActive(false);
         Key1.SetActive(false);
+
+        success.SetActive(false);
+        fail.SetActive(false);
     }
 
     private void Update()
@@ -52,10 +57,23 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     void SwitchScene(string nextStage)
     {
         if(nextStage == "Lobby")
-            PhotonNetwork.Disconnect();
-
-        PhotonNetwork.LoadLevel(nextStage);
+        {
+            // RPC로 모든 클라이언트에게 Disconnect 및 로비 씬 로드 명령 보내기
+            photonView.RPC("DisconnectAndLoadLevel", RpcTarget.All);
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(nextStage);
+        }
     }
+
+    [PunRPC]
+    void DisconnectAndLoadLevel()
+    {
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("Lobby");
+    }
+
 
     public void AllDead()
     {
@@ -68,11 +86,13 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
         if(playerContainer.ReturnScore() < targetScore)
         {
             Debug.Log("실패");
+            fail.SetActive(true);          
             StartCoroutine(DelayedFunction(delayTIme, "Lobby"));
         }
         else
         {
             Debug.Log("성공");
+            success.SetActive(true);  
             StartCoroutine(DelayedFunction(delayTIme, next));
         }
     }
