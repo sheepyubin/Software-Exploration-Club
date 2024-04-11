@@ -11,6 +11,8 @@ public class mine_spwaner : MonoBehaviour
     public GameObject unexploded_mine;
     public GameObject real_mine;
 
+    private int seed;
+
     private void Start()
     {
         StartCoroutine(WaitForReload());
@@ -31,7 +33,7 @@ public class mine_spwaner : MonoBehaviour
         }
 
         // 플레이어마다 동일한 난수 시드 사용
-        Random.InitState(1234); // 임의의 시드 값 (원하는 값으로 변경 가능)
+        Random.InitState(seed); // 임의의 시드 값 (원하는 값으로 변경 가능)
 
         Shuffle(minePrefabs);
 
@@ -43,6 +45,12 @@ public class mine_spwaner : MonoBehaviour
         }
     }
 
+    int GenerateRandomNumber()
+    {
+
+        System.Random random = new System.Random();
+        return random.Next(1000, 10000);
+    }
     private void Shuffle(List<GameObject> list)
     {
         for (int i = 0; i < list.Count; i++)
