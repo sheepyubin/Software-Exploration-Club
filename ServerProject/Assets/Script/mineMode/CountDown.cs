@@ -20,27 +20,24 @@ public class CountDown : MonoBehaviour
 
     private void Update()
     {
-        if (roundData.ReturnClearGame() != true)
+        if (roundData.ReturnClearGame() == true)
         {
-
+            StopCoroutine(StartCountdown());
         }
     }
 
     IEnumerator StartCountdown()
     {
-        while (countdownTime > -1f)
+        while (countdownTime > -1f && !roundData.ReturnClearGame())
         {
-            if (roundData.ReturnClearGame() != true)
-            {
-                roundData.AddTime(countdownTime);
+            roundData.AddTime(countdownTime);
 
-                int seconds = Mathf.FloorToInt(countdownTime);
-                int milliseconds = Mathf.FloorToInt((countdownTime - seconds) * 100);
-                countdownText.text = string.Format("{0}.{1:D2}", seconds, milliseconds);
+            int seconds = Mathf.FloorToInt(countdownTime);
+            int milliseconds = Mathf.FloorToInt((countdownTime - seconds) * 100);
+            countdownText.text = string.Format("{0}.{1:D2}", seconds, milliseconds);
 
-                yield return new WaitForSeconds(0.01f);
-                countdownTime += 0.01f;
-            }
+            yield return new WaitForSeconds(0.01f);
+            countdownTime += 0.01f;
         }
     }
 }

@@ -2057,6 +2057,7 @@ MonoBehaviour:
   scoreText: {fileID: 332175853}
   roundData: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
+  isDeadContainer: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
 --- !u!212 &672363489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6029,6 +6030,7 @@ MonoBehaviour:
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
   roundData: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
   playerSpawner: {fileID: 88535615}
+  container: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
   clearUI: {fileID: 672363488}
   time: 5
   aliveMan: 0

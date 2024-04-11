@@ -14,6 +14,8 @@ public class mineModeManager : MonoBehaviour
     public PlayerSpawner playerSpawner;
     string playerId;
 
+    public isDeadContainer container;
+
     public ClearUI clearUI;
 
     private int totalPlayers = 0;
@@ -44,8 +46,9 @@ public class mineModeManager : MonoBehaviour
     void Update()
     {
         CheckAlive();
-        if (roundData.ReturnRound() > 5 && Input.GetMouseButtonDown(0))
+        if (roundData.ReturnRound() == 5 && container.ReturnisAllDead() && Input.GetMouseButtonDown(0))
         {
+            PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("Lobby");
         }
 
