@@ -8,7 +8,8 @@ public class RoundData : ScriptableObject
 {
     private int round = 1;
     private float time ;
-    private bool clear = false; 
+    private bool clear = false;
+    private bool clearGame = false;
 
     public void AddRound(int round)
     {
@@ -40,4 +41,14 @@ public class RoundData : ScriptableObject
         return clear;
     }
 
+
+    public void AddClearGame(bool clearGame)
+    {
+        this.clearGame = clearGame; 
+    }
+
+    public bool ReturnClearGame()
+    {
+        return clearGame;  
+    }
 }

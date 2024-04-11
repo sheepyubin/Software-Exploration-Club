@@ -67,8 +67,9 @@ public class mineModeManager : MonoBehaviour
 
     IEnumerator ifAllDead()
     {
-        if (roundData.ReturnRound() > 5)
+        if (roundData.ReturnRound() == 5)
         {
+            roundData.AddClearGame(true);
             yield return new WaitForSeconds(200);
             PhotonNetwork.LoadLevel("Lobby");
         }
