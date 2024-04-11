@@ -57,6 +57,8 @@ public class PlayerData : MonoBehaviourPunCallbacks
                 photonView.RPC("SyncPlayerIsDead", RpcTarget.AllBuffered, userID, isDead);
 
                 PhotonNetwork.Instantiate(deadBody.name, transform.position, Quaternion.identity);
+
+                gameObject.SetActive(false);
             }
 
             if (other.CompareTag("EndPoint") && !isClear)
