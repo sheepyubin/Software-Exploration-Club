@@ -7,11 +7,11 @@ using Photon.Realtime;
 
 public class LavaTimerUI : MonoBehaviour
 {
-    [Header("PlayerContainer:")]
-    [SerializeField] private PlayerContainer playerContainer;
-    
+    [Header("Container:")]
+    [SerializeField] private isDeadContainer isdeadContainer;
+    [SerializeField] private ScoreContainer scoreContainer;
 
-    
+
     [Header("TextUI:")]
     [SerializeField] private TextMeshProUGUI timerText; // TextMeshPro Text 요소
     [SerializeField] private TextMeshProUGUI roundText;
@@ -32,7 +32,7 @@ public class LavaTimerUI : MonoBehaviour
         gameDirector = GetComponent<GameDirector>();
         player = PhotonNetwork.CurrentRoom.PlayerCount;
         totalTime = gameDirector.modeChangeTime;
-        playerContainer.scoreContainer.ResetScore();
+        scoreContainer.ResetScore();
         round = 1;
         StartCoroutine(UpdateTimer());
         StartCoroutine(ScoreTimer());
@@ -52,7 +52,7 @@ public class LavaTimerUI : MonoBehaviour
     {
         while (true)
         {
-            playerContainer.scoreContainer.AddScore(player);
+            scoreContainer.AddScore(player);
 
 
             yield return new WaitForSeconds(0.1f); // 1초를 기다립니다.
@@ -60,7 +60,7 @@ public class LavaTimerUI : MonoBehaviour
     }
     private void Update()
     {
-        score = playerContainer.scoreContainer.ReturnScore();
+        score = scoreContainer.ReturnScore();
         if (score >= maxScore)
         {
             ++round;
@@ -69,6 +69,10 @@ public class LavaTimerUI : MonoBehaviour
         LavaMoveMode();
         LavaScore();
         LavaRound();
+        if (isdeadContainer.ReturnisAllDead())
+        {
+            Debug.Log("ss");
+        }
     }
     private void LavaMoveMode()
     {

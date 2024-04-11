@@ -38671,7 +38671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7404a644646214e952919d591a1c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
+  isdeadContainer: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
+  scoreContainer: {fileID: 11400000, guid: 855ba69046612414182035c4a387eab4, type: 2}
   platformPrefab: {fileID: 8941053228917483967, guid: 58d520125931edc4087e7dd95315f107, type: 3}
   gearObject: {fileID: 1941292021}
   animator: {fileID: 1941292022}
@@ -38720,8 +38721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5ce9e85e918e3439b79f3d1d29ce18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
-  gameDirector: {fileID: 5301537111592912574}
+  isdeadContainer: {fileID: 11400000, guid: 2bfd4db1b5190744086bc10b7261ca95, type: 2}
+  scoreContainer: {fileID: 11400000, guid: 855ba69046612414182035c4a387eab4, type: 2}
   timerText: {fileID: 973505269}
   roundText: {fileID: 1968763882}
   scoreText: {fileID: 1318819713}

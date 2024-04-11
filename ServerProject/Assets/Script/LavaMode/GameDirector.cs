@@ -8,7 +8,8 @@ using UnityEngine;
 public class GameDirector : MonoBehaviour
 {
     [Header("PlayerContainer:")]
-    [SerializeField] private PlayerContainer playerContainer;
+    [SerializeField] private isDeadContainer isdeadContainer;
+    [SerializeField] private ScoreContainer scoreContainer;
 
     [Header("GameObject:")]
     [SerializeField] private GameObject platformPrefab; // 积己且 橇府普
@@ -39,7 +40,7 @@ public class GameDirector : MonoBehaviour
         isDead = false;
         moveMode = false;
         maxPosition.y = minPosition.y + 10;
-        playerContainer.AddPlayerisDead(userID, isDead);
+        isdeadContainer.AddisDead();
     }
     private void Awake()
     {
@@ -97,7 +98,7 @@ public class GameDirector : MonoBehaviour
             delta = 0.0f;
             SpawnRandomPrefab(); // 罚待 橇府普 积己
         }
-        if (playerContainer.ReturnPlayerisDeadAll())
+        if (isdeadContainer.ReturnisAllDead())
         {
         }
         MoveMode(moveMode);
@@ -107,8 +108,6 @@ public class GameDirector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("dead");
-            playerContainer.AddPlayerisDead(userID, isDead);
-            playerContainer.ReturnPlayerisDead(userID);
             --lavaTimerUI.player;
         }
     }
