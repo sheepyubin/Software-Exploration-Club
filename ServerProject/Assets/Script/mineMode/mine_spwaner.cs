@@ -30,6 +30,9 @@ public class mine_spwaner : MonoBehaviour
             minePrefabs.Add(unexploded_mine);
         }
 
+        // 플레이어마다 동일한 난수 시드 사용
+        Random.InitState(1234); // 임의의 시드 값 (원하는 값으로 변경 가능)
+
         Shuffle(minePrefabs);
 
         int mine_distance = -8;
