@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Pun.Demo.Cockpit;
+using Photon.Pun.UtilityScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,15 +23,18 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private float span = 2.0f;
     public float modeChangeTime = 3.0f;
 
-    [Header("Speed:")]
+    [Header("Object Option:")]
     [SerializeField] private float speed = 3.0f;
 
+    private LavaTimerUI lavaTimerUI;
     private float delta = 0.0f;
     public bool moveMode;
     private string userID;
-    private bool isDead;
+    public bool isDead;
+
     private void Start()
     {
+        lavaTimerUI = GetComponent<LavaTimerUI>();
         userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
         moveMode = false;
@@ -74,14 +78,9 @@ public class GameDirector : MonoBehaviour
     private void MoveMode(bool mode)
     {
         if (mode)
-        {
             Movement(this.speed);
-        }
         else
-        {
             Movement(0);
-        }
-
     }
     private void Movement(float speed)
     {
@@ -98,6 +97,9 @@ public class GameDirector : MonoBehaviour
             delta = 0.0f;
             SpawnRandomPrefab(); // ·£´ý ÇÁ¸®ÆÕ »ý¼º
         }
+        if (playerContainer.ReturnPlayerisDeadAll())
+        {
+        }
         MoveMode(moveMode);
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -107,6 +109,7 @@ public class GameDirector : MonoBehaviour
             Debug.Log("dead");
             playerContainer.AddPlayerisDead(userID, isDead);
             playerContainer.ReturnPlayerisDead(userID);
+            --lavaTimerUI.player;
         }
     }
 }
