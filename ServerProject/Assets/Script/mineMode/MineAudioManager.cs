@@ -17,9 +17,19 @@ public class MineAudioManager : MonoBehaviour
     private AudioSource[] sfxPlayers;
     private int channelIndex;
 
+    public RoundData roundData;
+
     // BGM 및 효과음 타입
     public enum Sfx { Rifle, ShotGun, MineExplosion }
 
+    public void Update()
+    {
+        if (roundData.ReturnClearGame())
+        {
+            bgmPlayer.Stop();
+            return;
+        }
+    }
     void Awake()
     {
         // 인스턴스 필드 초기화

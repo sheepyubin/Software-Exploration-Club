@@ -63,7 +63,7 @@ public class mineModeManager : MonoBehaviour
             isReloadingScene = true;
             StartCoroutine(ifAllDead());
         }
-        else if (!isReloadingScene && (deadMan != totalPlayers) && aliveMan != 0)
+        else if (!isReloadingScene && (deadMan != totalPlayers) &&( aliveMan > (totalPlayers/2))|| aliveMan>0 )
         {
             isReloadingScene = true;
             StartCoroutine(ifClearLevel());
