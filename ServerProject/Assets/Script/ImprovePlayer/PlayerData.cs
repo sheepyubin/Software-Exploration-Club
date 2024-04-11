@@ -7,6 +7,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     public PlayerContainer playerContainer;
     public isDeadContainer isDeadContainer;
     public GameObject deadBody;
+    public RopeLauncher ropeLauncher;
 
     public string userID;
     public bool isDead;
@@ -36,6 +37,14 @@ public class PlayerData : MonoBehaviourPunCallbacks
         }
     }
 
+    void Update()
+    {
+        if(isDead)
+        {
+            ropeLauncher.photonView.RPC("DisableRope", RpcTarget.AllBuffered);
+        }
+        
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

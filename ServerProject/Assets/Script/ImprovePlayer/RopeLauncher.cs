@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public LineRenderer lineRenderer; // ¶óÀÎ ·£´õ·¯
-    public DistanceJoint2D distanceJoint; // µð½ºÅÏ½º Á¶ÀÎÆ® 
-    public string targetTag = "Grappleable"; // Å¸°Ù ÅÂ±×
+    public LineRenderer lineRenderer; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public DistanceJoint2D distanceJoint; // ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® 
+    public string targetTag = "Grappleable"; // Å¸ï¿½ï¿½ ï¿½Â±ï¿½
     public PlayerData playerData;
 
-    private Camera mainCamera; // Ä«¸Þ¶ó
-    private Vector3 playerPosition; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
+    private Camera mainCamera; // Ä«ï¿½Þ¶ï¿½
+    private Vector3 playerPosition; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
-        // º¯¼ö ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         distanceJoint.enabled = false;
         mainCamera = Camera.main;
         lineRenderer.startColor = Color.white;
@@ -24,29 +24,29 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView != null && photonView.IsMine && !playerData.isDead) // ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÎ°¡?
+        if (photonView != null && photonView.IsMine && !playerData.isDead) // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½Î°ï¿½?
         {
-            playerPosition = transform.position; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ playerPosition¿¡ ÀúÀå
+            playerPosition = transform.position; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ playerPositionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            // ·ÎÇÁ ¹ß»ç
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition); // ¸¶¿ì½ºÀÇ À§Ä¡
-                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity); // ¸¶¿ì½ºÀÇ À§Ä¡¿¡ ·¹ÀÌ ¹ß»ç
+                Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition); // ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½Ä¡
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity); // ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 
-                if (hit.collider != null && hit.collider.CompareTag(targetTag)) // targetTag¿¡ ·¹ÀÌ°¡ Ãæµ¹Çß´Â°¡?
+                if (hit.collider != null && hit.collider.CompareTag(targetTag)) // targetTagï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½æµ¹ï¿½ß´Â°ï¿½?
                 {
                     photonView.RPC("LaunchRope", RpcTarget.AllBuffered, hit.point);
                 }
             }
 
-            // ·ÎÇÁ ºñÈ°¼ºÈ­
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 photonView.RPC("DisableRope", RpcTarget.AllBuffered);
             }
 
-            // ¶óÀÎ ·£´õ·¯ÀÇ ³ëµå¸¦ µ¿±âÈ­
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½È­
             if (distanceJoint.enabled)
             {
                 photonView.RPC("UpdateNode", RpcTarget.AllBuffered, playerPosition);
@@ -54,35 +54,35 @@ public class RopeLauncher : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    // ·ÎÇÁ ¹ß»ç ¸Å¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½Å¼ï¿½ï¿½ï¿½
     [PunRPC]
     void LaunchRope(Vector2 targetPosition, PhotonMessageInfo info)
     {
-        Vector3 node1Pos = targetPosition; // ¸ñÇ¥ ÁöÁ¡À» node1Pos¿¡ ÀúÀå
+        Vector3 node1Pos = targetPosition; // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ node1Posï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        lineRenderer.SetPosition(0, node1Pos); // node1PosÀÇ À§Ä¡¸¦ ¶óÀÎ ·£´õ·¯ÀÇ ³ëµå·Î ÀúÀå
+        lineRenderer.SetPosition(0, node1Pos); // node1Posï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        distanceJoint.connectedAnchor = node1Pos; // µð½ºÅÏ½º Á¶ÀÎÆ®ÀÇ ¾ÞÄ¿¸¦ node1PosÀ¸·Î ¼³Á¤
+        distanceJoint.connectedAnchor = node1Pos; // ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ä¿ï¿½ï¿½ node1Posï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        // ¶óÀÎ ·£´õ·¯¿Í µð½ºÅÏ½º Á¶ÀÎÆ®¸¦ È°¼ºÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È°ï¿½ï¿½È­
         distanceJoint.enabled = true;
         lineRenderer.enabled = true;
     }
 
-    // ·ÎÇÁ ºñÈ°¼ºÈ­ ¸Å¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Å¼ï¿½ï¿½ï¿½
     [PunRPC]
     void DisableRope()
     {
-        // µð½ºÅÏ½º Á¶ÀÎÆ®¿Í ¶óÀÎ ·£´õ·¯¸¦ ºñÈ­¼ºÈ­
+        // ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È­
         distanceJoint.enabled = false;
         lineRenderer.enabled = false;
     }
 
-    // ³ëµå °»½Å ¸Å¼­µå
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¼ï¿½ï¿½ï¿½
     [PunRPC]
     void UpdateNode(Vector3 position)
     {
-        lineRenderer.SetPosition(1, position); // 2¹øÂ° ³ëµå (ÇÃ·¹ÀÌ¾î À§Ä¡ÀÇ ³ëµå)ÀÇ À§Ä¡¸¦ °»½Å
+        lineRenderer.SetPosition(1, position); // 2ï¿½ï¿½Â° ï¿½ï¿½ï¿½ (ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

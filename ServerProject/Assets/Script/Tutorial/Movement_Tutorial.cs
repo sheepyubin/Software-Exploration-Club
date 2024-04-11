@@ -165,7 +165,7 @@ public class Movement_Tutorial : MonoBehaviour
         // Boundary�� �浹
         if (collision.gameObject.CompareTag("Boundary") || collision.gameObject.CompareTag("Bullet"))
         {
-            transform.position = new Vector2(-15, -2);
+            transform.position = new Vector2(-15, 3);
         }
     }
 
