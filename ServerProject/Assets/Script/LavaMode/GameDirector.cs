@@ -30,25 +30,19 @@ public class GameDirector : MonoBehaviour
     private LavaTimerUI lavaTimerUI;
     private float delta = 0.0f;
     public bool moveMode;
-    private string userID;
     public bool isDead;
-
     private void Start()
     {
         lavaTimerUI = GetComponent<LavaTimerUI>();
-        userID = PhotonNetwork.LocalPlayer.UserId;
         isDead = false;
         moveMode = false;
         maxPosition.y = minPosition.y + 10;
         isdeadContainer.AddisDead();
+        StartCoroutine(SwichingMode());
     }
-    private void Awake()
+    IEnumerator SwichingMode()
     {
-        StartCoroutine("SwichingMode");
-    }
-    private IEnumerator SwichingMode()
-    {
-        while (true)
+        while (!lavaTimerUI.isStop)
         {
             
             if (moveMode)
@@ -89,19 +83,21 @@ public class GameDirector : MonoBehaviour
         gearObject.transform.Translate(0, speed * Time.deltaTime, 0);
         animator.SetFloat("isRotationSpeed", speed);
     }
+
     // 예시로 매 프레임마다 랜덤 프리팹을 생성하는 Update 함수
     void Update()
     {
-        this.delta += Time.deltaTime;
-        if (delta > span)
+        if (!lavaTimerUI.isStop)
         {
-            delta = 0.0f;
-            SpawnRandomPrefab(); // 랜덤 프리팹 생성
+            this.delta += Time.deltaTime;
+            if (delta > span)
+            {
+                delta = 0.0f;
+                SpawnRandomPrefab(); // 랜덤 프리팹 생성
+            }
+            MoveMode(moveMode);
+
         }
-        if (isdeadContainer.ReturnisAllDead())
-        {
-        }
-        MoveMode(moveMode);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -110,5 +106,9 @@ public class GameDirector : MonoBehaviour
             Debug.Log("dead");
             --lavaTimerUI.player;
         }
+    }
+    public void LavaModeIsStop()
+    {
+        Movement(0);
     }
 }
