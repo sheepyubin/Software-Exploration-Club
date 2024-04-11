@@ -14,6 +14,8 @@ public class mineModeManager : MonoBehaviour
     public PlayerSpawner playerSpawner;
     string playerId;
 
+    public ClearUI clearUI;
+
     private int totalPlayers = 0;
 
     private int round;
@@ -70,8 +72,7 @@ public class mineModeManager : MonoBehaviour
         if (roundData.ReturnRound() == 5)
         {
             roundData.AddClearGame(true);
-            yield return new WaitForSeconds(200);
-            PhotonNetwork.LoadLevel("Lobby");
+
         }
         Debug.Log("전부 사망, 현재 레벨 재시작");
         yield return new WaitForSeconds(time);

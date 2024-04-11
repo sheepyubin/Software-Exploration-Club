@@ -25,13 +25,19 @@ public class ClearUI : MonoBehaviour
     {
         if (roundData.ReturnRound() == 5 && playerContainer.isDeadContainer.ReturnisAllDead() == true)
         {
-            canvasGroup.alpha = 1;
-            countdownTime = roundData.ReturnTime();
-
-            int seconds = Mathf.FloorToInt(countdownTime);
-            int milliseconds = Mathf.FloorToInt((countdownTime - seconds) * 100);
-            scoreText.text = string.Format("{0}.{1:D2}", seconds, milliseconds);
-
+            StartCoroutine(IsClear());
         }
+    }
+
+    IEnumerator IsClear()
+    {
+        canvasGroup.alpha = 1;
+        countdownTime = roundData.ReturnTime();
+
+        int seconds = Mathf.FloorToInt(countdownTime);
+        int milliseconds = Mathf.FloorToInt((countdownTime - seconds) * 100);
+        scoreText.text = string.Format("{0}.{1:D2}", seconds, milliseconds);
+        yield return new WaitForSeconds(100f);
+
     }
 }

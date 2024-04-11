@@ -6029,6 +6029,7 @@ MonoBehaviour:
   playerContainer: {fileID: 11400000, guid: 8af25c1f18493e24fa9da50c37cb4fed, type: 2}
   roundData: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
   playerSpawner: {fileID: 88535615}
+  clearUI: {fileID: 672363488}
   time: 5
   aliveMan: 0
   deadMan: 0
