@@ -2,6 +2,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using Photon.Pun;
 using UnityEngine;
+using Photon.Realtime;
+using System.Collections.Generic;
 
 
 
@@ -12,18 +14,22 @@ public class mineModeManager : MonoBehaviour
     public PlayerSpawner playerSpawner;
     string playerId;
 
+    private int totalPlayers = 0;
+
     private int round;
     public float time = 5;
     bool allDead = false;
-    public string player1;
-    public string player2;
-    public string player3;
-    public string player4;
     bool isReloadingScene = false;
 
-    // Start is called before the first frame update
+    public int aliveMan=0;
+    public int deadMan=0;
+
     void Awake()
     {
+        aliveMan = 0;
+        deadMan = 0;
+        totalPlayers = PhotonNetwork.CurrentRoom.PlayerCount;
+        Debug.Log("현재 접속 중인 플레이어 수: " + totalPlayers);
 
         round = roundData.ReturnRound();
         Debug.Log("현재 " + round + "라운드 진행중");
@@ -34,13 +40,15 @@ public class mineModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckAlive();
         if (roundData.ReturnRound() == 5 && Input.GetMouseButtonDown(0))
         {
             PhotonNetwork.LoadLevel("Lobby");
         }
-        CheckAlive();
-
+        
     }
+
+
 
     public void CheckAlive()
     {
@@ -49,7 +57,7 @@ public class mineModeManager : MonoBehaviour
             isReloadingScene = true;
             StartCoroutine(ifAllDead());
         }
-        else if (!isReloadingScene && (roundData.ReturnDead() + roundData.ReturnLive() == 0))
+        else if (!isReloadingScene && (deadMan != totalPlayers) && aliveMan !=0)
         {
             isReloadingScene = true;
             StartCoroutine(ifClearLevel());
@@ -81,6 +89,15 @@ public class mineModeManager : MonoBehaviour
     {
         Debug.Log(round);
         return round;
+    }
+    public void AddLive(int aliveMan)
+    {
+        this.aliveMan = aliveMan;
+    }
+
+    public void AddDead(int deadMan)
+    {
+        this.deadMan = deadMan;
     }
 
 }

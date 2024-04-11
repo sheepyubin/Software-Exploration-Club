@@ -5629,6 +5629,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6770968121800320167, guid: 889873754abf52745a7dfa42823373b2, type: 3}
+      propertyPath: roundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
+    - target: {fileID: 6770968121800320167, guid: 889873754abf52745a7dfa42823373b2, type: 3}
+      propertyPath: mineModeManager
+      value: 
+      objectReference: {fileID: 2005979544}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889873754abf52745a7dfa42823373b2, type: 3}
 --- !u!1 &1955535334 stripped
@@ -5795,10 +5803,8 @@ MonoBehaviour:
   roundData: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
   playerSpawner: {fileID: 88535615}
   time: 5
-  player1: 
-  player2: 
-  player3: 
-  player4: 
+  aliveMan: 0
+  deadMan: 0
 --- !u!1 &2059456479
 GameObject:
   m_ObjectHideFlags: 0
@@ -45368,6 +45374,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: unexploded_mine
       objectReference: {fileID: 0}
+    - target: {fileID: 8263641744427417374, guid: 182f5d43d2d9f3844be500b6430c5be5, type: 3}
+      propertyPath: roundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 645f9f9e52fb56a44b29d71a5012d73e, type: 2}
+    - target: {fileID: 8263641744427417374, guid: 182f5d43d2d9f3844be500b6430c5be5, type: 3}
+      propertyPath: mineModeManager
+      value: 
+      objectReference: {fileID: 2005979544}
     - target: {fileID: 8978787270170357558, guid: 182f5d43d2d9f3844be500b6430c5be5, type: 3}
       propertyPath: m_RootOrder
       value: 7

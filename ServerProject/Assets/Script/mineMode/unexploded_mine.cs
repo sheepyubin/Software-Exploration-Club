@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class unexploded_mine : MonoBehaviour
 {
-    public RoundData roundData;
+    public mineModeManager mineModeManager;
     private int alliveMan;
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other)
@@ -12,7 +12,7 @@ public class unexploded_mine : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             alliveMan++;
-            roundData.AddDead(alliveMan);
+            mineModeManager.AddLive(alliveMan);
             Debug.Log("ºÒ¹ßÅº ¹âÀ½. »ýÁ¸");
         }
     }
