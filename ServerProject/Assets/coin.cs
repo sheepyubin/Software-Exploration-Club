@@ -8,6 +8,7 @@ public class coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
             gameObject.SetActive(false);
         }
     }

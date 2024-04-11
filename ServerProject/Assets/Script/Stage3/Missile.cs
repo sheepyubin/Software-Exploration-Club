@@ -26,6 +26,7 @@ public class Missile : MonoBehaviourPun, IPunObservable
         {
             // 폭발 이펙트 생성
             PhotonNetwork.Instantiate(explosionPrefab.name, transform.position, Quaternion.identity);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.MissileExplosion);
             // 미사일 파괴
             DestroyMissile();
         }
