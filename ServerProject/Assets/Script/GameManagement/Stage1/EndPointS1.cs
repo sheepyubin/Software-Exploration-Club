@@ -13,6 +13,8 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
     public PlayerContainer playerContainer;
     public isDeadContainer isDeadContainer;
     public int targetScore = 0;
+    public GameObject success;
+    public GameObject fail;
 
     private bool isClear = false;
 
@@ -20,6 +22,9 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
     {
         Key1.SetActive(false);
         Key1.SetActive(false);
+
+        success.SetActive(false);
+        fail.SetActive(false);
     }
 
     private void Update()
@@ -81,11 +86,13 @@ public class EndPointS1 : MonoBehaviourPunCallbacks
         if(playerContainer.ReturnScore() < targetScore)
         {
             Debug.Log("실패");
+            fail.SetActive(true);          
             StartCoroutine(DelayedFunction(delayTIme, "Lobby"));
         }
         else
         {
             Debug.Log("성공");
+            success.SetActive(true);  
             StartCoroutine(DelayedFunction(delayTIme, next));
         }
     }
