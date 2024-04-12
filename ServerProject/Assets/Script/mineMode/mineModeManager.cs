@@ -42,7 +42,6 @@ public class mineModeManager : MonoBehaviour
         playerId = PhotonNetwork.LocalPlayer.UserId;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckAlive();
@@ -54,8 +53,6 @@ public class mineModeManager : MonoBehaviour
 
     }
 
-
-
     public void CheckAlive()
     {
         if (!isReloadingScene && playerContainer.ReturnPlayerisDeadAll())
@@ -63,7 +60,7 @@ public class mineModeManager : MonoBehaviour
             isReloadingScene = true;
             StartCoroutine(ifAllDead());
         }
-        else if (!isReloadingScene && (deadMan != totalPlayers) &&( aliveMan > (totalPlayers/2))|| aliveMan>0 )
+        else if (!isReloadingScene && (deadMan != totalPlayers) && (aliveMan > (totalPlayers / 2)) || aliveMan > 0 && (aliveMan + deadMan == totalPlayers))
         {
             isReloadingScene = true;
             StartCoroutine(ifClearLevel());
