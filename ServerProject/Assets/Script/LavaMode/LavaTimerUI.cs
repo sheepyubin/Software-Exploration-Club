@@ -88,7 +88,7 @@ public class LavaTimerUI : MonoBehaviour
     IEnumerator WaitBeforeDisconnectAndLoadScene()
     {
         // 1초 동안 대기
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
 
         // 대기 후에 PhotonNetwork 연결 해제 및 씬 이동
         PhotonNetwork.Disconnect();
