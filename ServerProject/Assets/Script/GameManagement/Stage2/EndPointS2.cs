@@ -56,22 +56,8 @@ public class EndPointS2 : MonoBehaviourPunCallbacks
     [PunRPC]
     void SwitchScene(string nextStage)
     {
-        if(nextStage == "Lobby")
-        {
-            // RPC로 모든 클라이언트에게 Disconnect 및 로비 씬 로드 명령 보내기
-            photonView.RPC("DisconnectAndLoadLevel", RpcTarget.All);
-        }
-        else
-        {
-            PhotonNetwork.LoadLevel(nextStage);
-        }
-    }
-
-    [PunRPC]
-    void DisconnectAndLoadLevel()
-    {
         PhotonNetwork.Disconnect();
-        PhotonNetwork.LoadLevel("Lobby");
+        PhotonNetwork.LoadLevel(nextStage);
     }
 
 
