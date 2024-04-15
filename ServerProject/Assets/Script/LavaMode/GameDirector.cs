@@ -27,13 +27,12 @@ public class GameDirector : MonoBehaviour
     [Header("Object Option:")]
     [SerializeField] private float speed = 3.0f;
 
-    private LavaTimerUI lavaTimerUI;
+    public LavaTimerUI lavaTimerUI;
     private float delta = 0.0f;
     public bool moveMode;
     public bool isDead;
     private void Start()
     {
-        lavaTimerUI = GetComponent<LavaTimerUI>();
         isDead = false;
         moveMode = false;
         maxPosition.y = minPosition.y + 10;
@@ -48,6 +47,7 @@ public class GameDirector : MonoBehaviour
             
             if (moveMode)
             {
+                lavaTimerUI.isAddScore = true;
                 moveMode = false;
                 maxPosition.y = minPosition.y + 10;
             }
@@ -74,9 +74,9 @@ public class GameDirector : MonoBehaviour
     private void MoveMode(bool mode)
     {
         if (mode)
-            Movement(this.speed);
-        else
             Movement(0);
+        else
+            Movement(this.speed);
     }
     private void Movement(float speed)
     {
@@ -97,7 +97,6 @@ public class GameDirector : MonoBehaviour
                 SpawnRandomPrefab(); // ·£´ý ÇÁ¸®ÆÕ »ý¼º
             }
             MoveMode(moveMode);
-
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

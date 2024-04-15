@@ -33,11 +33,12 @@ public class LavaTimerUI : MonoBehaviour
     int maxScore = 500;
     string move = "초 후 움직입니다";
     string stop = "초 후 멈춥니다";
-
+    public bool isAddScore;
     public bool isStop;
     private void Start()
     {
         isStop = false;
+        isAddScore = false;
         gameDirector = GetComponent<GameDirector>();
         player = PhotonNetwork.CurrentRoom.PlayerCount;
         totalTime = gameDirector.modeChangeTime;
@@ -62,10 +63,12 @@ public class LavaTimerUI : MonoBehaviour
     {
         while (!isStop)
         {
-            scoreContainer.AddScore(player);
-
-
-            yield return new WaitForSeconds(0.1f); // 1초를 기다립니다.
+            Debug.Log("DD");
+            if (isAddScore)
+            {
+                scoreContainer.AddScore(player);
+            }
+                yield return new WaitForSeconds(0.1f);
         }
     }
     private void Update()
@@ -100,11 +103,11 @@ public class LavaTimerUI : MonoBehaviour
             currentTime = totalTime;
         if (!gameDirector.moveMode)
         {
-            timerText.text = currentTime.ToString("F0") + move;
+            timerText.text = currentTime.ToString("F0") + stop;
         }
         else
         {
-            timerText.text = currentTime.ToString("F0") + stop;
+            timerText.text = currentTime.ToString("F0") + move;
         }
     }
     private void LavaScore()
